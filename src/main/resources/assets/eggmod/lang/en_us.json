@@ -1,0 +1,18 @@
+{
+    "itemGroup.eggmod.general" : "OzBoz's Egg Mod",
+    "item.eggmod.burnt_egg" : "Badly Burnt Egg",
+    "item.eggmod.burnt_egg.tooltip" : "Who tries cooking eggs in a furnace lmao",
+    "item.eggmod.fried_egg" : "Fried Egg",
+    "item.eggmod.eggzooka" : "Eggzooka",
+    "item.eggmod.blast_egg" : "Blast Egg",
+    "item.eggmod.special_syringe" : "Special Syringe",
+    "item.eggmod.dragon_serum" : "Dragon Serum",
+    "item.eggmod.eggzooka.tooltip_1" : "Ammo in current slot: ",
+    "item.eggmod.eggzooka.tooltip_2" : "Ammo in all slots: ",
+    "item.eggmod.eggzooka.tooltip_sub" : "Slot ",
+    "block.eggmod.eggshells" : "Eggshells",
+    "block.eggmod.raw_giant_egg" : "Raw Giant Egg",
+    "item.eggmod.raw_giant_egg.tooltip" : "It's Eggin' Raw!",
+    "block.eggmod.giant_egg" : "Giant Egg",
+    "item.eggmod.giant_egg.tooltip" : "Ready to eat!"
+}

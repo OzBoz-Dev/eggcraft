@@ -1,0 +1,12 @@
+{
+    "variants":{
+        "layers=1": {"model": "eggmod:block/eggshells/eggshells1"},
+        "layers=2": {"model": "eggmod:block/eggshells/eggshells2"},
+        "layers=3": {"model": "eggmod:block/eggshells/eggshells3"},
+        "layers=4": {"model": "eggmod:block/eggshells/eggshells4"},
+        "layers=5": {"model": "eggmod:block/eggshells/eggshells5"},
+        "layers=6": {"model": "eggmod:block/eggshells/eggshells6"},
+        "layers=7": {"model": "eggmod:block/eggshells/eggshells7"},
+        "layers=8": {"model": "eggmod:block/eggshells/eggshells8"}
+    }
+}

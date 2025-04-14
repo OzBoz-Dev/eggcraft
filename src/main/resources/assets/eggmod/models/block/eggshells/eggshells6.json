@@ -1,0 +1,7 @@
+{
+    "parent" : "block/snow_height12",
+    "textures": {
+        "texture" : "eggmod:block/eggshells",
+        "particle" : "eggmod:block/eggshells"
+    }
+}
