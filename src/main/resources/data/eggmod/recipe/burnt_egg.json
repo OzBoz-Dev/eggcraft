@@ -1,0 +1,15 @@
+{
+    "type" : "minecraft:smelting",
+    "ingredient": [
+        {
+            "item": "egg"
+        },
+        {
+            "item": "eggmod:raw_giant_egg"
+        }
+    ],
+    "result" : {
+        "id" : "eggmod:burnt_egg"
+    },
+    "experience" : 0.0
+}

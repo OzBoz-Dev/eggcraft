@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "eggmod",
+  "version": "${version}",
+
+  "name": "Speggtacular",
+  "description": "Egg mod",
+  "authors": [
+    "OzBoz"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/eggmod/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.ozbozmodz.eggmod.EggMod"
+    ],
+    "client" : [
+      "net.ozbozmodz.eggmod.Client"
+    ]
+  },
+  "mixins": [
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.19",
+    "fabric-api": "*",
+    "minecraft": ">=1.21.1",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "variants":{
+        "bites=0": {"model": "eggmod:block/giantegg/giantegg0"},
+        "bites=1": {"model": "eggmod:block/giantegg/giantegg1"},
+        "bites=2": {"model": "eggmod:block/giantegg/giantegg2"},
+        "bites=3": {"model": "eggmod:block/giantegg/giantegg3"},
+        "bites=4": {"model": "eggmod:block/giantegg/giantegg4"},
+        "bites=5": {"model": "eggmod:block/giantegg/giantegg5"},
+        "bites=6": {"model": "eggmod:block/giantegg/giantegg6"}
+    }
+}

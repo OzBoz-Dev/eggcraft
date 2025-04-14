@@ -1,0 +1,22 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0" : "eggmod:item/syringes/special_syringe"
+    },
+    "overrides" : [
+        {
+            "predicate" : {
+                "minecraft:pulling":1,
+                "minecraft:pull" : 0.35
+            },
+            "model" : "eggmod:item/dragon_serum_1"
+        },
+        {
+            "predicate" : {
+                "minecraft:pulling":1,
+                "minecraft:pull" : 0.70
+            },
+            "model" : "eggmod:item/dragon_serum_2"
+        }
+    ]
+}
