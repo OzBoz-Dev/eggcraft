@@ -1,10 +1,7 @@
 package net.ozbozmodz.eggmod.util;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.MapColor;
+import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -37,6 +34,8 @@ public class RegisterItems {
     public static final Item EGGSHELLITEM = new BlockItem(EGGSHELLS, new Item.Settings());
     public static final Item GIANTEGGITEM = new BlockItem(GIANTEGG, new Item.Settings());
     public static final Item RAWGIANTEGGITEM = new BlockItem(RAWGIANTEGG, new Item.Settings());
+    //BEHAVIORS
+    public static final eggshellDispenserBehavior EGGSHELL_DISPENSER_BEHAVIOR = new eggshellDispenserBehavior();
     //ITEMGROUP
     public static final ItemGroup Eggmod = Registry.register(Registries.ITEM_GROUP, Identifier.of("eggmod", "general"),
     FabricItemGroup.builder()
@@ -74,5 +73,8 @@ public class RegisterItems {
 
         //Throwable Eggs
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "blast_egg"), BLASTEGG);
+
+        //Behaviors
+        DispenserBlock.registerBehavior(RegisterItems.EGGSHELLITEM, RegisterItems.EGGSHELL_DISPENSER_BEHAVIOR);
     }
 }

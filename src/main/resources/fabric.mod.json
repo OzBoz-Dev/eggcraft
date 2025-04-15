@@ -9,8 +9,8 @@
     "OzBoz"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/OzBoz-Dev/eggstraneous-mod/",
+    "sources": "https://github.com/OzBoz-Dev/eggstraneous-mod/"
   },
 
   "license": "CC0-1.0",
@@ -26,6 +26,7 @@
     ]
   },
   "mixins": [
+      "eggmod.mixins.json"
   ],
 
   "depends": {
