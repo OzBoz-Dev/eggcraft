@@ -1,0 +1,7 @@
+{
+    "parent" : "block/carpet",
+    "textures": {
+        "wool" : "eggmod:block/eggshells/eggshells9",
+        "particle" : "eggmod:block/eggshells/eggshells9"
+    }
+}

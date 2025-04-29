@@ -22,10 +22,10 @@ public class eggshellDispenserBehavior extends FallibleItemDispenserBehavior {
         // Get number of eggshell layers if the block we're facing is an eggshell block
 
         if (state.isOf(RegisterItems.EGGSHELLS)){
-            int numLayers = state.get(eggshells.LAYERS);
+            int numShells = state.get(eggshells.SHELLS);
             // Add a layer to it
-            if (numLayers < eggshells.MAX_LAYERS){
-                world.setBlockState(pos, state.with(eggshells.LAYERS, numLayers + 1));
+            if (numShells < eggshells.MAX_SHELLS){
+                world.setBlockState(pos, state.with(eggshells.SHELLS, numShells + 1));
                 this.setSuccess(true);
                 stack.decrement(1);
                 world.emitGameEvent(null, GameEvent.BLOCK_CHANGE, pos);
@@ -39,7 +39,7 @@ public class eggshellDispenserBehavior extends FallibleItemDispenserBehavior {
         }
         // If we can place eggshells here, then do so
         else if (world.getBlockState(pos).isAir() && eggState.canPlaceAt(world, pos)){
-            world.setBlockState(pos, eggState.with(eggshells.LAYERS, 1));
+            world.setBlockState(pos, eggState.with(eggshells.SHELLS, 1));
             world.emitGameEvent(null, GameEvent.BLOCK_PLACE, pos);
             this.setSuccess(true);
             stack.decrement(1);

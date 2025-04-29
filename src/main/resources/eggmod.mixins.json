@@ -4,6 +4,7 @@
   "package": "net.ozbozmodz.eggmod.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "EggshellMixin",
     "FurnaceBoomMixin"
   ],
   "client": [

@@ -1,3 +1,6 @@
 {
-    "parent" : "eggmod:block/eggshells/eggshells1"
+    "parent": "item/generated",
+    "textures": {
+        "layer0" : "eggmod:item/eggshellitem"
+    }
 }

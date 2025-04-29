@@ -27,7 +27,7 @@ public class RegisterItems {
     //THROWABLE EGGS
     public static final damageEgg BLASTEGG = new damageEgg(new Item.Settings(), "BLASTEGG");
     //BLOCKS
-    public static final eggshells EGGSHELLS = new eggshells(Block.Settings.copy(Blocks.SNOW).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.TUFF));
+    public static final eggshells EGGSHELLS = new eggshells(Block.Settings.copy(Blocks.WHITE_CARPET).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.TUFF).strength(0.2F));
     public static final giantEgg GIANTEGG = new giantEgg(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE));
     public static final rawGiantEgg RAWGIANTEGG = new rawGiantEgg(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE));
     //BLOCK ITEMS

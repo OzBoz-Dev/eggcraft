@@ -1,7 +1,7 @@
 {
-    "parent" : "block/snow_height14",
+    "parent" : "block/carpet",
     "textures": {
-        "texture" : "eggmod:block/eggshells",
-        "particle" : "eggmod:block/eggshells"
+        "wool" : "eggmod:block/eggshells/eggshells7",
+        "particle" : "eggmod:block/eggshells/eggshells7"
     }
 }

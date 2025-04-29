@@ -10,7 +10,7 @@
     "item.eggmod.eggzooka.tooltip_1" : "Ammo in current slot: ",
     "item.eggmod.eggzooka.tooltip_2" : "Ammo in all slots: ",
     "item.eggmod.eggzooka.tooltip_sub" : "Slot ",
-    "block.eggmod.eggshells" : "Eggshells",
+    "block.eggmod.eggshells" : "Eggshell",
     "block.eggmod.raw_giant_egg" : "Raw Giant Egg",
     "item.eggmod.raw_giant_egg.tooltip" : "It's Eggin' Raw!",
     "block.eggmod.giant_egg" : "Giant Egg",
