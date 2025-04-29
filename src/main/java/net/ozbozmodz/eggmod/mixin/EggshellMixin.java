@@ -29,11 +29,12 @@ public class EggshellMixin {
                 eggshell = new ItemStack(RegisterItems.EGGSHELLITEM, 2);
             }
             else eggshell = new ItemStack(RegisterItems.EGGSHELLITEM, 1);
-            ItemEntity eggshellitem = EntityType.ITEM.create(world);
-            if (eggshellitem != null) {
-                eggshellitem.setStack(eggshell);
-                eggshellitem.setPosition(hitResult.getPos());
-                world.spawnEntity(eggshellitem.dropStack(eggshell));
+            // Create an item entity, and send it
+            ItemEntity eggshellItem = EntityType.ITEM.create(world);
+            if (eggshellItem != null) {
+                eggshellItem.setStack(eggshell);
+                eggshellItem.setPosition(hitResult.getPos());
+                world.spawnEntity(eggshellItem.dropStack(eggshell));
             }
         }
     }
