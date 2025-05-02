@@ -4,7 +4,6 @@
     "item.eggmod.burnt_egg.tooltip" : "Who tries cooking eggs in a furnace lmao",
     "item.eggmod.fried_egg" : "Fried Egg",
     "item.eggmod.eggzooka" : "Eggzooka",
-    "item.eggmod.blast_egg" : "Blast Egg",
     "item.eggmod.special_syringe" : "Special Syringe",
     "item.eggmod.dragon_serum" : "Dragon Serum",
     "item.eggmod.eggzooka.tooltip_1" : "Ammo in current slot: ",
@@ -14,5 +13,11 @@
     "block.eggmod.raw_giant_egg" : "Raw Giant Egg",
     "item.eggmod.raw_giant_egg.tooltip" : "It's Eggin' Raw!",
     "block.eggmod.giant_egg" : "Giant Egg",
-    "item.eggmod.giant_egg.tooltip" : "Ready to eat!"
+    "item.eggmod.giant_egg.tooltip" : "Ready to eat!",
+    "item.eggmod.blast_egg" : "Blast Egg",
+    "entity.eggmod.blast_egg" : "Blast Egg",
+    "item.eggmod.iron_egg" : "Iron Egg",
+    "item.eggmod.diamond_egg" : "Diamond Egg",
+    "entity.eggmod.iron_egg" : "Iron Egg",
+    "entity.eggmod.diamond_egg" : "Diamond Egg"
 }

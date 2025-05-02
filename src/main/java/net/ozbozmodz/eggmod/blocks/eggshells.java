@@ -51,9 +51,10 @@ public class eggshells extends Block {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity){
         int numLayers = state.get(SHELLS);
+        PlayerEntity nearestPlayer = world.getClosestPlayer(entity, 20);
         // Damage the entity that steps on it based on the number of eggshells in the pile
-        if (entity.isAttackable() && 
-            entity.damage(entity.isPlayer() ? world.getDamageSources().generic() : world.getDamageSources().playerAttack(world.getClosestPlayer(entity, 20)), 0.8f * numLayers)){
+        if (entity.isAttackable() &&
+            entity.damage(entity.isPlayer() || nearestPlayer == null ? world.getDamageSources().generic() : world.getDamageSources().playerAttack(nearestPlayer), 0.8f * numLayers)){
             if (numLayers > 1)
                 world.setBlockState(pos, state.with(SHELLS, numLayers - 1));
             else
