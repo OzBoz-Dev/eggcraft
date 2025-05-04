@@ -19,5 +19,7 @@
     "item.eggmod.iron_egg" : "Iron Egg",
     "item.eggmod.diamond_egg" : "Diamond Egg",
     "entity.eggmod.iron_egg" : "Iron Egg",
-    "entity.eggmod.diamond_egg" : "Diamond Egg"
+    "entity.eggmod.diamond_egg" : "Diamond Egg",
+    "item.eggmod.excavator_egg" : "Excavator Egg",
+    "entity.eggmod.excavator_egg" : "Excavator Egg"
 }

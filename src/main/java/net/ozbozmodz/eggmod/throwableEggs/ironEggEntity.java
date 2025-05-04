@@ -14,7 +14,7 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
 import org.joml.Random;
 import org.joml.Vector3d;
-
+/* Deal damage on landing */
 public class ironEggEntity extends customEggEntity {
 
     public ironEggEntity(World world, LivingEntity owner) {
@@ -29,7 +29,7 @@ public class ironEggEntity extends customEggEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         World world = this.getWorld();
         float baseDmg = 6.0F;
-
+        // Do extra damage depending on how far the thrower is from it. Else just only do base dmg
         if (this.getOwner() != null) {
             double dist = Vector3d.distanceSquared(this.getOwner().getX(), this.getOwner().getY(), this.getOwner().getZ(), this.getX(), this.getY(), this.getZ());
             entityHitResult.getEntity().damage(world.getDamageSources().playerAttack((PlayerEntity) this.getOwner()), (float) (baseDmg + (dist / 15)));
@@ -37,6 +37,7 @@ public class ironEggEntity extends customEggEntity {
         else {
             entityHitResult.getEntity().damage(world.getDamageSources().generic(), baseDmg);
         }
+        // Play a sound, and add particles around the hit mob
         world.playSound(this, this.getBlockPos(), SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.PLAYERS, 1.0F, 2.0F);
         Random r = new Random();
         if (!world.isClient()) {
@@ -44,12 +45,14 @@ public class ironEggEntity extends customEggEntity {
                 ((ServerWorld) world).spawnParticles(ParticleTypes.CRIT, this.getX(), this.getY(), this.getZ(), 1, Math.cos(i * 30) * r.nextFloat(), 1.0f, Math.sin(i * 30) * r.nextFloat(), 0.2F);
             }
         }
+        // Clean up
         world.sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
         this.discard();
     }
 
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
+        // Drop the egg if it hits a block rather than entity
         super.onBlockHit(blockHitResult);
         World world = this.getWorld();
         world.spawnEntity(new ItemEntity(world, this.getX(), this.getY(), this.getZ(), this.getStack()));
