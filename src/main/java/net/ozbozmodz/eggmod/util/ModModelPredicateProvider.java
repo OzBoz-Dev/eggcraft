@@ -17,6 +17,7 @@ public class ModModelPredicateProvider {
             return (float)(stack.getMaxUseTime(entity) - entity.getItemUseTimeLeft()) / 60.0f;
         });
         ModelPredicateProviderRegistry.register(RegisterItems.SPECIALSYRINGE, Identifier.of("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0f : 0.0f);
+        // Entity renderers
         EntityRendererRegistry.register(RegisterItems.BLAST_EGG_ENTITY_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterItems.IRON_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterItems.DIAMOND_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
