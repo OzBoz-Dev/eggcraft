@@ -8,6 +8,7 @@ import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.world.World;
 
+/* Abstract egg entity that all our special ones will extend */
 public abstract class customEggEntity extends SnowballEntity {
 
     public customEggEntity(EntityType<? extends SnowballEntity> entityType, World world) {

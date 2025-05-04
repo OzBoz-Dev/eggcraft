@@ -12,6 +12,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.ozbozmodz.eggmod.util.RegisterItems;
 
+/* Item which summons our egg entities */
 public class customEggItem extends EggItem{
 	public String type;
 	protected customEggEntity ourEgg;
@@ -24,7 +25,8 @@ public class customEggItem extends EggItem{
     public String getTypeString(){
         return this.type;
     }
-    
+
+    /* Spawn the correct egg entity and set its default velocity */
 	@Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         setCooldowns(user);
@@ -42,27 +44,33 @@ public class customEggItem extends EggItem{
     }
 
     public static customEggEntity getType(String type, World world, PlayerEntity user){
+        // Decide which egg must be summoned depending on the type string
         return switch (type) {
             case "BLASTEGG" -> new blastEggEntity(world, user);
             case "IRONEGG" -> new ironEggEntity(world, user);
             case "DIAMONDEGG" -> new diamondEggEntity(world, user);
+            case "EXCAVATOREGG" -> new excavatorEggEntity(world, user);
             default -> null;
         };
     }
 
+    /* For being summoned by command or dispenser */
     public static customEggEntity getTypeNoUser(String type, World world){
         return switch (type) {
             case "BLASTEGG" -> new blastEggEntity(RegisterItems.BLAST_EGG_ENTITY_ENTITY_TYPE, world);
             case "IRONEGG" -> new ironEggEntity(RegisterItems.IRON_EGG_ENTITY_TYPE, world);
             case "DIAMONDEGG" -> new diamondEggEntity(RegisterItems.DIAMOND_EGG_ENTITY_TYPE, world);
+            case "EXCAVATOREGG" -> new excavatorEggEntity(RegisterItems.EXCAVATOR_EGG_ENTITY_TYPE, world);
             default -> null;
         };
     }
 
+    /* Set cooldowns for each egg type */
     public static void setCooldowns(PlayerEntity user){
         user.getItemCooldownManager().set(RegisterItems.BLASTEGG, 16);
         user.getItemCooldownManager().set(RegisterItems.IRONEGG, 8);
         user.getItemCooldownManager().set(RegisterItems.DIAMONDEGG, 8);
+        user.getItemCooldownManager().set(RegisterItems.EXCAVATOREGG, 16);
     }
 
     public TypedActionResult<ItemStack> bazookaUse(World world, PlayerEntity user, Hand hand){

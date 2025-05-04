@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
+/* Goes boom on landing */
 public class blastEggEntity extends customEggEntity{
 
     public blastEggEntity(EntityType<? extends customEggEntity> entityType, World world) {
@@ -23,9 +24,11 @@ public class blastEggEntity extends customEggEntity{
     @Override
     protected void onCollision(HitResult hitResult) {
         World world = this.getWorld();
-        world.createExplosion(null, this.getX(), this.getY(), this.getZ(), 3, World.ExplosionSourceType.TRIGGER);
+        // Go boom, non destructive
+        world.createExplosion(null, this.getX(), this.getY(), this.getZ(), 2.5F, World.ExplosionSourceType.TRIGGER);
         world.sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
         Random r = new Random();
+        // Add particles
         if (!world.isClient()) {
             for (int i = 0; i < 16; i++) {
                 ((ServerWorld)world).spawnParticles(ParticleTypes.FLAME, this.getX(), this.getY(), this.getZ(), 1, Math.cos(i * 30) * r.nextDouble(), 1.0f, Math.sin(i * 30) * r.nextDouble(), 0.2F);
@@ -36,6 +39,7 @@ public class blastEggEntity extends customEggEntity{
 
     @Override
     public void tick() {
+        // Add particles while the egg travels
         super.tick();
         if (!this.getWorld().isClient()) {
             ServerWorld world = (ServerWorld) this.getWorld();

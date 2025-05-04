@@ -20,5 +20,6 @@ public class ModModelPredicateProvider {
         EntityRendererRegistry.register(RegisterItems.BLAST_EGG_ENTITY_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterItems.IRON_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterItems.DIAMOND_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterItems.EXCAVATOR_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
     }
 }
