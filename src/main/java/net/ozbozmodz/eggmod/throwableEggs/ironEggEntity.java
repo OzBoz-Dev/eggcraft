@@ -11,31 +11,46 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.joml.Random;
 import org.joml.Vector3d;
 /* Deal damage on landing */
 public class ironEggEntity extends customEggEntity {
+    Vec3d spawnPos;
+    boolean spawnRecorded;
 
     public ironEggEntity(World world, LivingEntity owner) {
         super(world, owner);
+        spawnPos = owner.getPos();
+        spawnRecorded = true;
     }
 
     public ironEggEntity(EntityType<? extends customEggEntity> damageEggEntityEntityType, World world) {
         super(damageEggEntityEntityType, world);
+        spawnRecorded = false;
+    }
+
+    @Override
+    public void tick() {
+        if (!spawnRecorded){
+            this.spawnPos = this.getPos();
+            spawnRecorded = true;
+        }
+        super.tick();
     }
 
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         World world = this.getWorld();
         float baseDmg = 6.0F;
+        double dist = Vector3d.distanceSquared(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), this.getX(), this.getY(), this.getZ());
         // Do extra damage depending on how far the thrower is from it. Else just only do base dmg
         if (this.getOwner() != null) {
-            double dist = Vector3d.distanceSquared(this.getOwner().getX(), this.getOwner().getY(), this.getOwner().getZ(), this.getX(), this.getY(), this.getZ());
-            entityHitResult.getEntity().damage(world.getDamageSources().playerAttack((PlayerEntity) this.getOwner()), (float) (baseDmg + (dist / 15)));
+                       entityHitResult.getEntity().damage(world.getDamageSources().playerAttack((PlayerEntity) this.getOwner()), (float) (baseDmg + (dist / 15)));
         }
         else {
-            entityHitResult.getEntity().damage(world.getDamageSources().generic(), baseDmg);
+            entityHitResult.getEntity().damage(world.getDamageSources().generic(), (float) (baseDmg + (dist/15)));
         }
         // Play a sound, and add particles around the hit mob
         world.playSound(this, this.getBlockPos(), SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.PLAYERS, 1.0F, 2.0F);

@@ -17,23 +17,26 @@ public class diamondEggEntity extends ironEggEntity {
 
     public diamondEggEntity(World world, LivingEntity owner) {
         super(world, owner);
+        spawnPos = owner.getPos();
+        spawnRecorded = true;
     }
 
     public diamondEggEntity(EntityType<? extends customEggEntity> damageEggEntityEntityType, World world) {
         super(damageEggEntityEntityType, world);
+        spawnRecorded = false;
     }
 
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         World world = this.getWorld();
         float baseDmg = 9.0F;
+        double dist = Vector3d.distanceSquared(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), this.getX(), this.getY(), this.getZ());
 
         if (this.getOwner() != null) {
-            double dist = Vector3d.distanceSquared(this.getOwner().getX(), this.getOwner().getY(), this.getOwner().getZ(), this.getX(), this.getY(), this.getZ());
             entityHitResult.getEntity().damage(world.getDamageSources().playerAttack((PlayerEntity) this.getOwner()), (float) (baseDmg + (dist / 15)));
         }
         else {
-            entityHitResult.getEntity().damage(world.getDamageSources().generic(), baseDmg);
+            entityHitResult.getEntity().damage(world.getDamageSources().generic(), (float) (baseDmg + (dist/15)));
         }
         world.playSound(this, this.getBlockPos(), SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.PLAYERS, 1.0F, 2.0F);
         Random r = new Random();
