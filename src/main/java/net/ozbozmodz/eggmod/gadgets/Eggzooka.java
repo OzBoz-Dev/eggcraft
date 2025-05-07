@@ -41,14 +41,14 @@
 //import net.minecraft.util.collection.DefaultedList;
 //import net.minecraft.util.registry.Registry;
 //import net.minecraft.world.World;
-//import net.ozbozmodz.eggmod.throwableEggs.blastEggEntity;
+//import net.ozbozmodz.eggmod.throwableEggs.BlastEggEntity;
 //import net.ozbozmodz.eggmod.throwableEggs.damageEgg;
 //import net.ozbozmodz.eggmod.util.RegisterItems;
-//import net.ozbozmodz.eggmod.util.modItemTags;
+//import net.ozbozmodz.eggmod.util.ModItemTags;
 //
-//public class Eggzooka extends RangedWeaponItem implements ImplementedInventory{
+//public class Eggzooka extends RangedWeaponItem implements EtcherInventory{
 //    private static final String ITEMS_KEY = "Items";
-//    public static final Predicate<ItemStack> EGGZOOKA_PROJECTILES = stack -> stack.isIn(modItemTags.EGGZOOKA_PROJECTILES);
+//    public static final Predicate<ItemStack> EGGZOOKA_PROJECTILES = stack -> stack.isIn(ModItemTags.EGGZOOKA_PROJECTILES);
 //    private final DefaultedList<ItemStack> ammunition = DefaultedList.ofSize(2, ItemStack.EMPTY);
 //    private int selectedSlot;
 //
@@ -99,7 +99,7 @@
 //        }
 //        if (item instanceof damageEgg) {
 //            if (((damageEgg)item).type.equals("BLASTEGG")){
-//                ourEgg = new blastEggEntity(world, user);
+//                ourEgg = new BlastEggEntity(world, user);
 //            }
 //        }
 //        world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
@@ -128,7 +128,7 @@
 //            //setNbtData(stack, otherStack, player.getWorld());
 //            return true;
 //        }
-//        else if (this.getStack(selectedSlot).isEmpty() && otherStack.isIn(modItemTags.EGGZOOKA_PROJECTILES)) {
+//        else if (this.getStack(selectedSlot).isEmpty() && otherStack.isIn(ModItemTags.EGGZOOKA_PROJECTILES)) {
 //            System.out.println("Setting stack");
 //            this.setStack(selectedSlot, otherStack.copy());
 //            //setNbtData(stack, otherStack, player.getWorld());

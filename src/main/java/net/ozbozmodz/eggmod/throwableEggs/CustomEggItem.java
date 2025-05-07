@@ -13,11 +13,11 @@ import net.minecraft.world.World;
 import net.ozbozmodz.eggmod.util.RegisterItems;
 
 /* Item which summons our egg entities */
-public class customEggItem extends EggItem{
+public class CustomEggItem extends EggItem{
 	public String type;
-	protected customEggEntity ourEgg;
+	protected CustomEggEntity ourEgg;
 
-	public customEggItem(Item.Settings settings, String type) {
+	public CustomEggItem(Item.Settings settings, String type) {
 		super(settings);
 		this.type = type;
 	}
@@ -43,34 +43,34 @@ public class customEggItem extends EggItem{
         return TypedActionResult.success(itemStack, true);
     }
 
-    public static customEggEntity getType(String type, World world, PlayerEntity user){
+    public static CustomEggEntity getType(String type, World world, PlayerEntity user){
         // Decide which egg must be summoned depending on the type string
         return switch (type) {
-            case "BLASTEGG" -> new blastEggEntity(world, user);
-            case "IRONEGG" -> new ironEggEntity(world, user);
-            case "DIAMONDEGG" -> new diamondEggEntity(world, user);
-            case "EXCAVATOREGG" -> new excavatorEggEntity(world, user);
+            case "BLASTEGG" -> new BlastEggEntity(world, user);
+            case "IRONEGG" -> new IronEggEntity(world, user);
+            case "DIAMONDEGG" -> new DiamondEggEntity(world, user);
+            case "EXCAVATOREGG" -> new ExcavatorEggEntity(world, user);
             default -> null;
         };
     }
 
     /* For being summoned by command or dispenser */
-    public static customEggEntity getTypeNoUser(String type, World world){
+    public static CustomEggEntity getTypeNoUser(String type, World world){
         return switch (type) {
-            case "BLASTEGG" -> new blastEggEntity(RegisterItems.BLAST_EGG_ENTITY_ENTITY_TYPE, world);
-            case "IRONEGG" -> new ironEggEntity(RegisterItems.IRON_EGG_ENTITY_TYPE, world);
-            case "DIAMONDEGG" -> new diamondEggEntity(RegisterItems.DIAMOND_EGG_ENTITY_TYPE, world);
-            case "EXCAVATOREGG" -> new excavatorEggEntity(RegisterItems.EXCAVATOR_EGG_ENTITY_TYPE, world);
+            case "BLASTEGG" -> new BlastEggEntity(RegisterItems.BLAST_EGG_ENTITY_ENTITY_TYPE, world);
+            case "IRONEGG" -> new IronEggEntity(RegisterItems.IRON_EGG_ENTITY_TYPE, world);
+            case "DIAMONDEGG" -> new DiamondEggEntity(RegisterItems.DIAMOND_EGG_ENTITY_TYPE, world);
+            case "EXCAVATOREGG" -> new ExcavatorEggEntity(RegisterItems.EXCAVATOR_EGG_ENTITY_TYPE, world);
             default -> null;
         };
     }
 
     /* Set cooldowns for each egg type */
     public static void setCooldowns(PlayerEntity user){
-        user.getItemCooldownManager().set(RegisterItems.BLASTEGG, 16);
-        user.getItemCooldownManager().set(RegisterItems.IRONEGG, 8);
-        user.getItemCooldownManager().set(RegisterItems.DIAMONDEGG, 8);
-        user.getItemCooldownManager().set(RegisterItems.EXCAVATOREGG, 16);
+        user.getItemCooldownManager().set(RegisterItems.BLAST_EGG_ITEM, 16);
+        user.getItemCooldownManager().set(RegisterItems.IRON_EGG_ITEM, 8);
+        user.getItemCooldownManager().set(RegisterItems.DIAMOND_EGG_ITEM, 8);
+        user.getItemCooldownManager().set(RegisterItems.EXCAVATOR_EGG_ITEM, 16);
     }
 
     public TypedActionResult<ItemStack> bazookaUse(World world, PlayerEntity user, Hand hand){

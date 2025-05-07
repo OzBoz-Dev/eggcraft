@@ -14,14 +14,14 @@ import net.minecraft.world.BlockView;
 
 import java.util.List;
 
-public class rawGiantEgg extends Block {
-    public rawGiantEgg(Settings settings) {
+public class RawGiantEggBlock extends Block {
+    public RawGiantEggBlock(Settings settings) {
         super(settings);
     }
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return modVoxelShapes.GIANT_EGG_SHAPES[0];
+        return ModVoxelShapes.GIANT_EGG_SHAPES[0];
     }
 
     @Override

@@ -9,18 +9,18 @@ import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
-public class customEggDispenserBehavior extends ProjectileDispenserBehavior {
-    public customEggDispenserBehavior(Item item) {
+public class CustomEggDispenserBehavior extends ProjectileDispenserBehavior {
+    public CustomEggDispenserBehavior(Item item) {
         super(item);
     }
 
     @Override
     public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
         ServerWorld world = pointer.world();
-        String typeString = ((customEggItem)stack.getItem()).getTypeString();
+        String typeString = ((CustomEggItem)stack.getItem()).getTypeString();
         Direction direction = pointer.state().get(DispenserBlock.FACING);
         BlockPos pos = pointer.pos();
-        customEggEntity ourEgg = customEggItem.getTypeNoUser(typeString, world);
+        CustomEggEntity ourEgg = CustomEggItem.getTypeNoUser(typeString, world);
         if (ourEgg != null) {
             ourEgg.setItem(stack);
             ourEgg.setPos(pos.getX() + direction.getOffsetX(), pos.getY() + direction.getOffsetY(), pos.getZ() + direction.getOffsetZ());

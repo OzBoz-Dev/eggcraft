@@ -18,9 +18,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.ozbozmodz.eggmod.util.RegisterItems;
 
-public class specialSyringe extends Item{
+public class SpecialSyringeItem extends Item{
 
-    public specialSyringe(Settings settings) {
+    public SpecialSyringeItem(Settings settings) {
         super(settings);
     }
 
@@ -32,7 +32,7 @@ public class specialSyringe extends Item{
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient()){
         stack.decrement(1);
-        user.dropItem(RegisterItems.DRAGONSERUM);
+        user.dropItem(RegisterItems.ENDER_SERUM_ITEM);
         }
         BlockPos pos = user.getBlockPos();
         world.playSound((PlayerEntity)user, pos, SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, SoundCategory.BLOCKS, 1.0f, 0.7f);

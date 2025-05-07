@@ -9,13 +9,13 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.world.World;
 
 /* Abstract egg entity that all our special ones will extend */
-public abstract class customEggEntity extends SnowballEntity {
+public abstract class CustomEggEntity extends SnowballEntity {
 
-    public customEggEntity(EntityType<? extends SnowballEntity> entityType, World world) {
+    public CustomEggEntity(EntityType<? extends SnowballEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    public customEggEntity(World world, LivingEntity owner) {
+    public CustomEggEntity(World world, LivingEntity owner) {
         super(world, owner);
     }
 

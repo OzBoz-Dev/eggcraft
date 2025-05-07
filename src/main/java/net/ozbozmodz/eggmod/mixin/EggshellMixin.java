@@ -26,9 +26,9 @@ public class EggshellMixin {
             World world = ourEgg.getWorld();
             ItemStack eggshell;
             if (new Random().nextInt(2) == 0){
-                eggshell = new ItemStack(RegisterItems.EGGSHELLITEM, 2);
+                eggshell = new ItemStack(RegisterItems.EGGSHELL_ITEM, 2);
             }
-            else eggshell = new ItemStack(RegisterItems.EGGSHELLITEM, 1);
+            else eggshell = new ItemStack(RegisterItems.EGGSHELL_ITEM, 1);
             // Create an item entity, and send it
             ItemEntity eggshellItem = EntityType.ITEM.create(world);
             if (eggshellItem != null) {
