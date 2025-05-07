@@ -25,13 +25,13 @@ import net.minecraft.world.event.GameEvent;
 
 import java.util.List;
 
-public class giantEgg extends Block {
+public class GiantEggBlock extends Block {
 
     public static final int MAX_BITES = 6;
     public static final IntProperty BITES;
 
 
-    public giantEgg(Settings settings) {
+    public GiantEggBlock(Settings settings) {
         super(settings);
         this.setDefaultState((this.stateManager.getDefaultState()).with(BITES, 0));
     }
@@ -44,7 +44,7 @@ public class giantEgg extends Block {
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return modVoxelShapes.GIANT_EGG_SHAPES[state.get(BITES)];
+        return ModVoxelShapes.GIANT_EGG_SHAPES[state.get(BITES)];
     }
 
     // When the player uses the block

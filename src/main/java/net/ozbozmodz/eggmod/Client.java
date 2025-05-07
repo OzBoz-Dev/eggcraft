@@ -15,7 +15,7 @@ public class Client implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(RegisterItems.EGGSHELLS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterItems.EGGSHELL_BLOCK, RenderLayer.getCutout());
         ModModelPredicateProvider.registerModModels();
         LOGGER.info("Client initalized");
     }

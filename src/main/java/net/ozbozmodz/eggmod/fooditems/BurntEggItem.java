@@ -8,9 +8,9 @@ import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
-public class burntEgg extends Item{
+public class BurntEggItem extends Item{
 
-    public burntEgg(Settings settings) {
+    public BurntEggItem(Settings settings) {
         super(settings);
     }
 

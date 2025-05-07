@@ -13,12 +13,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-public class excavatorEggEntity extends customEggEntity {
-    public excavatorEggEntity(EntityType<? extends SnowballEntity> entityType, World world) {
+public class ExcavatorEggEntity extends CustomEggEntity {
+    public ExcavatorEggEntity(EntityType<? extends SnowballEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    public excavatorEggEntity(World world, LivingEntity owner) {
+    public ExcavatorEggEntity(World world, LivingEntity owner) {
         super(world, owner);
     }
 

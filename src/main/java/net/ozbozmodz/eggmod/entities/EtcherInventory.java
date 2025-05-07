@@ -1,4 +1,4 @@
-package net.ozbozmodz.eggmod.gadgets;
+package net.ozbozmodz.eggmod.entities;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
@@ -11,7 +11,7 @@ import net.minecraft.util.collection.DefaultedList;
  *
  * Originally by Juuz
  */
-public interface ImplementedInventory extends Inventory {
+public interface EtcherInventory extends Inventory {
  
     /**
      * Retrieves the item list of this inventory.
@@ -22,14 +22,14 @@ public interface ImplementedInventory extends Inventory {
     /**
      * Creates an inventory from the item list.
      */
-    static ImplementedInventory of(DefaultedList<ItemStack> items) {
+    static EtcherInventory of(DefaultedList<ItemStack> items) {
         return () -> items;
     }
  
     /**
      * Creates a new inventory with the specified size.
      */
-    static ImplementedInventory ofSize(int size) {
+    static EtcherInventory ofSize(int size) {
         return of(DefaultedList.ofSize(size, ItemStack.EMPTY));
     }
  

@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.event.GameEvent;
 import net.ozbozmodz.eggmod.util.RegisterItems;
 
-public class eggshellDispenserBehavior extends FallibleItemDispenserBehavior {
+public class EggshellDispenserBehavior extends FallibleItemDispenserBehavior {
 
     @Override
     public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
@@ -18,14 +18,14 @@ public class eggshellDispenserBehavior extends FallibleItemDispenserBehavior {
         BlockPos pos = pointer.pos().offset(pointer.state().get(DispenserBlock.FACING));
         ServerWorld world = pointer.world();
         BlockState state = world.getBlockState(pos);
-        BlockState eggState = RegisterItems.EGGSHELLS.getDefaultState();
+        BlockState eggState = RegisterItems.EGGSHELL_BLOCK.getDefaultState();
         // Get number of eggshell layers if the block we're facing is an eggshell block
 
-        if (state.isOf(RegisterItems.EGGSHELLS)){
-            int numShells = state.get(eggshells.SHELLS);
+        if (state.isOf(RegisterItems.EGGSHELL_BLOCK)){
+            int numShells = state.get(EggshellBlock.SHELLS);
             // Add a layer to it
-            if (numShells < eggshells.MAX_SHELLS){
-                world.setBlockState(pos, state.with(eggshells.SHELLS, numShells + 1));
+            if (numShells < EggshellBlock.MAX_SHELLS){
+                world.setBlockState(pos, state.with(EggshellBlock.SHELLS, numShells + 1));
                 this.setSuccess(true);
                 stack.decrement(1);
                 world.emitGameEvent(null, GameEvent.BLOCK_CHANGE, pos);
@@ -37,9 +37,9 @@ public class eggshellDispenserBehavior extends FallibleItemDispenserBehavior {
                 return stack;
             }
         }
-        // If we can place eggshells here, then do so
+        // If we can place EggshellBlock here, then do so
         else if (world.getBlockState(pos).isAir() && eggState.canPlaceAt(world, pos)){
-            world.setBlockState(pos, eggState.with(eggshells.SHELLS, 1));
+            world.setBlockState(pos, eggState.with(EggshellBlock.SHELLS, 1));
             world.emitGameEvent(null, GameEvent.BLOCK_PLACE, pos);
             this.setSuccess(true);
             stack.decrement(1);
