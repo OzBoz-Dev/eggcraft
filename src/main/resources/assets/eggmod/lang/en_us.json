@@ -21,5 +21,11 @@
     "entity.eggmod.iron_egg" : "Iron Egg",
     "entity.eggmod.diamond_egg" : "Diamond Egg",
     "item.eggmod.excavator_egg" : "Excavator Egg",
-    "entity.eggmod.excavator_egg" : "Excavator Egg"
+    "entity.eggmod.excavator_egg" : "Excavator Egg",
+    "block.eggmod.etcher_block" : "Etching Station",
+    "item.eggmod.templates.blank_template" : "Blank Template",
+    "item.eggmod.templates.blast_egg_template" : "Blast Egg Template",
+    "item.eggmod.templates.iron_egg_template" : "Iron Egg Template",
+    "item.eggmod.templates.diamond_egg_template" : "Diamond Egg Template",
+    "item.eggmod.templates.excavator_egg_template" : "Excavator Egg Template"
 }

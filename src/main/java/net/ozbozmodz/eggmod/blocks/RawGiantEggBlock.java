@@ -26,7 +26,7 @@ public class RawGiantEggBlock extends Block {
 
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
-        tooltip.add(Text.translatable("item.eggmod.raw_giant_egg.tooltip").formatted(Formatting.ITALIC));
+        tooltip.add(Text.translatable("item.eggmod.raw_giant_egg.tooltip").formatted(Formatting.ITALIC).formatted(Formatting.GRAY));
         super.appendTooltip(stack, context, tooltip, options);
     }
 }

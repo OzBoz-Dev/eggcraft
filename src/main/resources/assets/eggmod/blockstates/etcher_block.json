@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,lit=false": { "model": "eggmod:block/etcher_block_unactivated", "uvlock": false },
+    "facing=east,lit=false":  { "model": "eggmod:block/etcher_block_unactivated", "y":  90, "uvlock": false },
+    "facing=south,lit=false": { "model": "eggmod:block/etcher_block_unactivated", "y": 180, "uvlock": false },
+    "facing=west,lit=false":  { "model": "eggmod:block/etcher_block_unactivated", "y": 270, "uvlock": false },
+    "facing=north,lit=true": { "model": "eggmod:block/etcher_block_activated", "uvlock": false },
+    "facing=east,lit=true":  { "model": "eggmod:block/etcher_block_activated", "y":  90, "uvlock": false },
+    "facing=south,lit=true": { "model": "eggmod:block/etcher_block_activated", "y": 180, "uvlock": false },
+    "facing=west,lit=true":  { "model": "eggmod:block/etcher_block_activated", "y": 270, "uvlock": false }
+  }
+}

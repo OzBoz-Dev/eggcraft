@@ -9,14 +9,14 @@
                 "minecraft:pulling":1,
                 "minecraft:pull" : 0.35
             },
-            "model" : "eggmod:item/dragon_serum_1"
+            "model" : "eggmod:item/ender_serum_1"
         },
         {
             "predicate" : {
                 "minecraft:pulling":1,
                 "minecraft:pull" : 0.70
             },
-            "model" : "eggmod:item/dragon_serum_2"
+            "model" : "eggmod:item/ender_serum_2"
         }
     ]
 }

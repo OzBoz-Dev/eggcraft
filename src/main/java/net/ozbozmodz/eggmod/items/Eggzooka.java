@@ -1,4 +1,4 @@
-//package net.ozbozmodz.eggmod.gadgets;
+//package net.ozbozmodz.eggmod.items;
 //
 //import java.util.List;
 //import java.util.function.Predicate;
