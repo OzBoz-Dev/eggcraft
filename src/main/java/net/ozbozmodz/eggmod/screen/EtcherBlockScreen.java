@@ -15,8 +15,14 @@ public class EtcherBlockScreen extends HandledScreen<EtcherBlockScreenHandler> {
     public static final Identifier ARROW_TEXTURE =
             Identifier.of("eggmod", "textures/gui/etcher_arrow.png");
 
+    public static final Identifier ENERGY_TEXTURE =
+            Identifier.of("eggmod", "textures/gui/etcher_energy.png");
+
     public EtcherBlockScreen(EtcherBlockScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
+        this.backgroundHeight = 177;
+        this.titleY = 6;
+        this.playerInventoryTitleY = this.backgroundHeight - 94;
     }
 
     @Override
@@ -24,19 +30,22 @@ public class EtcherBlockScreen extends HandledScreen<EtcherBlockScreenHandler> {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, GUI_TEXTURE);
+        RenderSystem.setShaderTexture(1, ENERGY_TEXTURE);
 
         int x = ((this.width - this.backgroundWidth) / 2);
         int y = ((this.height - this.backgroundHeight) / 2);
 
         context.drawTexture(GUI_TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        // Makes sure the bar will decrease from top rather than bottom
+        context.drawTexture(ENERGY_TEXTURE, x + 155, y + 56 - handler.getEnergyBar(), 0, 0, 4, handler.getEnergyBar(), 4, 28);
         renderProgressArrow(context, x, y);
     }
 
     // Renders our progress arrow, taking the arrow pos, size and progress
     private void renderProgressArrow(DrawContext context, int x, int y){
         if (handler.isCrafting()){
-            context.drawTexture(ARROW_TEXTURE, x + 73, y + 35, 0, 0,
-                    handler.getScaledArrowProgress(), 16, 24, 16);
+            context.drawTexture(ARROW_TEXTURE, x + 80, y + 40, 0, 0,
+                    16, handler.getScaledArrowProgress(), 16, 24);
         }
     }
 

@@ -18,7 +18,8 @@ import net.minecraft.util.math.BlockPos;
 import net.ozbozmodz.eggmod.blocks.*;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntity;
 import net.ozbozmodz.eggmod.fooditems.*;
-import net.ozbozmodz.eggmod.gadgets.SpecialSyringeItem;
+import net.ozbozmodz.eggmod.items.SpecialSyringeItem;
+import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
 import net.ozbozmodz.eggmod.throwableEggs.*;
 
@@ -28,9 +29,17 @@ public class RegisterItems {
     // FOOD ITEMS
     public static final BurntEggItem BURNT_EGG_ITEM = new BurntEggItem(new Item.Settings().food(ModFoodComps.BURNTEGG).maxCount(16));
     public static final Item FRIED_EGG_ITEM = new Item(new Item.Settings().food(ModFoodComps.FRIEDEGG));
+
     // MISC ITEMS
     public static final SpecialSyringeItem SPECIAL_SYRINGE_ITEM = new SpecialSyringeItem(new Item.Settings());
-    public static final Item ENDER_SERUM_ITEM = new Item(new Item.Settings().rarity(Rarity.EPIC));
+    public static final Item ENDER_SERUM_ITEM = new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(1));
+
+    // TEMPLATE ITEMS
+    public static final TemplateItem BLANK_TEMPLATE = new TemplateItem(new Item.Settings(), "BLANK");
+    public static final TemplateItem BLAST_EGG_TEMPLATE = new TemplateItem(new Item.Settings(), "BLASTEGG");
+    public static final TemplateItem IRON_EGG_TEMPLATE = new TemplateItem(new Item.Settings(), "IRONEGG");
+    public static final TemplateItem DIAMOND_EGG_TEMPLATE = new TemplateItem(new Item.Settings(), "DIAMONDEGG");
+    public static final TemplateItem EXCAVATOR_EGG_TEMPLATE = new TemplateItem(new Item.Settings(), "EXCAVATOREGG");
     // public static final Eggzooka EGGZOOKA = new Eggzooka(new Item.Settings().maxCount(1));
     // THROWABLE EGGS
     public static final CustomEggItem BLAST_EGG_ITEM = new CustomEggItem(new Item.Settings(), "BLASTEGG");
@@ -49,7 +58,7 @@ public class RegisterItems {
     public static final EggshellBlock EGGSHELL_BLOCK = new EggshellBlock(Block.Settings.copy(Blocks.WHITE_CARPET).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.TUFF).strength(0.2F));
     public static final GiantEggBlock GIANT_EGG_BLOCK = new GiantEggBlock(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE));
     public static final RawGiantEggBlock RAW_GIANT_EGG_BLOCK= new RawGiantEggBlock(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE));
-    public static final EtcherBlock ETCHER_BLOCK = new EtcherBlock(AbstractBlock.Settings.create().nonOpaque());
+    public static final EtcherBlock ETCHER_BLOCK = new EtcherBlock(AbstractBlock.Settings.create().nonOpaque().luminance(EtcherBlock::getLuminance).strength(5.0F, 6.0F));
     // BLOCK ITEMS
     public static final Item EGGSHELL_ITEM = new BlockItem(EGGSHELL_BLOCK, new Item.Settings());
     public static final Item GIANT_EGG_ITEM = new BlockItem(GIANT_EGG_BLOCK, new Item.Settings());
@@ -85,6 +94,11 @@ public class RegisterItems {
             entries.add(IRON_EGG_ITEM);
             entries.add(DIAMOND_EGG_ITEM);
             entries.add(EXCAVATOR_EGG_ITEM);
+            entries.add(BLANK_TEMPLATE);
+            entries.add(BLAST_EGG_TEMPLATE);
+            entries.add(IRON_EGG_TEMPLATE);
+            entries.add(DIAMOND_EGG_TEMPLATE);
+            entries.add(EXCAVATOR_EGG_TEMPLATE);
         }).build());
 
     public static void Register(){
@@ -94,7 +108,14 @@ public class RegisterItems {
 
         // Misc Items
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "special_syringe"), SPECIAL_SYRINGE_ITEM);
-        Registry.register(Registries.ITEM, Identifier.of("eggmod", "dragon_serum"), ENDER_SERUM_ITEM);
+        Registry.register(Registries.ITEM, Identifier.of("eggmod", "ender_serum"), ENDER_SERUM_ITEM);
+
+        // Template Items
+        Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/blank_template"), BLANK_TEMPLATE);
+        Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/blast_egg_template"), BLAST_EGG_TEMPLATE);
+        Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/iron_egg_template"), IRON_EGG_TEMPLATE);
+        Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/diamond_egg_template"), DIAMOND_EGG_TEMPLATE);
+        Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/excavator_egg_template"), EXCAVATOR_EGG_TEMPLATE);
 
         // Blocks
         Registry.register(Registries.BLOCK, Identifier.of("eggmod", "eggshells"), EGGSHELL_BLOCK);

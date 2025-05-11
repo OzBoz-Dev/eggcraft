@@ -31,7 +31,7 @@ public class BurntEggItem extends Item{
 
     @Override
     public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type){
-        tooltip.add(Text.translatable("item.eggmod.burnt_egg.tooltip").formatted(Formatting.ITALIC));
+        tooltip.add(Text.translatable("item.eggmod.burnt_egg.tooltip").formatted(Formatting.ITALIC).formatted(Formatting.GRAY));
         super.appendTooltip(itemStack, tooltipContext, tooltip, type);
     }
     //TODO When smelted, item should explode

@@ -1,6 +1,6 @@
 {
     "parent": "eggmod:item/special_syringe",
     "textures": {
-        "layer0" : "eggmod:item/syringes/dragon_serum_1"
+        "layer0" : "eggmod:item/syringes/ender_serum_2"
     }
 }
