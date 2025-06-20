@@ -43,6 +43,16 @@ public class CustomEggItem extends EggItem{
         return TypedActionResult.success(itemStack, true);
     }
 
+    public static Item stringToItem(String type){
+        return switch (type) {
+            case "BLASTEGG" -> RegisterItems.BLAST_EGG_ITEM;
+            case "IRONEGG" -> RegisterItems.IRON_EGG_ITEM;
+            case "DIAMONDEGG" -> RegisterItems.DIAMOND_EGG_ITEM;
+            case "EXCAVATOREGG" -> RegisterItems.EXCAVATOR_EGG_ITEM;
+            default -> null;
+        };
+    }
+
     public static CustomEggEntity getType(String type, World world, PlayerEntity user){
         // Decide which egg must be summoned depending on the type string
         return switch (type) {
@@ -71,11 +81,6 @@ public class CustomEggItem extends EggItem{
         user.getItemCooldownManager().set(RegisterItems.IRON_EGG_ITEM, 8);
         user.getItemCooldownManager().set(RegisterItems.DIAMOND_EGG_ITEM, 8);
         user.getItemCooldownManager().set(RegisterItems.EXCAVATOR_EGG_ITEM, 16);
-    }
-
-    public TypedActionResult<ItemStack> bazookaUse(World world, PlayerEntity user, Hand hand){
-        user.getStackInHand(hand).increment(1);
-        return use(world, user, hand);
     }
 
 }

@@ -262,9 +262,6 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
         if (progress >= 130){
             accel -= 0.1f;
         }
-//        else if (progress > 145){
-//            accel = 0.01f;
-//        }
         else accel = 0.1f * progress;
         rotation += accel;
         if (rotation >= 360) rotation = 0;
