@@ -44,17 +44,19 @@ public class RegisterItems {
     public static final Item ENDER_SERUM_ITEM = new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(1));
 
     // TEMPLATE ITEMS
-    public static final TemplateItem BLANK_TEMPLATE = new TemplateItem(new Item.Settings(), "BLANK");
-    public static final TemplateItem BLAST_EGG_TEMPLATE = new TemplateItem(new Item.Settings(), "BLASTEGG");
-    public static final TemplateItem IRON_EGG_TEMPLATE = new TemplateItem(new Item.Settings(), "IRONEGG");
-    public static final TemplateItem DIAMOND_EGG_TEMPLATE = new TemplateItem(new Item.Settings(), "DIAMONDEGG");
-    public static final TemplateItem EXCAVATOR_EGG_TEMPLATE = new TemplateItem(new Item.Settings(), "EXCAVATOREGG");
+    public static final TemplateItem BLANK_TEMPLATE = new TemplateItem(new Item.Settings());
+    public static final TemplateItem BLAST_EGG_TEMPLATE = new TemplateItem(new Item.Settings());
+    public static final TemplateItem IRON_EGG_TEMPLATE = new TemplateItem(new Item.Settings());
+    public static final TemplateItem DIAMOND_EGG_TEMPLATE = new TemplateItem(new Item.Settings());
+    public static final TemplateItem EXCAVATOR_EGG_TEMPLATE = new TemplateItem(new Item.Settings());
+    public static final TemplateItem SPONGE_EGG_TEMPLATE = new TemplateItem(new Item.Settings());
 
     // THROWABLE EGGS
-    public static final CustomEggItem BLAST_EGG_ITEM = new CustomEggItem(new Item.Settings(), "BLASTEGG");
-    public static final CustomEggItem IRON_EGG_ITEM = new CustomEggItem(new Item.Settings(), "IRONEGG");
-    public static final CustomEggItem DIAMOND_EGG_ITEM = new CustomEggItem(new Item.Settings(), "DIAMONDEGG");
-    public static final CustomEggItem EXCAVATOR_EGG_ITEM = new CustomEggItem(new Item.Settings(), "EXCAVATOREGG");
+    public static final CustomEggItem BLAST_EGG_ITEM = new CustomEggItem(new Item.Settings());
+    public static final CustomEggItem IRON_EGG_ITEM = new CustomEggItem(new Item.Settings());
+    public static final CustomEggItem DIAMOND_EGG_ITEM = new CustomEggItem(new Item.Settings());
+    public static final CustomEggItem EXCAVATOR_EGG_ITEM = new CustomEggItem(new Item.Settings());
+    public static final CustomEggItem SPONGE_EGG_ITEM = new CustomEggItem(new Item.Settings());
     public static final EntityType<BlastEggEntity> BLAST_EGG_ENTITY_ENTITY_TYPE = EntityType.Builder.<BlastEggEntity>create(BlastEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(4).makeFireImmune().build();
     public static final EntityType<IronEggEntity> IRON_EGG_ENTITY_TYPE = EntityType.Builder.<IronEggEntity>create(IronEggEntity::new, SpawnGroup.MISC)
@@ -62,6 +64,8 @@ public class RegisterItems {
     public static final EntityType<DiamondEggEntity> DIAMOND_EGG_ENTITY_TYPE = EntityType.Builder.<DiamondEggEntity>create(DiamondEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build();
     public static final EntityType<ExcavatorEggEntity> EXCAVATOR_EGG_ENTITY_TYPE = EntityType.Builder.<ExcavatorEggEntity>create(ExcavatorEggEntity::new, SpawnGroup.MISC)
+            .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build();
+    public static final EntityType<ExcavatorEggEntity> SPONGE_EGG_ENTITY_TYPE = EntityType.Builder.<ExcavatorEggEntity>create(ExcavatorEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build();
 
     public static final Eggzooka EGGZOOKA = new Eggzooka(new Item.Settings().maxCount(1).component(EGG_INV, Eggzooka.defaultList()));
@@ -114,6 +118,8 @@ public class RegisterItems {
             entries.add(DIAMOND_EGG_TEMPLATE);
             entries.add(EXCAVATOR_EGG_TEMPLATE);
             entries.add(MYSTERIOUS_EGG_ITEM);
+            entries.add(SPONGE_EGG_ITEM);
+            entries.add(SPONGE_EGG_TEMPLATE);
         }).build());
 
     public static void Register(){
@@ -131,6 +137,7 @@ public class RegisterItems {
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/iron_egg_template"), IRON_EGG_TEMPLATE);
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/diamond_egg_template"), DIAMOND_EGG_TEMPLATE);
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/excavator_egg_template"), EXCAVATOR_EGG_TEMPLATE);
+        Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/sponge_egg_template"), SPONGE_EGG_TEMPLATE);
 
         // Blocks
         Registry.register(Registries.BLOCK, Identifier.of("eggmod", "eggshells"), EGGSHELL_BLOCK);
@@ -152,10 +159,12 @@ public class RegisterItems {
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "iron_egg"), IRON_EGG_ITEM);
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "diamond_egg"), DIAMOND_EGG_ITEM);
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "excavator_egg"), EXCAVATOR_EGG_ITEM);
+        Registry.register(Registries.ITEM, Identifier.of("eggmod", "sponge_egg"), SPONGE_EGG_ITEM);
         Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "blast_egg_entity"), BLAST_EGG_ENTITY_ENTITY_TYPE);
         Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "iron_egg_entity"), IRON_EGG_ENTITY_TYPE);
         Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "diamond_egg_entity"), DIAMOND_EGG_ENTITY_TYPE);
         Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "excavator_egg_entity"), EXCAVATOR_EGG_ENTITY_TYPE);
+        Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "excavator_egg_entity"), SPONGE_EGG_ENTITY_TYPE);
 
         // Behaviors
         DispenserBlock.registerBehavior(RegisterItems.EGGSHELL_ITEM, RegisterItems.EGGSHELL_DISPENSER_BEHAVIOR);
@@ -163,5 +172,6 @@ public class RegisterItems {
         DispenserBlock.registerBehavior(RegisterItems.IRON_EGG_ITEM, new CustomEggDispenserBehavior(IRON_EGG_ITEM));
         DispenserBlock.registerBehavior(RegisterItems.DIAMOND_EGG_ITEM, new CustomEggDispenserBehavior(DIAMOND_EGG_ITEM));
         DispenserBlock.registerBehavior(RegisterItems.EXCAVATOR_EGG_ITEM, new CustomEggDispenserBehavior(EXCAVATOR_EGG_ITEM));
+        DispenserBlock.registerBehavior(RegisterItems.SPONGE_EGG_ITEM, new CustomEggDispenserBehavior(SPONGE_EGG_ITEM));
     }
 }
