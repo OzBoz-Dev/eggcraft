@@ -1,17 +1,15 @@
 package net.ozbozmodz.eggmod.items;
 
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
 
 public class TemplateItem extends Item {
-    private String type;
 
-    public TemplateItem(Settings settings, String type) {
+    public TemplateItem(Settings settings) {
         super(settings.maxDamage(16).maxCount(1));
-        this.type = type;
-
     }
 
     public String getType(){
-        return this.type;
+        return Registries.ITEM.getId(this).getPath().replaceFirst("templates/", "");
     }
 }

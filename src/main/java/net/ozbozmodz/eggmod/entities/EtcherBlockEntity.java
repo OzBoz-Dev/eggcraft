@@ -164,11 +164,11 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
     // Convert our template item to the corresponding output item
     public CustomEggItem getCurrentOutputItem(Item template){
         return switch(((TemplateItem)template).getType()){
-            case "BLANK" -> null;
-            case "BLASTEGG" -> RegisterItems.BLAST_EGG_ITEM;
-            case "IRONEGG" -> RegisterItems.IRON_EGG_ITEM;
-            case "DIAMONDEGG" -> RegisterItems.DIAMOND_EGG_ITEM;
-            case "EXCAVATOREGG" -> RegisterItems.EXCAVATOR_EGG_ITEM;
+            case "blast_egg_template" -> RegisterItems.BLAST_EGG_ITEM;
+            case "iron_egg_template" -> RegisterItems.IRON_EGG_ITEM;
+            case "diamond_egg_template" -> RegisterItems.DIAMOND_EGG_ITEM;
+            case "excavator_egg_template" -> RegisterItems.EXCAVATOR_EGG_ITEM;
+            case "sponge_egg_template" -> RegisterItems.SPONGE_EGG_ITEM;
             default -> null;
         };
     }

@@ -4,6 +4,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.EggItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
@@ -17,9 +18,9 @@ public class CustomEggItem extends EggItem{
 	public String type;
 	protected CustomEggEntity ourEgg;
 
-	public CustomEggItem(Item.Settings settings, String type) {
+	public CustomEggItem(Item.Settings settings) {
 		super(settings);
-		this.type = type;
+        type = Registries.ITEM.getId(this).getPath();
 	}
 
     public String getTypeString(){
@@ -30,6 +31,8 @@ public class CustomEggItem extends EggItem{
 	@Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         setCooldowns(user);
+        type = Registries.ITEM.getId(this).getPath();
+        System.out.println(type);
         ourEgg = getType(type, world, user);
         ItemStack itemStack = user.getStackInHand(hand);
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
@@ -43,23 +46,14 @@ public class CustomEggItem extends EggItem{
         return TypedActionResult.success(itemStack, true);
     }
 
-    public static Item stringToItem(String type){
-        return switch (type) {
-            case "BLASTEGG" -> RegisterItems.BLAST_EGG_ITEM;
-            case "IRONEGG" -> RegisterItems.IRON_EGG_ITEM;
-            case "DIAMONDEGG" -> RegisterItems.DIAMOND_EGG_ITEM;
-            case "EXCAVATOREGG" -> RegisterItems.EXCAVATOR_EGG_ITEM;
-            default -> null;
-        };
-    }
-
     public static CustomEggEntity getType(String type, World world, PlayerEntity user){
         // Decide which egg must be summoned depending on the type string
         return switch (type) {
-            case "BLASTEGG" -> new BlastEggEntity(world, user);
-            case "IRONEGG" -> new IronEggEntity(world, user);
-            case "DIAMONDEGG" -> new DiamondEggEntity(world, user);
-            case "EXCAVATOREGG" -> new ExcavatorEggEntity(world, user);
+            case "blast_egg" -> new BlastEggEntity(world, user);
+            case "iron_egg" -> new IronEggEntity(world, user);
+            case "diamond_egg" -> new DiamondEggEntity(world, user);
+            case "excavator_egg" -> new ExcavatorEggEntity(world, user);
+            case "sponge_egg" -> new SpongeEggEntity(world, user);
             default -> null;
         };
     }
@@ -67,10 +61,11 @@ public class CustomEggItem extends EggItem{
     /* For being summoned by command or dispenser */
     public static CustomEggEntity getTypeNoUser(String type, World world){
         return switch (type) {
-            case "BLASTEGG" -> new BlastEggEntity(RegisterItems.BLAST_EGG_ENTITY_ENTITY_TYPE, world);
-            case "IRONEGG" -> new IronEggEntity(RegisterItems.IRON_EGG_ENTITY_TYPE, world);
-            case "DIAMONDEGG" -> new DiamondEggEntity(RegisterItems.DIAMOND_EGG_ENTITY_TYPE, world);
-            case "EXCAVATOREGG" -> new ExcavatorEggEntity(RegisterItems.EXCAVATOR_EGG_ENTITY_TYPE, world);
+            case "blast_egg" -> new BlastEggEntity(RegisterItems.BLAST_EGG_ENTITY_ENTITY_TYPE, world);
+            case "iron_egg" -> new IronEggEntity(RegisterItems.IRON_EGG_ENTITY_TYPE, world);
+            case "diamond_egg" -> new DiamondEggEntity(RegisterItems.DIAMOND_EGG_ENTITY_TYPE, world);
+            case "excavator_egg" -> new ExcavatorEggEntity(RegisterItems.EXCAVATOR_EGG_ENTITY_TYPE, world);
+            case "sponge_egg" -> new SpongeEggEntity(RegisterItems.IRON_EGG_ENTITY_TYPE, world);
             default -> null;
         };
     }
