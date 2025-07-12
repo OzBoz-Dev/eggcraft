@@ -32,7 +32,6 @@ public class CustomEggItem extends EggItem{
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         setCooldowns(user);
         type = Registries.ITEM.getId(this).getPath();
-        System.out.println(type);
         ourEgg = getType(type, world, user);
         ItemStack itemStack = user.getStackInHand(hand);
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
@@ -54,6 +53,7 @@ public class CustomEggItem extends EggItem{
             case "diamond_egg" -> new DiamondEggEntity(world, user);
             case "excavator_egg" -> new ExcavatorEggEntity(world, user);
             case "sponge_egg" -> new SpongeEggEntity(world, user);
+            case "overclock_egg" -> new OverclockEggEntity(world, user);
             default -> null;
         };
     }
@@ -65,7 +65,8 @@ public class CustomEggItem extends EggItem{
             case "iron_egg" -> new IronEggEntity(RegisterItems.IRON_EGG_ENTITY_TYPE, world);
             case "diamond_egg" -> new DiamondEggEntity(RegisterItems.DIAMOND_EGG_ENTITY_TYPE, world);
             case "excavator_egg" -> new ExcavatorEggEntity(RegisterItems.EXCAVATOR_EGG_ENTITY_TYPE, world);
-            case "sponge_egg" -> new SpongeEggEntity(RegisterItems.IRON_EGG_ENTITY_TYPE, world);
+            case "sponge_egg" -> new SpongeEggEntity(RegisterItems.SPONGE_EGG_ENTITY_TYPE, world);
+            case "overclock_egg" -> new OverclockEggEntity(RegisterItems.OVERCLOCK_EGG_ENTITY_TYPE, world);
             default -> null;
         };
     }
