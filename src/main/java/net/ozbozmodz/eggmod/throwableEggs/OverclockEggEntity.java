@@ -55,9 +55,8 @@ public class OverclockEggEntity extends CustomEggEntity{
                             BlockState state = world.getBlockState(check);
                             if (state.hasBlockEntity()) {
                                 scannedBlockEntities.add(check);
-                            } else if (state.hasRandomTicks()) {
-                                scannedRandomTickingBlocks.add(check);
                             }
+                            else scannedRandomTickingBlocks.add(check);
                     }
                 }
             }
@@ -102,7 +101,9 @@ public class OverclockEggEntity extends CustomEggEntity{
             World world = this.getWorld();
             for (BlockPos pos : scannedRandomTickingBlocks) {
                 BlockState state = world.getBlockState(pos);
-                state.randomTick((ServerWorld) world, pos, Random.create());
+                if (state.hasRandomTicks()) {
+                    state.randomTick((ServerWorld) world, pos, Random.create());
+                }
             }
         }
     }
