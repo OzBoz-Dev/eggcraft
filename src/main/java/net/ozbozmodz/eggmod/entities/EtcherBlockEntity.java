@@ -171,6 +171,7 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
             case "sponge_egg_template" -> RegisterItems.SPONGE_EGG_ITEM;
             case "overclock_egg_template" -> RegisterItems.OVERCLOCK_EGG_ITEM;
             case "plaster_egg_template" -> RegisterItems.PLASTER_EGG_ITEM;
+            case "lure_egg_template" -> RegisterItems.LURE_EGG_ITEM;
             default -> null;
         };
     }
