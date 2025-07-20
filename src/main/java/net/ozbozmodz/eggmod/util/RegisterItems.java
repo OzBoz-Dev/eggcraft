@@ -13,6 +13,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -53,6 +54,7 @@ public class RegisterItems {
     public static final TemplateItem OVERCLOCK_EGG_TEMPLATE = new TemplateItem(new Item.Settings());
     public static final TemplateItem PLASTER_EGG_TEMPLATE = new TemplateItem(new Item.Settings());
     public static final TemplateItem LURE_EGG_TEMPLATE = new TemplateItem(new Item.Settings());
+    public static final TemplateItem TARGET_EGG_TEMPLATE = new TemplateItem(new Item.Settings());
 
     // THROWABLE EGGS
     public static final CustomEggItem BLAST_EGG_ITEM = new CustomEggItem(new Item.Settings());
@@ -63,6 +65,7 @@ public class RegisterItems {
     public static final CustomEggItem OVERCLOCK_EGG_ITEM = new CustomEggItem(new Item.Settings());
     public static final CustomEggItem PLASTER_EGG_ITEM = new CustomEggItem(new Item.Settings());
     public static final CustomEggItem LURE_EGG_ITEM = new CustomEggItem(new Item.Settings());
+    public static final CustomEggItem TARGET_EGG_ITEM = new CustomEggItem(new Item.Settings());
     public static final EntityType<BlastEggEntity> BLAST_EGG_ENTITY_ENTITY_TYPE = EntityType.Builder.<BlastEggEntity>create(BlastEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(4).makeFireImmune().build();
     public static final EntityType<IronEggEntity> IRON_EGG_ENTITY_TYPE = EntityType.Builder.<IronEggEntity>create(IronEggEntity::new, SpawnGroup.MISC)
@@ -78,6 +81,8 @@ public class RegisterItems {
     public static final EntityType<PlasterEggEntity> PLASTER_EGG_ENTITY_TYPE = EntityType.Builder.<PlasterEggEntity>create(PlasterEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build();
     public static final EntityType<LureEggEntity> LURE_EGG_ENTITY_TYPE = EntityType.Builder.<LureEggEntity>create(LureEggEntity::new, SpawnGroup.MISC)
+            .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build();
+    public static final EntityType<TargetEggEntity> TARGET_EGG_ENTITY_TYPE = EntityType.Builder.<TargetEggEntity>create(TargetEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build();
 
     public static final Eggzooka EGGZOOKA = new Eggzooka(new Item.Settings().maxCount(1).component(EGG_INV, Eggzooka.defaultList()));
@@ -101,6 +106,9 @@ public class RegisterItems {
     public static final ScreenHandlerType<EtcherBlockScreenHandler> ETCHER_BLOCK_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of("eggmod", "etcher_screen_handler"),
                     new ExtendedScreenHandlerType<>(EtcherBlockScreenHandler::new, BlockPos.PACKET_CODEC));
+
+    // SOUNDS
+    public static final SoundEvent OVERCLOCK_EGG_TICK = SoundEvent.of(Identifier.of("eggmod:clock_tick"));
 
     // BEHAVIORS
     public static final EggshellDispenserBehavior EGGSHELL_DISPENSER_BEHAVIOR = new EggshellDispenserBehavior();
@@ -138,6 +146,8 @@ public class RegisterItems {
             entries.add(PLASTER_EGG_TEMPLATE);
             entries.add(LURE_EGG_ITEM);
             entries.add(LURE_EGG_TEMPLATE);
+            entries.add(TARGET_EGG_ITEM);
+            entries.add(TARGET_EGG_TEMPLATE);
         }).build());
 
     public static void Register(){
@@ -159,6 +169,7 @@ public class RegisterItems {
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/overclock_egg_template"), OVERCLOCK_EGG_TEMPLATE);
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/plaster_egg_template"), PLASTER_EGG_TEMPLATE);
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/lure_egg_template"), LURE_EGG_TEMPLATE);
+        Registry.register(Registries.ITEM, Identifier.of("eggmod", "templates/target_egg_template"), TARGET_EGG_TEMPLATE);
 
         // Blocks
         Registry.register(Registries.BLOCK, Identifier.of("eggmod", "eggshells"), EGGSHELL_BLOCK);
@@ -184,6 +195,7 @@ public class RegisterItems {
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "overclock_egg"), OVERCLOCK_EGG_ITEM);
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "plaster_egg"), PLASTER_EGG_ITEM);
         Registry.register(Registries.ITEM, Identifier.of("eggmod", "lure_egg"), LURE_EGG_ITEM);
+        Registry.register(Registries.ITEM, Identifier.of("eggmod", "target_egg"), TARGET_EGG_ITEM);
         Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "blast_egg_entity"), BLAST_EGG_ENTITY_ENTITY_TYPE);
         Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "iron_egg_entity"), IRON_EGG_ENTITY_TYPE);
         Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "diamond_egg_entity"), DIAMOND_EGG_ENTITY_TYPE);
@@ -192,6 +204,10 @@ public class RegisterItems {
         Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "overclock_egg_entity"), OVERCLOCK_EGG_ENTITY_TYPE);
         Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "plaster_egg_entity"), PLASTER_EGG_ENTITY_TYPE);
         Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "lure_egg_entity"), LURE_EGG_ENTITY_TYPE);
+        Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", "target_egg_entity"), TARGET_EGG_ENTITY_TYPE);
+
+        // Sounds
+        Registry.register(Registries.SOUND_EVENT, Identifier.of("eggmod:clock_tick"), OVERCLOCK_EGG_TICK);
 
         // Behaviors
         DispenserBlock.registerBehavior(RegisterItems.EGGSHELL_ITEM, RegisterItems.EGGSHELL_DISPENSER_BEHAVIOR);
