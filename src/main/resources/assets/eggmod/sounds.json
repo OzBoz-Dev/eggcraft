@@ -1,0 +1,8 @@
+{
+  "clock_tick": {
+    "subtitle": "subtitles.eggmod.clock_tick",
+    "sounds": [
+      "eggmod:clock_tick"
+    ]
+  }
+}

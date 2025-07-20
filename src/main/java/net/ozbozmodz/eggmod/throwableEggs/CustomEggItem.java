@@ -55,6 +55,7 @@ public class CustomEggItem extends EggItem{
             case "sponge_egg" -> new SpongeEggEntity(world, user);
             case "overclock_egg" -> new OverclockEggEntity(world, user);
             case "plaster_egg" -> new PlasterEggEntity(world, user);
+            case "lure_egg" -> new LureEggEntity(world, user);
             default -> null;
         };
     }
@@ -69,6 +70,7 @@ public class CustomEggItem extends EggItem{
             case "sponge_egg" -> new SpongeEggEntity(RegisterItems.SPONGE_EGG_ENTITY_TYPE, world);
             case "overclock_egg" -> new OverclockEggEntity(RegisterItems.OVERCLOCK_EGG_ENTITY_TYPE, world);
             case "plaster_egg" -> new PlasterEggEntity(RegisterItems.PLASTER_EGG_ENTITY_TYPE, world);
+            case "lure_egg" -> new LureEggEntity(RegisterItems.LURE_EGG_ENTITY_TYPE, world);
             default -> null;
         };
     }

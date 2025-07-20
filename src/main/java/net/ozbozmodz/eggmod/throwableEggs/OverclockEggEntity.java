@@ -14,6 +14,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.ozbozmodz.eggmod.util.RegisterItems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,6 @@ public class OverclockEggEntity extends CustomEggEntity{
 
     @Override
     protected void onCollision(HitResult hitResult) {
-        this.getWorld().playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_USE, SoundCategory.PLAYERS, 0.5F, 0.7F);
         this.setVelocity(0, 0.1, 0, 0.5f, 0.1f);
         World world = this.getWorld();
         if (!world.isClient()) {
@@ -70,6 +70,8 @@ public class OverclockEggEntity extends CustomEggEntity{
             super.tick();
         }
         else {
+            if (elapsedTicks % 52 == 0 && elapsedTicks < 180) this.getWorld().playSound(this, this.getBlockPos(), RegisterItems.OVERCLOCK_EGG_TICK, SoundCategory.PLAYERS, 1.0F, 1.0F);
+            if (elapsedTicks == 5) this.getWorld().playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_USE, SoundCategory.PLAYERS, 0.7F, 1.0F);
             if (elapsedTicks < 10){
                 super.tick();
             }
@@ -79,7 +81,8 @@ public class OverclockEggEntity extends CustomEggEntity{
                     this.setNoGravity(true);
                     this.setVelocity(0, 0, 0);
                     Random r = Random.create();
-                    if (elapsedTicks % 4 == 0) ((ServerWorld)world).spawnParticles(ParticleTypes.GLOW, this.getX()+(r.nextBetween(-1,1)*0.5f), this.getY(), this.getZ()+(r.nextBetween(-1,1)*0.5f), 1, 0, -1, 0, 0.1f);
+                    if (elapsedTicks % 4 == 0) ((ServerWorld)world).spawnParticles(ParticleTypes.GLOW, this.getX()+(r.nextBetween(-1,1)*0.3f), this.getY(), this.getZ()+(r.nextBetween(-1,1)*0.3f), 1, 0, 0, 0, 0);
+                    if (elapsedTicks == 170) this.getWorld().playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_RESONATE, SoundCategory.PLAYERS, 1.0F, 1.0F);
                     if (elapsedTicks > 200) {
                         active = false;
                         elapsedTicks = 0;
