@@ -6,7 +6,7 @@ import net.minecraft.entity.projectile.thrown.EggEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
-import net.ozbozmodz.eggmod.util.RegisterItems;
+import net.ozbozmodz.eggmod.util.RegisterAll;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -26,9 +26,9 @@ public class EggshellMixin {
             World world = ourEgg.getWorld();
             ItemStack eggshell;
             if (new Random().nextInt(2) == 0){
-                eggshell = new ItemStack(RegisterItems.EGGSHELL_ITEM, 2);
+                eggshell = new ItemStack(RegisterAll.EGGSHELL_ITEM, 2);
             }
-            else eggshell = new ItemStack(RegisterItems.EGGSHELL_ITEM, 1);
+            else eggshell = new ItemStack(RegisterAll.EGGSHELL_ITEM, 1);
             // Create an item entity, and send it
             ItemEntity eggshellItem = EntityType.ITEM.create(world);
             if (eggshellItem != null) {

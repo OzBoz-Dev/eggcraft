@@ -18,7 +18,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
-import net.ozbozmodz.eggmod.util.RegisterItems;
+import net.ozbozmodz.eggmod.util.RegisterAll;
 
 public class EggshellBlock extends Block {
     protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
@@ -32,7 +32,7 @@ public class EggshellBlock extends Block {
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (stack.isOf(RegisterItems.EGGSHELL_ITEM) && player.getAbilities().allowModifyWorld) {
+        if (stack.isOf(RegisterAll.EGGSHELL_ITEM) && player.getAbilities().allowModifyWorld) {
             int i = state.get(SHELLS);
             world.emitGameEvent(player, GameEvent.BLOCK_PLACE, pos);
             world.playSound(player, pos, SoundEvents.BLOCK_TUFF_PLACE, SoundCategory.PLAYERS);

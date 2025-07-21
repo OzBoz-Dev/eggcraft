@@ -13,7 +13,7 @@ import net.ozbozmodz.eggmod.screen.EtcherBlockScreen;
 
 public class ModModelPredicateProvider {
     public static void registerModModels(){
-        ModelPredicateProviderRegistry.register(RegisterItems.SPECIAL_SYRINGE_ITEM, Identifier.of("pull"), (stack, world, entity, seed) -> {
+        ModelPredicateProviderRegistry.register(RegisterAll.SPECIAL_SYRINGE_ITEM, Identifier.of("pull"), (stack, world, entity, seed) -> {
             if (entity == null) {
                 return 0.0f;
             }
@@ -22,18 +22,18 @@ public class ModModelPredicateProvider {
             }
             return (float)(stack.getMaxUseTime(entity) - entity.getItemUseTimeLeft()) / 60.0f;
         });
-        ModelPredicateProviderRegistry.register(RegisterItems.SPECIAL_SYRINGE_ITEM, Identifier.of("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0f : 0.0f);
+        ModelPredicateProviderRegistry.register(RegisterAll.SPECIAL_SYRINGE_ITEM, Identifier.of("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0f : 0.0f);
         // Entity renderers
-        EntityRendererRegistry.register(RegisterItems.BLAST_EGG_ENTITY_ENTITY_TYPE, FlyingItemEntityRenderer::new);
-        EntityRendererRegistry.register(RegisterItems.IRON_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
-        EntityRendererRegistry.register(RegisterItems.DIAMOND_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
-        EntityRendererRegistry.register(RegisterItems.EXCAVATOR_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.BLAST_EGG_ENTITY_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.IRON_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.DIAMOND_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.EXCAVATOR_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
 
         // Block Rendering
-        BlockRenderLayerMap.INSTANCE.putBlock(RegisterItems.ETCHER_BLOCK, RenderLayer.getTranslucent());
-        BlockEntityRendererFactories.register(RegisterItems.ETCHER_BLOCK_ENTITY, EtcherBlockEntityRenderer::new);
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterAll.ETCHER_BLOCK, RenderLayer.getTranslucent());
+        BlockEntityRendererFactories.register(RegisterAll.ETCHER_BLOCK_ENTITY, EtcherBlockEntityRenderer::new);
 
         // Screen renderers
-        HandledScreens.register(RegisterItems.ETCHER_BLOCK_SCREEN_HANDLER, EtcherBlockScreen::new);
+        HandledScreens.register(RegisterAll.ETCHER_BLOCK_SCREEN_HANDLER, EtcherBlockScreen::new);
     }
 }

@@ -23,7 +23,8 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.ozbozmodz.eggmod.throwableEggs.CustomEggEntity;
 import net.ozbozmodz.eggmod.throwableEggs.CustomEggItem;
-import net.ozbozmodz.eggmod.util.RegisterItems;
+import net.ozbozmodz.eggmod.util.CustomEggAssociations;
+import net.ozbozmodz.eggmod.util.RegisterAll;
 import net.ozbozmodz.eggmod.util.ModItemTags;
 import org.jetbrains.annotations.Nullable;
 
@@ -64,23 +65,23 @@ public class Eggzooka extends RangedWeaponItem {
 //        System.out.println("Generating Default Stack...");
 //        ItemStack result = new ItemStack(this);
 //        List<ItemStack> comp = defaultList();
-//        result.set(RegisterItems.EGG_INV, comp);
+//        result.set(RegisterAll.EGG_INV, comp);
 //        return result;
 //    }
 
 
     protected ItemStack getCurrentProjectile(int index, ItemStack heldWeapon){
-        List<ItemStack> projectiles = heldWeapon.get(RegisterItems.EGG_INV);
+        List<ItemStack> projectiles = heldWeapon.get(RegisterAll.EGG_INV);
         if (projectiles != null) return projectiles.get(index);
         return ItemStack.EMPTY;
     }
 
     protected void setCurrentProjectile(int index, ItemStack heldWeapon, ItemStack newProjectile){
-        List<ItemStack> result = heldWeapon.get(RegisterItems.EGG_INV);
+        List<ItemStack> result = heldWeapon.get(RegisterAll.EGG_INV);
         if (result != null){
             System.out.println("Setting Projectile!");
             result.set(index, newProjectile);
-            heldWeapon.set(RegisterItems.EGG_INV, result);
+            heldWeapon.set(RegisterAll.EGG_INV, result);
         }
     }
 
@@ -108,7 +109,7 @@ public class Eggzooka extends RangedWeaponItem {
         Item item = projectile.getItem();
         CustomEggEntity ourEgg = null;
         if (item instanceof CustomEggItem) {
-            ourEgg = CustomEggItem.getType(((CustomEggItem) item).type, world, user);
+            ourEgg = CustomEggAssociations.getType(((CustomEggItem) item).type, world, user);
         }
         if (!world.isClient && ourEgg != null) {
             world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));

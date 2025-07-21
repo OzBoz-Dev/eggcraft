@@ -1,12 +1,12 @@
 package net.ozbozmodz.eggmod;
 
 import net.minecraft.client.render.*;
+import net.ozbozmodz.eggmod.util.RegisterAll;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.ozbozmodz.eggmod.util.ModModelPredicateProvider;
-import net.ozbozmodz.eggmod.util.RegisterItems;
 
 
 public class Client implements ClientModInitializer {
@@ -15,7 +15,7 @@ public class Client implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(RegisterItems.EGGSHELL_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterAll.EGGSHELL_BLOCK, RenderLayer.getCutout());
         ModModelPredicateProvider.registerModModels();
         LOGGER.info("Client initalized");
     }

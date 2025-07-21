@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import net.ozbozmodz.eggmod.util.RegisterItems;
+import net.ozbozmodz.eggmod.util.RegisterAll;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,7 +19,7 @@ public class FurnaceBoomMixin {
     private static void tick(World world, BlockPos pos, BlockState state, AbstractFurnaceBlockEntity blockEntity, CallbackInfo ci) {
 		// Get the cooking item. If it is burnt egg, create an explosion
 		ItemStack itemStack = blockEntity.getStack(2);
-		if (itemStack.isOf(RegisterItems.BURNT_EGG_ITEM)){
+		if (itemStack.isOf(RegisterAll.BURNT_EGG_ITEM)){
 			world.createExplosion(null, pos.getX() , pos.getY(), pos.getZ(), 3, World.ExplosionSourceType.BLOCK);
 		}
 	}
