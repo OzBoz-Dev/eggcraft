@@ -14,7 +14,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import net.ozbozmodz.eggmod.util.RegisterItems;
+import net.ozbozmodz.eggmod.util.RegisterAll;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +70,7 @@ public class OverclockEggEntity extends CustomEggEntity{
             super.tick();
         }
         else {
-            if (elapsedTicks % 52 == 0 && elapsedTicks < 180) this.getWorld().playSound(this, this.getBlockPos(), RegisterItems.OVERCLOCK_EGG_TICK, SoundCategory.PLAYERS, 1.0F, 1.0F);
+            if (elapsedTicks % 52 == 0 && elapsedTicks < 180) this.getWorld().playSound(this, this.getBlockPos(), RegisterAll.OVERCLOCK_EGG_TICK, SoundCategory.PLAYERS, 1.0F, 1.0F);
             if (elapsedTicks == 5) this.getWorld().playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_USE, SoundCategory.PLAYERS, 0.7F, 1.0F);
             if (elapsedTicks < 10){
                 super.tick();

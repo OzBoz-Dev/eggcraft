@@ -21,8 +21,10 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntity;
-import net.ozbozmodz.eggmod.util.RegisterItems;
+import net.ozbozmodz.eggmod.util.RegisterAll;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 public class EtcherBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final BooleanProperty ENERGY = Properties.LIT;
@@ -50,7 +52,7 @@ public class EtcherBlock extends BlockWithEntity implements BlockEntityProvider 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         if (world.isClient()) return null;
-        return validateTicker(type, RegisterItems.ETCHER_BLOCK_ENTITY,
+        return validateTicker(type, RegisterAll.ETCHER_BLOCK_ENTITY,
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 
@@ -102,7 +104,7 @@ public class EtcherBlock extends BlockWithEntity implements BlockEntityProvider 
 
     @Override
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-        return super.getPlacementState(ctx).with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing());
+        return Objects.requireNonNull(super.getPlacementState(ctx)).with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing());
     }
 
     // If loaded with energy, it will emit light

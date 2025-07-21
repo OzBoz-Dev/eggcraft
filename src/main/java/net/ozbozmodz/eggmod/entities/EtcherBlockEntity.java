@@ -28,8 +28,8 @@ import net.minecraft.util.math.Direction;
 import net.ozbozmodz.eggmod.blocks.EtcherBlock;
 import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
-import net.ozbozmodz.eggmod.throwableEggs.CustomEggItem;
-import net.ozbozmodz.eggmod.util.RegisterItems;
+import net.ozbozmodz.eggmod.util.CustomEggAssociations;
+import net.ozbozmodz.eggmod.util.RegisterAll;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.World;
 
@@ -53,7 +53,7 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
     private int maxEnergy = 16;
 
     public EtcherBlockEntity(BlockPos pos, BlockState state) {
-        super(RegisterItems.ETCHER_BLOCK_ENTITY, pos, state);
+        super(RegisterAll.ETCHER_BLOCK_ENTITY, pos, state);
         // By default, template and eggs face the same way as the block
         this.templateDirection = state.get(Properties.HORIZONTAL_FACING);
         // This is to sync our client and server values for progress/energy when crafting
@@ -90,9 +90,9 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
     public void tick(World world, BlockPos pos, BlockState state){
         // Set energy. If we have an ender serum in the slot, empty it and fill energy to max
         if (!getStack(SERUM_SLOT).isEmpty() && energy == 0
-                && getStack(SERUM_SLOT).isOf(RegisterItems.ENDER_SERUM_ITEM)){
+                && getStack(SERUM_SLOT).isOf(RegisterAll.ENDER_SERUM_ITEM)){
             this.energy = maxEnergy;
-            setStack(SERUM_SLOT, new ItemStack(RegisterItems.SPECIAL_SYRINGE_ITEM));
+            setStack(SERUM_SLOT, new ItemStack(RegisterAll.SPECIAL_SYRINGE_ITEM));
             world.setBlockState(pos, state.with(EtcherBlock.ENERGY, true));
             world.playSound(null, pos, SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.2f);
             markDirty(world, pos, state);
@@ -129,7 +129,7 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
     }
 
     private void craftItem(){
-        Item output = getCurrentOutputItem(getStack(TEMPLATE_SLOT).getItem());
+        Item output = CustomEggAssociations.getCurrentOutputItem(getStack(TEMPLATE_SLOT).getItem());
         // Decrease the eggs
         this.getStack(EGG_SLOT).decrement(1);
         // Do durability damage to the template, and remove it if it falls to 0
@@ -147,7 +147,7 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
         Item output = null;
         // Make sure we can properly parse the template input to the corresponding egg output
         if (validRecipe) {
-            output = getCurrentOutputItem(getStack(TEMPLATE_SLOT).getItem());
+            output = CustomEggAssociations.getCurrentOutputItem(getStack(TEMPLATE_SLOT).getItem());
         }
         if (output == null) return false;
 
@@ -159,21 +159,6 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
         // If we can fit one more item in the output slot
         boolean validOutputAmount = maxCount >= currentCount + 1;
         return validRecipe && validOutputItem && validOutputAmount;
-    }
-
-    // Convert our template item to the corresponding output item
-    public CustomEggItem getCurrentOutputItem(Item template){
-        return switch(((TemplateItem)template).getType()){
-            case "blast_egg_template" -> RegisterItems.BLAST_EGG_ITEM;
-            case "iron_egg_template" -> RegisterItems.IRON_EGG_ITEM;
-            case "diamond_egg_template" -> RegisterItems.DIAMOND_EGG_ITEM;
-            case "excavator_egg_template" -> RegisterItems.EXCAVATOR_EGG_ITEM;
-            case "sponge_egg_template" -> RegisterItems.SPONGE_EGG_ITEM;
-            case "overclock_egg_template" -> RegisterItems.OVERCLOCK_EGG_ITEM;
-            case "plaster_egg_template" -> RegisterItems.PLASTER_EGG_ITEM;
-            case "lure_egg_template" -> RegisterItems.LURE_EGG_ITEM;
-            default -> null;
-        };
     }
 
 
@@ -244,7 +229,7 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
         return switch (slot){
             case TEMPLATE_SLOT -> stack.getItem() instanceof TemplateItem;
             case EGG_SLOT -> stack.isOf(Items.EGG);
-            case SERUM_SLOT -> stack.isOf(RegisterItems.ENDER_SERUM_ITEM);
+            case SERUM_SLOT -> stack.isOf(RegisterAll.ENDER_SERUM_ITEM);
             default -> false;
         };
     }
@@ -252,7 +237,7 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
     // Can only extract from output slot, and remove empty syringes from the serum slot as well
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction dir) {
-        return slot == OUTPUT_SLOT || (slot == SERUM_SLOT && stack.isOf(RegisterItems.SPECIAL_SYRINGE_ITEM));
+        return slot == OUTPUT_SLOT || (slot == SERUM_SLOT && stack.isOf(RegisterAll.SPECIAL_SYRINGE_ITEM));
     }
 
     public Direction getTemplateDirection() {

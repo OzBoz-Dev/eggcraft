@@ -1,7 +1,7 @@
 package net.ozbozmodz.eggmod;
 
 import net.fabricmc.api.ModInitializer;
-import net.ozbozmodz.eggmod.util.RegisterItems;
+import net.ozbozmodz.eggmod.util.RegisterAll;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +20,6 @@ public class EggMod implements ModInitializer {
 
 
 		LOGGER.info("I LOVE EGGS");
-		RegisterItems.Register();
+		RegisterAll.registerBehaviors();
 	}
 }

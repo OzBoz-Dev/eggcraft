@@ -11,7 +11,7 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.math.BlockPos;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntity;
 import net.ozbozmodz.eggmod.items.TemplateItem;
-import net.ozbozmodz.eggmod.util.RegisterItems;
+import net.ozbozmodz.eggmod.util.RegisterAll;
 
 public class EtcherBlockScreenHandler extends ScreenHandler {
     private final Inventory inventory;
@@ -24,7 +24,7 @@ public class EtcherBlockScreenHandler extends ScreenHandler {
     }
 
     public EtcherBlockScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
-        super(RegisterItems.ETCHER_BLOCK_SCREEN_HANDLER, syncId);
+        super(RegisterAll.ETCHER_BLOCK_SCREEN_HANDLER, syncId);
 
         this.inventory = (Inventory) blockEntity;
         this.blockEntity = ((EtcherBlockEntity) blockEntity);
@@ -86,7 +86,7 @@ public class EtcherBlockScreenHandler extends ScreenHandler {
         public boolean canInsert(ItemStack stack) {
             return switch (this.getIndex()){
                 case 0 -> stack.getItem() instanceof TemplateItem;
-                case 1 -> stack.isOf(RegisterItems.ENDER_SERUM_ITEM);
+                case 1 -> stack.isOf(RegisterAll.ENDER_SERUM_ITEM);
                 case 2 -> stack.isOf(Items.EGG);
                 case 3 -> false;
                 default -> super.canInsert(stack);
