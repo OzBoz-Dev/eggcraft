@@ -8,7 +8,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.ozbozmodz.eggmod.util.CustomEggAssociations;
+import net.ozbozmodz.eggmod.util.EggHelper;
 
 public class CustomEggDispenserBehavior extends ProjectileDispenserBehavior {
     public CustomEggDispenserBehavior(Item item) {
@@ -21,7 +21,7 @@ public class CustomEggDispenserBehavior extends ProjectileDispenserBehavior {
         String typeString = ((CustomEggItem)stack.getItem()).getTypeString();
         Direction direction = pointer.state().get(DispenserBlock.FACING);
         BlockPos pos = pointer.pos();
-        CustomEggEntity ourEgg = CustomEggAssociations.getTypeNoUser(typeString, world);
+        CustomEggEntity ourEgg = EggHelper.getTypeNoUser(typeString, world);
         if (ourEgg != null) {
             ourEgg.setItem(stack);
             ourEgg.setPos(pos.getX() + direction.getOffsetX(), pos.getY() + direction.getOffsetY(), pos.getZ() + direction.getOffsetZ());

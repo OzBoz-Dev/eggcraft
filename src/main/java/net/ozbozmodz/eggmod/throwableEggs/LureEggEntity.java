@@ -43,6 +43,7 @@ public class LureEggEntity extends CustomEggEntity{
         World world = this.getWorld();
         if (!world.isClient()) {
             BlockPos center = this.getBlockPos();
+            // Find nearby entities, filtered down to only passive mobs, and add them to a list
             List<Entity> nearbyEntities = world.getOtherEntities(this,
                     new Box(center.getX() - 30,center.getY() - 10, center.getZ() - 30, center.getX() + 30, center.getY() + 10, center.getZ() + 30), Predicates.instanceOf(PassiveEntity.class));
             for (Entity e : nearbyEntities){
@@ -51,6 +52,7 @@ public class LureEggEntity extends CustomEggEntity{
                 }
             }
         }
+        // Activate the egg's behavior
         active = true;
     }
 
@@ -60,22 +62,27 @@ public class LureEggEntity extends CustomEggEntity{
             super.tick();
         }
         else {
+            // So it floats up when active
             if (elapsedTicks < 10){
                 super.tick();
             }
             else {
                 World world = this.getWorld();
                 if (!world.isClient()) {
+                    // Sound logic
                     if (elapsedTicks == 10) world.playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_USE, SoundCategory.PLAYERS, 0.5F, 0.4F);
                     if (elapsedTicks == 290) world.playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_RESONATE, SoundCategory.PLAYERS, 0.5F, 1.0F);
                     this.setNoGravity(true);
                     this.setVelocity(0, 0, 0);
+                    // Spawn particles while it ticks
                     Random r = Random.create();
                     if (elapsedTicks % 4 == 0) ((ServerWorld)world).spawnParticles(ParticleTypes.HEART, this.getX()+(r.nextBetween(-1,1)*0.5f), this.getY(), this.getZ()+(r.nextBetween(-1,1)*0.5f), 1, 0, -1, 0, 0.1f);
+                    // Discard the lure egg when its time is up, with a sound and particles
                     if (elapsedTicks > 300) {
                         active = false;
                         elapsedTicks = 0;
                         ((ServerWorld)world).spawnParticles(ParticleTypes.HEART, this.getX()+(r.nextBetween(-1,1)*0.5f), this.getY(), this.getZ()+(r.nextBetween(-1,1)*0.5f), 10, r.nextBetween(-1,1), r.nextBetween(-1,1), r.nextBetween(-1,1), 0.5f);
+                        // Stop passive mob navigation
                         for (PassiveEntity e : scannedPassiveMobs) {
                             e.getNavigation().stop();
                         }
@@ -84,6 +91,7 @@ public class LureEggEntity extends CustomEggEntity{
                         return;
                     }
                     else {
+                        // Cause all the nearby passive mobs to navigate to and look at this egg
                         for (PassiveEntity e : scannedPassiveMobs) {
                             e.getLookControl().lookAt(this);
                             if (e instanceof VillagerEntity){
@@ -96,6 +104,7 @@ public class LureEggEntity extends CustomEggEntity{
                     }
                 }
             }
+            // Elapsed ticks since activation
             elapsedTicks++;
         }
     }

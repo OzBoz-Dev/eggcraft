@@ -1,12 +1,19 @@
 package net.ozbozmodz.eggmod.util;
 
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.throwableEggs.*;
 
-public class CustomEggAssociations {
+import java.util.List;
+
+public class EggHelper {
     // Maintain associations for our custom eggs
 
     // Convert our template item to the corresponding output item
@@ -25,8 +32,8 @@ public class CustomEggAssociations {
         };
     }
 
+    // Decide which egg must be summoned depending on the type string
     public static CustomEggEntity getType(String type, World world, PlayerEntity user){
-        // Decide which egg must be summoned depending on the type string
         return switch (type) {
             case "blast_egg" -> new BlastEggEntity(world, user);
             case "iron_egg" -> new IronEggEntity(world, user);
@@ -72,4 +79,15 @@ public class CustomEggAssociations {
         }
     }
 
-}
+    // Quickly set tooltips, prompt to hold shift when shift isn't down, and show the corresponding tooltip when it is
+    public static void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type, String tipKey) {
+        if (Screen.hasShiftDown()){
+            tooltip.add(Text.translatable(tipKey).formatted(Formatting.ITALIC).formatted(Formatting.DARK_AQUA));
+        }
+        else {
+            tooltip.add(Text.translatable("misc.eggmod.shiftprompt.tooltip").formatted(Formatting.ITALIC).formatted(Formatting.GRAY));
+        }
+    }
+
+
+    }

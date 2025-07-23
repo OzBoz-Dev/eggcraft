@@ -15,25 +15,23 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class EggshellArmorMaterial {
-    public static RegistryEntry<ArmorMaterial> EGGSHELL_ARMOR_MATERIAL = registerArmorMaterial("eggshell_armor",
+    // All the parameters for eggshell armor's values
+    public static RegistryEntry<ArmorMaterial> EGGSHELL_ARMOR_MATERIAL = registerArmorMaterial("eggshell",
             () -> new ArmorMaterial(
                     Map.of(
-                    ArmorItem.Type.HELMET, 0,
-                    ArmorItem.Type.CHESTPLATE, 0,
-                    ArmorItem.Type.LEGGINGS, 0,
-                    ArmorItem.Type.BOOTS, 0,
-                    ArmorItem.Type.BODY, 0
+                    ArmorItem.Type.HELMET, 1,
+                    ArmorItem.Type.CHESTPLATE, 1,
+                    ArmorItem.Type.LEGGINGS, 1,
+                    ArmorItem.Type.BOOTS, 1,
+                    ArmorItem.Type.BODY, 1
                     ),
                     0,
-                    SoundEvents.ITEM_ARMOR_EQUIP_TURTLE,
+                    SoundEvents.ITEM_ARMOR_EQUIP_GENERIC,
                     () -> Ingredient.ofItems(RegisterAll.EGGSHELL_ITEM),
-                    List.of(new ArmorMaterial.Layer(Identifier.of("eggmod", "eggshell_armor"))),
+                    List.of(new ArmorMaterial.Layer(Identifier.of("eggmod", "eggshell"))),
                     0,
                     0
                     ));
-    public static void initialize(){
-
-    }
 
     public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, Supplier<ArmorMaterial> materialSupplier){
         return Registry.registerReference(Registries.ARMOR_MATERIAL, Identifier.of("eggmod", name), materialSupplier.get());
