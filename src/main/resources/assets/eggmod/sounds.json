@@ -4,5 +4,11 @@
     "sounds": [
       "eggmod:clock_tick"
     ]
+  },
+  "eggshell_armor_break": {
+    "subtitle": "subtitles.eggmod.eggshell_armor_break",
+    "sounds": [
+      "eggmod:eggshell_armor_break"
+    ]
   }
 }

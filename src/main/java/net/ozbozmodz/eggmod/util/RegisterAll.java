@@ -19,6 +19,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.math.BlockPos;
+import net.ozbozmodz.eggmod.armor.EggshellArmorItem;
+import net.ozbozmodz.eggmod.armor.EggshellArmorMaterial;
 import net.ozbozmodz.eggmod.blocks.*;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntity;
 import net.ozbozmodz.eggmod.fooditems.*;
@@ -40,6 +42,16 @@ public class RegisterAll {
     // FOOD ITEMS
     public static final Item BURNT_EGG_ITEM = registerItem("burnt_egg", new BurntEggItem(new Item.Settings().food(ModFoodComps.BURNTEGG).maxCount(16)));
     public static final Item FRIED_EGG_ITEM = registerItem("fried_egg", new Item(new Item.Settings().food(ModFoodComps.FRIEDEGG)));
+
+    // ARMOR ITEMS
+    public static final Item EGGSHELL_HELMET = registerItem("eggshell_helmet",
+            new EggshellArmorItem(EggshellArmorMaterial.EGGSHELL_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(1)));
+    public static final Item EGGSHELL_CHESTPLATE = registerItem("eggshell_chestplate",
+            new EggshellArmorItem(EggshellArmorMaterial.EGGSHELL_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(1)));
+    public static final Item EGGSHELL_LEGGINGS = registerItem("eggshell_leggings",
+            new EggshellArmorItem(EggshellArmorMaterial.EGGSHELL_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(1)));
+    public static final Item EGGSHELL_BOOTS = registerItem("eggshell_boots",
+            new EggshellArmorItem(EggshellArmorMaterial.EGGSHELL_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(1)));
 
     // MISC ITEMS
     public static final Item SPECIAL_SYRINGE_ITEM = registerItem("special_syringe", new SpecialSyringeItem(new Item.Settings()));
@@ -94,6 +106,7 @@ public class RegisterAll {
 
     // SOUNDS
     public static final SoundEvent OVERCLOCK_EGG_TICK = registerSoundEvent("eggmod:clock_tick", SoundEvent.of(Identifier.of("eggmod:clock_tick")));
+    public static final SoundEvent EGGSHELL_ARMOR_BREAK = registerSoundEvent("eggmod:eggshell_armor_break", SoundEvent.of(Identifier.of("eggmod:eggshell_armor_break")));
 
     // BEHAVIORS
     public static final EggshellDispenserBehavior EGGSHELL_DISPENSER_BEHAVIOR = new EggshellDispenserBehavior();
@@ -161,21 +174,29 @@ public class RegisterAll {
             entries.add(LURE_EGG_TEMPLATE);
             entries.add(TARGET_EGG_ITEM);
             entries.add(TARGET_EGG_TEMPLATE);
+            entries.add(EGGSHELL_HELMET);
+            entries.add(EGGSHELL_CHESTPLATE);
+            entries.add(EGGSHELL_LEGGINGS);
+            entries.add(EGGSHELL_BOOTS);
         }).build());
 
     private static Item registerItem(String name, Item item){
+        // Register an item to the registry with the given name, and return it
         return Registry.register(Registries.ITEM, Identifier.of("eggmod", name), item);
     }
 
     private static EntityType<? extends Entity> registerEntityType(String name, EntityType<? extends Entity> entityType){
+        // Register an entity type to the registry with the given name, and return it
         return Registry.register(Registries.ENTITY_TYPE, Identifier.of("eggmod", name), entityType);
     }
 
     private static Block registerBlock(String name, Block block){
+        // Register a block to the registry with the given name, and return it
         return Registry.register(Registries.BLOCK, Identifier.of("eggmod", name), block);
     }
 
     private static SoundEvent registerSoundEvent(String name, SoundEvent soundEvent){
+        // Register a sound event to the registry with the given name, and return it
         return Registry.register(Registries.SOUND_EVENT, Identifier.of(name), soundEvent);
     }
 

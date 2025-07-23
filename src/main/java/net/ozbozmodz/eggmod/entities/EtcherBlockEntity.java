@@ -28,7 +28,7 @@ import net.minecraft.util.math.Direction;
 import net.ozbozmodz.eggmod.blocks.EtcherBlock;
 import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
-import net.ozbozmodz.eggmod.util.CustomEggAssociations;
+import net.ozbozmodz.eggmod.util.EggHelper;
 import net.ozbozmodz.eggmod.util.RegisterAll;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.World;
@@ -129,7 +129,7 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
     }
 
     private void craftItem(){
-        Item output = CustomEggAssociations.getCurrentOutputItem(getStack(TEMPLATE_SLOT).getItem());
+        Item output = EggHelper.getCurrentOutputItem(getStack(TEMPLATE_SLOT).getItem());
         // Decrease the eggs
         this.getStack(EGG_SLOT).decrement(1);
         // Do durability damage to the template, and remove it if it falls to 0
@@ -147,7 +147,7 @@ public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, S
         Item output = null;
         // Make sure we can properly parse the template input to the corresponding egg output
         if (validRecipe) {
-            output = CustomEggAssociations.getCurrentOutputItem(getStack(TEMPLATE_SLOT).getItem());
+            output = EggHelper.getCurrentOutputItem(getStack(TEMPLATE_SLOT).getItem());
         }
         if (output == null) return false;
 
