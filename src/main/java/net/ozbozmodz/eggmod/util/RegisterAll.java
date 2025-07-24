@@ -2,6 +2,7 @@ package net.ozbozmodz.eggmod.util;
 
 import com.mojang.serialization.Codec;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
@@ -9,9 +10,12 @@ import net.minecraft.component.ComponentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.*;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
@@ -28,6 +32,7 @@ import net.ozbozmodz.eggmod.items.Eggzooka;
 import net.ozbozmodz.eggmod.items.SpecialSyringeItem;
 import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
+import net.ozbozmodz.eggmod.statuseffects.LockOnEffect;
 import net.ozbozmodz.eggmod.throwableEggs.*;
 
 import java.util.List;
@@ -99,11 +104,16 @@ public class RegisterAll {
     public static final BlockEntityType<EtcherBlockEntity> ETCHER_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of("eggmod", "eggtcher_block_entity"),
             BlockEntityType.Builder.create(EtcherBlockEntity::new, RegisterAll.ETCHER_BLOCK).build());
 
+    // STATUS EFFECTS
+    public static final RegistryEntry<StatusEffect> LOCK_ON_EFFECT = registerStatusEffect("locked_on", new LockOnEffect());
+
     // SCREEN
     public static final ScreenHandlerType<EtcherBlockScreenHandler> ETCHER_BLOCK_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of("eggmod", "etcher_screen_handler"),
                     new ExtendedScreenHandlerType<>(EtcherBlockScreenHandler::new, BlockPos.PACKET_CODEC));
 
+    // PARTICLES
+    public static final SimpleParticleType LOCK_ON_PARTICLE = registerParticle("lock_on_particle", FabricParticleTypes.simple());
     // SOUNDS
     public static final SoundEvent OVERCLOCK_EGG_TICK = registerSoundEvent("eggmod:clock_tick", SoundEvent.of(Identifier.of("eggmod:clock_tick")));
     public static final SoundEvent EGGSHELL_ARMOR_BREAK = registerSoundEvent("eggmod:eggshell_armor_break", SoundEvent.of(Identifier.of("eggmod:eggshell_armor_break")));
@@ -198,6 +208,14 @@ public class RegisterAll {
     private static SoundEvent registerSoundEvent(String name, SoundEvent soundEvent){
         // Register a sound event to the registry with the given name, and return it
         return Registry.register(Registries.SOUND_EVENT, Identifier.of(name), soundEvent);
+    }
+
+    private static RegistryEntry<StatusEffect> registerStatusEffect(String name, StatusEffect statusEffect){
+        return Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of("eggmod", name), statusEffect);
+    }
+
+    private static SimpleParticleType registerParticle(String name, SimpleParticleType particleType){
+        return Registry.register(Registries.PARTICLE_TYPE, Identifier.of("eggmod", name), particleType);
     }
 
     public static void registerBehaviors(){
