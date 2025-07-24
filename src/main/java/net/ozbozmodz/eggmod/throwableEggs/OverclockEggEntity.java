@@ -75,8 +75,8 @@ public class OverclockEggEntity extends CustomEggEntity{
         }
         else {
             // Sound logic
-            if (elapsedTicks % 52 == 0 && elapsedTicks < 180) this.getWorld().playSound(this, this.getBlockPos(), RegisterAll.OVERCLOCK_EGG_TICK, SoundCategory.PLAYERS, 1.0F, 1.0F);
-            if (elapsedTicks == 5) this.getWorld().playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_USE, SoundCategory.PLAYERS, 0.7F, 1.0F);
+            if (elapsedTicks % 40 == 0 && elapsedTicks <= 280 && elapsedTicks != 0) this.getWorld().playSound(this, this.getBlockPos(), RegisterAll.OVERCLOCK_EGG_TICK, SoundCategory.PLAYERS, 1.0F, 1.3F);
+            if (elapsedTicks == 10) this.getWorld().playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_USE, SoundCategory.PLAYERS, 0.7F, 1.0F);
             // Allow it to float up before freezing
             if (elapsedTicks < 10){
                 super.tick();
@@ -89,9 +89,9 @@ public class OverclockEggEntity extends CustomEggEntity{
                     Random r = Random.create();
                     // Particle logic
                     if (elapsedTicks % 4 == 0) ((ServerWorld)world).spawnParticles(ParticleTypes.GLOW, this.getX()+(r.nextBetween(-1,1)*0.3f), this.getY(), this.getZ()+(r.nextBetween(-1,1)*0.3f), 1, 0, 0, 0, 0);
-                    if (elapsedTicks == 170) this.getWorld().playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_RESONATE, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                    if (elapsedTicks == 280) this.getWorld().playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_RESONATE, SoundCategory.PLAYERS, 1.0F, 1.0F);
                     // Discard the egg after a time, with sound/particles
-                    if (elapsedTicks > 200) {
+                    if (elapsedTicks > 310) {
                         active = false;
                         elapsedTicks = 0;
                         ((ServerWorld)world).spawnParticles(ParticleTypes.SONIC_BOOM, this.getX(), this.getY(), this.getZ(), 1, 0, 0, 0, 0);
