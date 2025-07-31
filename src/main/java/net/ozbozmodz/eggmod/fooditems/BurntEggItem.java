@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
+import net.ozbozmodz.eggmod.util.EggHelper;
 
 public class BurntEggItem extends Item{
 
@@ -16,7 +16,7 @@ public class BurntEggItem extends Item{
 
     @Override
     public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type){
-        tooltip.add(Text.translatable("item.eggmod.burnt_egg.tooltip").formatted(Formatting.ITALIC).formatted(Formatting.GRAY));
+        EggHelper.appendTooltip(itemStack, tooltipContext, tooltip, type, "item.eggmod.burnt_egg.tooltip");
         super.appendTooltip(itemStack, tooltipContext, tooltip, type);
     }
 }

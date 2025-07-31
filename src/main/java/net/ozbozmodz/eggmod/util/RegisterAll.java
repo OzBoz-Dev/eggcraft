@@ -33,6 +33,7 @@ import net.ozbozmodz.eggmod.items.SpecialSyringeItem;
 import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
 import net.ozbozmodz.eggmod.statuseffects.LockOnEffect;
+import net.ozbozmodz.eggmod.statuseffects.RepelEffect;
 import net.ozbozmodz.eggmod.throwableEggs.*;
 
 import java.util.List;
@@ -41,6 +42,10 @@ public class RegisterAll {
     // COMPONENTS
     public static final ComponentType<List<ItemStack>> EGG_INV = Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of("eggmod", "egg_inv"),
             ComponentType.<List<ItemStack>>builder().codec(Codec.list(ItemStack.CODEC)).build());
+
+    // STATUS EFFECTS
+    public static final RegistryEntry<StatusEffect> LOCK_ON_EFFECT = registerStatusEffect("locked_on", new LockOnEffect());
+    public static final RegistryEntry<StatusEffect> REPEL_EFFECT = registerStatusEffect("repel", new RepelEffect());
 
     // ENTITIES
     
@@ -104,9 +109,6 @@ public class RegisterAll {
     public static final BlockEntityType<EtcherBlockEntity> ETCHER_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of("eggmod", "eggtcher_block_entity"),
             BlockEntityType.Builder.create(EtcherBlockEntity::new, RegisterAll.ETCHER_BLOCK).build());
 
-    // STATUS EFFECTS
-    public static final RegistryEntry<StatusEffect> LOCK_ON_EFFECT = registerStatusEffect("locked_on", new LockOnEffect());
-
     // SCREEN
     public static final ScreenHandlerType<EtcherBlockScreenHandler> ETCHER_BLOCK_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of("eggmod", "etcher_screen_handler"),
@@ -114,6 +116,7 @@ public class RegisterAll {
 
     // PARTICLES
     public static final SimpleParticleType LOCK_ON_PARTICLE = registerParticle("lock_on_particle", FabricParticleTypes.simple());
+
     // SOUNDS
     public static final SoundEvent OVERCLOCK_EGG_TICK = registerSoundEvent("eggmod:clock_tick", SoundEvent.of(Identifier.of("eggmod:clock_tick")));
     public static final SoundEvent EGGSHELL_ARMOR_BREAK = registerSoundEvent("eggmod:eggshell_armor_break", SoundEvent.of(Identifier.of("eggmod:eggshell_armor_break")));

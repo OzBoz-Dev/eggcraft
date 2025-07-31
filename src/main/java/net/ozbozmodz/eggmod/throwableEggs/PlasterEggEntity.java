@@ -35,8 +35,8 @@ public class PlasterEggEntity extends CustomEggEntity {
         if (!world.isClient()) {
             if (this.getOwner() != null) origin = this.getOwner().getBlockPos();
             BlockPos center = new BlockPos((int) blockHitResult.getPos().getX(), (int) blockHitResult.getPos().getY(), (int) blockHitResult.getPos().getZ());
-            int r = 5;
-            // Replace air with dirt in a r block radius, but restrict height to only up to the player's feet
+            int r = 3;
+            // Replace air with dirt in an r block radius, but restrict height to only up to the player's feet
             for (int x = -r; x <= r; x++) {
                 for (int y = 0; y <= Math.min(origin.getY() - (center.getY()+1), 15) ; y++) {
                     for (int z = -r; z <= r; z++) {
