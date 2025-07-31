@@ -50,7 +50,7 @@ public class TargetEggEntity extends CustomEggEntity{
                 // Find the nearest one, if it exists, then apply to that one
                 @SuppressWarnings("unchecked")
                 LivingEntity target = world.getClosestEntity((List<? extends LivingEntity>) nearbyEntities, TargetPredicate.DEFAULT, null, this.getX(), this.getY(), this.getZ());
-                if (target != null) {
+                if (target != null && target != this.getOwner()) {
                     applyEffect(target);
                     }
             }

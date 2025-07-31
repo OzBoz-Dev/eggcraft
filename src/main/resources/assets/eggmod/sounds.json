@@ -10,5 +10,11 @@
     "sounds": [
       "eggmod:eggshell_armor_break"
     ]
+  },
+  "hermes_takeoff": {
+    "subtitle" : "subtitles.eggmod.hermes_takeoff",
+    "sounds": [
+      "eggmod:hermes_takeoff"
+    ]
   }
 }

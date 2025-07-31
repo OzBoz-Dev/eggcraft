@@ -79,6 +79,7 @@ public class RegisterAll {
     public static final Item PLASTER_EGG_TEMPLATE = registerItem("templates/plaster_egg_template", new TemplateItem(new Item.Settings()));
     public static final Item LURE_EGG_TEMPLATE = registerItem("templates/lure_egg_template", new TemplateItem(new Item.Settings()));
     public static final Item TARGET_EGG_TEMPLATE = registerItem("templates/target_egg_template", new TemplateItem(new Item.Settings()));
+    public static final Item HERMES_EGG_TEMPLATE = registerItem("templates/hermes_egg_template", new TemplateItem(new Item.Settings()));
 
     // THROWABLE EGGS
     public static final Item BLAST_EGG_ITEM = registerItem("blast_egg", new CustomEggItem(new Item.Settings()));
@@ -90,6 +91,8 @@ public class RegisterAll {
     public static final Item PLASTER_EGG_ITEM = registerItem("plaster_egg", new CustomEggItem(new Item.Settings()));
     public static final Item LURE_EGG_ITEM = registerItem("lure_egg", new CustomEggItem(new Item.Settings()));
     public static final Item TARGET_EGG_ITEM = registerItem("target_egg", new CustomEggItem(new Item.Settings()));
+    public static final Item HERMES_EGG_ITEM = registerItem("hermes_egg", new HermesEggItem(new Item.Settings()));
+
 
     // BLOCKS
     public static final Block EGGSHELL_BLOCK = registerBlock("eggshells", new EggshellBlock(Block.Settings.copy(Blocks.WHITE_CARPET).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.TUFF).strength(0.2F)));
@@ -120,6 +123,7 @@ public class RegisterAll {
     // SOUNDS
     public static final SoundEvent OVERCLOCK_EGG_TICK = registerSoundEvent("eggmod:clock_tick", SoundEvent.of(Identifier.of("eggmod:clock_tick")));
     public static final SoundEvent EGGSHELL_ARMOR_BREAK = registerSoundEvent("eggmod:eggshell_armor_break", SoundEvent.of(Identifier.of("eggmod:eggshell_armor_break")));
+    public static final SoundEvent HERMES_TAKEOFF = registerSoundEvent("eggmod:hermes_takeoff", SoundEvent.of(Identifier.of("eggmod:hermes_takeoff")));
 
     // BEHAVIORS
     public static final EggshellDispenserBehavior EGGSHELL_DISPENSER_BEHAVIOR = new EggshellDispenserBehavior();
@@ -151,6 +155,9 @@ public class RegisterAll {
     @SuppressWarnings("unchecked")
     public static final EntityType<TargetEggEntity> TARGET_EGG_ENTITY_TYPE = (EntityType<TargetEggEntity>) registerEntityType("target_egg_entity", EntityType.Builder.<TargetEggEntity>create(TargetEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
+    @SuppressWarnings("unchecked")
+    public static final EntityType<HermesEggEntity> HERMES_EGG_ENTITY_TYPE = (EntityType<HermesEggEntity>) registerEntityType("hermes_egg_entity", EntityType.Builder.<HermesEggEntity>create(HermesEggEntity::new, SpawnGroup.MISC)
+            .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(1).build());
 
     // ITEM GROUP
     public static final ItemGroup EGGMOD = Registry.register(Registries.ITEM_GROUP, Identifier.of("eggmod", "general"),
@@ -187,6 +194,8 @@ public class RegisterAll {
             entries.add(LURE_EGG_TEMPLATE);
             entries.add(TARGET_EGG_ITEM);
             entries.add(TARGET_EGG_TEMPLATE);
+            entries.add(HERMES_EGG_ITEM);
+            entries.add(HERMES_EGG_TEMPLATE);
             entries.add(EGGSHELL_HELMET);
             entries.add(EGGSHELL_CHESTPLATE);
             entries.add(EGGSHELL_LEGGINGS);

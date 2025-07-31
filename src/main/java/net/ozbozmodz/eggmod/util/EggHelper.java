@@ -28,6 +28,7 @@ public class EggHelper {
             case "plaster_egg_template" -> (CustomEggItem) RegisterAll.PLASTER_EGG_ITEM;
             case "lure_egg_template" -> (CustomEggItem) RegisterAll.LURE_EGG_ITEM;
             case "target_egg_template" -> (CustomEggItem) RegisterAll.TARGET_EGG_ITEM;
+            case "hermes_egg_template" -> (CustomEggItem) RegisterAll.HERMES_EGG_ITEM;
             default -> null;
         };
     }
@@ -44,6 +45,7 @@ public class EggHelper {
             case "plaster_egg" -> new PlasterEggEntity(world, user);
             case "lure_egg" -> new LureEggEntity(world, user);
             case "target_egg" -> new TargetEggEntity(world, user);
+            case "hermes_egg" -> new HermesEggEntity(world, user);
             default -> null;
         };
     }
@@ -60,6 +62,7 @@ public class EggHelper {
             case "plaster_egg" -> new PlasterEggEntity(RegisterAll.PLASTER_EGG_ENTITY_TYPE, world);
             case "lure_egg" -> new LureEggEntity(RegisterAll.LURE_EGG_ENTITY_TYPE, world);
             case "target_egg" -> new TargetEggEntity(RegisterAll.TARGET_EGG_ENTITY_TYPE, world);
+            case "hermes_egg" -> new HermesEggEntity(RegisterAll.TARGET_EGG_ENTITY_TYPE, world);
             default -> null;
         };
     }
@@ -75,7 +78,8 @@ public class EggHelper {
             case "overclock_egg" -> user.getItemCooldownManager().set(RegisterAll.OVERCLOCK_EGG_ITEM, 200);
             case "plaster_egg" -> user.getItemCooldownManager().set(RegisterAll.PLASTER_EGG_ITEM, 16);
             case "lure_egg" -> user.getItemCooldownManager().set(RegisterAll.LURE_EGG_ITEM, 200);
-            case "target_egg" -> user.getItemCooldownManager().set(RegisterAll.TARGET_EGG_ITEM, 16);
+            case "target_egg" -> user.getItemCooldownManager().set(RegisterAll.TARGET_EGG_ITEM, 50);
+            case "hermes_egg" -> user.getItemCooldownManager().set(RegisterAll.HERMES_EGG_ITEM, 10);
         }
     }
 
