@@ -27,28 +27,30 @@ public class LockOnEffect extends StatusEffect {
     public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         // Show a particle above the targeted entity's head
         World world = entity.getWorld();
-        if(ticksElapsed % 40 == 0) ((ServerWorld)world).spawnParticles(RegisterAll.LOCK_ON_PARTICLE, entity.getX(), entity.getY()+entity.getHeight()+0.5, entity.getZ(), 1, entity.getMovement().getX(),0,entity.getMovement().getZ(),0.5f);
+        if(ticksElapsed % 40 == 0 && !world.isClient()) ((ServerWorld)world).spawnParticles(RegisterAll.LOCK_ON_PARTICLE, entity.getX(), entity.getY()+entity.getHeight()+0.5, entity.getZ(), 1, entity.getMovement().getX(),0,entity.getMovement().getZ(),0.5f);
         // Box where we will capture all nearby arrows
         Box bound = new Box(entity.getX() - 10,entity.getY() - 10, entity.getZ() - 10, entity.getX() + 10, entity.getY() + 10, entity.getZ() + 10);
         List<Entity> projectiles = world.getOtherEntities(entity, bound, Predicates.instanceOf(ProjectileEntity.class));
-        for (Entity p : projectiles){
-            // If we find a projectile entity in the air
-            if (p instanceof ProjectileEntity && !p.isOnGround()){
-                // Send it flying towards the target
-                Vec3d vecToTarget = new Vec3d(entity.getX() - p.getX(), entity.getY()+1 - p.getY(), entity.getZ() - p.getZ());
-                ((ServerWorld)world).spawnParticles(ParticleTypes.CRIMSON_SPORE, p.getX(), p.getY(), p.getZ(), 1, 0,0,0,0);
-                p.setVelocity(p.getVelocity().multiply(0.5));
-                // Use lerp and other things to make the movement curve seem natural
-                if (p.distanceTo(entity) > 5) p.addVelocity(p.getVelocity().lerp(vecToTarget, 0.5).multiply(0.2));
-                else p.addVelocity(p.getVelocity().lerp(vecToTarget, 0.5).multiply(0.5));
-                if (p.distanceTo(entity) < 3) p.setVelocity(p.getVelocity().multiply(2));
-                // Prevent odd behavior with tridents
-                if (p.distanceTo(entity) < 1){
-                    p.setOnGround(true);
+        if (!world.isClient()) {
+            for (Entity e : projectiles) {
+                // If we find a projectile entity in the air
+                if (e instanceof ProjectileEntity p && !p.isOnGround()) {
+                    // Send it flying towards the target
+                    Vec3d vecToTarget = new Vec3d(entity.getX() - p.getX(), entity.getY() + 1 - p.getY(), entity.getZ() - p.getZ());
+                    ((ServerWorld) world).spawnParticles(ParticleTypes.CRIMSON_SPORE, p.getX(), p.getY(), p.getZ(), 1, 0, 0, 0, 0);
+                    p.setVelocity(p.getVelocity().multiply(0.5));
+                    // Use lerp and other things to make the movement curve seem natural
+                    if (p.distanceTo(entity) > 5) p.addVelocity(p.getVelocity().lerp(vecToTarget, 0.5).multiply(0.2));
+                    else p.addVelocity(p.getVelocity().lerp(vecToTarget, 0.5).multiply(0.5));
+                    if (p.distanceTo(entity) < 3) p.setVelocity(p.getVelocity().multiply(2));
+                    // Prevent odd behavior with tridents
+                    if (p.distanceTo(entity) < 1) {
+                        p.setOnGround(true);
+                    }
                 }
             }
+            ticksElapsed++;
         }
-        ticksElapsed++;
         return super.applyUpdateEffect(entity, amplifier);
     }
 
