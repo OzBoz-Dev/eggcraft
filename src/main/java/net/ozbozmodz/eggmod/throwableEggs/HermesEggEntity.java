@@ -17,6 +17,7 @@ public class HermesEggEntity extends CustomEggEntity{
 
     @Override
     public Vec3d updatePassengerForDismount(LivingEntity passenger) {
+        // Give the passenger slow fall as they dismount
         passenger.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 300, 0));
         this.getWorld().sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
         this.discard();
@@ -30,6 +31,7 @@ public class HermesEggEntity extends CustomEggEntity{
 
     @Override
     protected void onCollision(HitResult hitResult) {
+        // Dismount the passenger on collision to give them slow fall as well
         if (this.getControllingPassenger() != null) this.getControllingPassenger().stopRiding();
         super.onCollision(hitResult);
     }

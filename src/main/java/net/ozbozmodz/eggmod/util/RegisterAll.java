@@ -87,9 +87,9 @@ public class RegisterAll {
     public static final Item DIAMOND_EGG_ITEM = registerItem("diamond_egg", new CustomEggItem(new Item.Settings()));
     public static final Item EXCAVATOR_EGG_ITEM = registerItem("excavator_egg", new CustomEggItem(new Item.Settings()));
     public static final Item SPONGE_EGG_ITEM = registerItem("sponge_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item OVERCLOCK_EGG_ITEM = registerItem("overclock_egg", new PersistentEggItem(new Item.Settings()));
+    public static final Item OVERCLOCK_EGG_ITEM = registerItem("overclock_egg", new CustomEggItem(new Item.Settings()));
     public static final Item PLASTER_EGG_ITEM = registerItem("plaster_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item LURE_EGG_ITEM = registerItem("lure_egg", new PersistentEggItem(new Item.Settings()));
+    public static final Item LURE_EGG_ITEM = registerItem("lure_egg", new CustomEggItem(new Item.Settings()));
     public static final Item TARGET_EGG_ITEM = registerItem("target_egg", new CustomEggItem(new Item.Settings()));
     public static final Item HERMES_EGG_ITEM = registerItem("hermes_egg", new HermesEggItem(new Item.Settings()));
 
