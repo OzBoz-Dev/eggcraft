@@ -33,25 +33,8 @@ public class EggHelper {
         };
     }
 
-    // Decide which egg must be summoned depending on the type string
-    public static CustomEggEntity getType(String type, World world, PlayerEntity user){
-        return switch (type) {
-            case "blast_egg" -> new BlastEggEntity(world, user);
-            case "iron_egg" -> new IronEggEntity(world, user);
-            case "diamond_egg" -> new DiamondEggEntity(world, user);
-            case "excavator_egg" -> new ExcavatorEggEntity(world, user);
-            case "sponge_egg" -> new SpongeEggEntity(world, user);
-            case "overclock_egg" -> new OverclockEggEntity(world, user);
-            case "plaster_egg" -> new PlasterEggEntity(world, user);
-            case "lure_egg" -> new LureEggEntity(world, user);
-            case "target_egg" -> new TargetEggEntity(world, user);
-            case "hermes_egg" -> new HermesEggEntity(world, user);
-            default -> null;
-        };
-    }
-
     /* For being summoned by command or dispenser */
-    public static CustomEggEntity getTypeNoUser(String type, World world){
+    public static CustomEggEntity getType(String type, World world){
         return switch (type) {
             case "blast_egg" -> new BlastEggEntity(RegisterAll.BLAST_EGG_ENTITY_ENTITY_TYPE, world);
             case "iron_egg" -> new IronEggEntity(RegisterAll.IRON_EGG_ENTITY_TYPE, world);

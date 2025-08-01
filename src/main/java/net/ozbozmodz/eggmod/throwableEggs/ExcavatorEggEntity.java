@@ -2,7 +2,6 @@ package net.ozbozmodz.eggmod.throwableEggs;
 
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.item.*;
@@ -16,10 +15,6 @@ import net.minecraft.world.World;
 public class ExcavatorEggEntity extends CustomEggEntity {
     public ExcavatorEggEntity(EntityType<? extends SnowballEntity> entityType, World world) {
         super(entityType, world);
-    }
-
-    public ExcavatorEggEntity(World world, LivingEntity owner) {
-        super(world, owner);
     }
 
     @Override

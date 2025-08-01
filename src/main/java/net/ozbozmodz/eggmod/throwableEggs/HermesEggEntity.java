@@ -10,9 +10,6 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class HermesEggEntity extends CustomEggEntity{
-    public HermesEggEntity(World world, LivingEntity owner) {
-        super(world, owner);
-    }
 
     public HermesEggEntity(EntityType<? extends SnowballEntity> entityType, World world) {
         super(entityType, world);

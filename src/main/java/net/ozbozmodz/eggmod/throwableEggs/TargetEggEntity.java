@@ -21,10 +21,6 @@ import java.util.List;
 
 public class TargetEggEntity extends CustomEggEntity{
 
-    public TargetEggEntity(World world, LivingEntity owner) {
-        super(world, owner);
-    }
-
     public TargetEggEntity(EntityType<? extends SnowballEntity> entityType, World world) {
         super(entityType, world);
     }

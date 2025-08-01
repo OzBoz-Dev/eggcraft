@@ -28,6 +28,14 @@ public class ModModelPredicateProvider {
         EntityRendererRegistry.register(RegisterAll.IRON_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterAll.DIAMOND_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterAll.EXCAVATOR_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.SPONGE_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.OVERCLOCK_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.PLASTER_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.LURE_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.TARGET_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.HERMES_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+
+
 
         // Block Rendering
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterAll.ETCHER_BLOCK, RenderLayer.getTranslucent());

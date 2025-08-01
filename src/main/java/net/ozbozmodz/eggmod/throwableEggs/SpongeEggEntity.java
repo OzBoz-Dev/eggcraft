@@ -3,7 +3,6 @@ package net.ozbozmodz.eggmod.throwableEggs;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -16,10 +15,6 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class SpongeEggEntity extends CustomEggEntity{
-
-    public SpongeEggEntity(World world, LivingEntity owner) {
-        super(world, owner);
-    }
 
     public SpongeEggEntity(EntityType<? extends SnowballEntity> entityType, World world) {
         super(entityType, world);

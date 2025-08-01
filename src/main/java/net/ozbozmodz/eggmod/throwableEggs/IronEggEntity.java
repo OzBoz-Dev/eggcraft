@@ -3,7 +3,6 @@ package net.ozbozmodz.eggmod.throwableEggs;
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -20,12 +19,6 @@ public class IronEggEntity extends CustomEggEntity {
     Vec3d spawnPos;
     boolean spawnRecorded;
 
-    public IronEggEntity(World world, LivingEntity owner) {
-        super(world, owner);
-        spawnPos = owner.getPos();
-        spawnRecorded = true;
-    }
-
     public IronEggEntity(EntityType<? extends CustomEggEntity> damageEggEntityEntityType, World world) {
         super(damageEggEntityEntityType, world);
         spawnRecorded = false;
@@ -34,7 +27,8 @@ public class IronEggEntity extends CustomEggEntity {
     @Override
     public void tick() {
         if (!spawnRecorded){
-            this.spawnPos = this.getPos();
+            if (this.getOwner() != null) this.spawnPos = this.getOwner().getPos();
+            else this.spawnPos = this.getPos();
             spawnRecorded = true;
         }
         super.tick();

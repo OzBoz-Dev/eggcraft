@@ -1,34 +1,22 @@
 package net.ozbozmodz.eggmod.throwableEggs;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.EggItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.ozbozmodz.eggmod.util.EggHelper;
 
-import java.util.List;
+// Specifically for eggs which must persist, this will call the other constructor
+public class PersistentEggItem extends CustomEggItem{
 
-/* Item which summons our egg entities */
-public class CustomEggItem extends EggItem {
-    public String type;
-    protected CustomEggEntity ourEgg;
-
-    public CustomEggItem(Item.Settings settings) {
+    public PersistentEggItem(Item.Settings settings) {
         super(settings);
-        type = Registries.ITEM.getId(this).getPath();
-    }
-
-    public String getTypeString() {
-        return this.type;
     }
 
     /* Spawn the correct egg entity and set its default velocity */
@@ -36,7 +24,7 @@ public class CustomEggItem extends EggItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         EggHelper.setCooldowns(user, getTypeString());
         type = Registries.ITEM.getId(this).getPath();
-        ourEgg = EggHelper.getType(type, world);
+        CustomEggEntity ourEgg = EggHelper.getType(type, world);
         ItemStack itemStack = user.getStackInHand(hand);
         if (ourEgg == null) return TypedActionResult.fail(itemStack);
         ourEgg.setOwner(user);
@@ -51,12 +39,4 @@ public class CustomEggItem extends EggItem {
         itemStack.decrementUnlessCreative(1, user);
         return TypedActionResult.success(itemStack, true);
     }
-
-    @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        super.appendTooltip(stack, context, tooltip, type);
-        // Grab the corresponding tooltip
-        EggHelper.appendTooltip(stack, context, tooltip, type, "item.eggmod." + Registries.ITEM.getId(stack.getItem()).getPath() + ".tooltip");
-    }
 }
-

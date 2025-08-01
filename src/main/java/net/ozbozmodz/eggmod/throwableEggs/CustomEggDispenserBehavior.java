@@ -21,7 +21,7 @@ public class CustomEggDispenserBehavior extends ProjectileDispenserBehavior {
         String typeString = ((CustomEggItem)stack.getItem()).getTypeString();
         Direction direction = pointer.state().get(DispenserBlock.FACING);
         BlockPos pos = pointer.pos();
-        CustomEggEntity ourEgg = EggHelper.getTypeNoUser(typeString, world);
+        CustomEggEntity ourEgg = EggHelper.getType(typeString, world);
         if (ourEgg != null) {
             ourEgg.setItem(stack);
             ourEgg.setPos(pos.getX() + direction.getOffsetX(), pos.getY() + direction.getOffsetY(), pos.getZ() + direction.getOffsetZ());

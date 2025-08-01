@@ -2,7 +2,6 @@ package net.ozbozmodz.eggmod.throwableEggs;
 
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -14,12 +13,6 @@ import org.joml.Random;
 import org.joml.Vector3d;
 
 public class DiamondEggEntity extends IronEggEntity {
-
-    public DiamondEggEntity(World world, LivingEntity owner) {
-        super(world, owner);
-        spawnPos = owner.getPos();
-        spawnRecorded = true;
-    }
 
     public DiamondEggEntity(EntityType<? extends CustomEggEntity> damageEggEntityEntityType, World world) {
         super(damageEggEntityEntityType, world);

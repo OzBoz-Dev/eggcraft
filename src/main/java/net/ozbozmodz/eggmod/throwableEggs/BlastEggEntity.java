@@ -2,7 +2,6 @@ package net.ozbozmodz.eggmod.throwableEggs;
 
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.HitResult;
@@ -15,10 +14,6 @@ public class BlastEggEntity extends CustomEggEntity {
 
     public BlastEggEntity(EntityType<? extends CustomEggEntity> entityType, World world) {
         super(entityType, world);
-    }
-
-    public BlastEggEntity(World world, LivingEntity owner) {
-        super(world, owner);
     }
 
     @Override
