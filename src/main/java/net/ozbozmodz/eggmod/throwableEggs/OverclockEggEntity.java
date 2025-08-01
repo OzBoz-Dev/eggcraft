@@ -4,8 +4,8 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
+import net.minecraft.nbt.*;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -33,39 +33,35 @@ public class OverclockEggEntity extends CustomEggEntity{
         scannedRandomTickingBlocks = new ArrayList<>();
     }
 
-    public OverclockEggEntity(World world, LivingEntity owner) {
-        super(world, owner);
-        active = false;
-        elapsedTicks = 0;
-        scannedBlockEntities = new ArrayList<>();
-        scannedRandomTickingBlocks = new ArrayList<>();
-    }
-
     @Override
     protected void onCollision(HitResult hitResult) {
         // Float up
         this.setVelocity(0, 0.1, 0, 0.5f, 0.1f);
         World world = this.getWorld();
         if (!world.isClient()) {
-            BlockPos center = this.getBlockPos();
-            int r = 10;
-            // Scan all nearby blocks, add them to two separate lists
-            for (int x = -r; x <= r; x++) {
-                for (int y = -r; y <= r; y++) {
-                    for (int z = -r; z <= r; z++) {
-                            BlockPos check = new BlockPos(center.getX() + x, center.getY() + y, center.getZ() + z);
-                            BlockState state = world.getBlockState(check);
-                            // Block entities are added to one list
-                            if (state.hasBlockEntity()) {
-                                scannedBlockEntities.add(check);
-                            }
-                            // All other blocks could be random ticking, add them to other list
-                            else scannedRandomTickingBlocks.add(check);
+            populateLists(world);
+        }
+        active = true;
+    }
+
+    protected void populateLists(World world){
+        BlockPos center = this.getBlockPos();
+        int r = 10;
+        // Scan all nearby blocks, add them to two separate lists
+        for (int x = -r; x <= r; x++) {
+            for (int y = -r; y <= r; y++) {
+                for (int z = -r; z <= r; z++) {
+                    BlockPos check = new BlockPos(center.getX() + x, center.getY() + y, center.getZ() + z);
+                    BlockState state = world.getBlockState(check);
+                    // Block entities are added to one list
+                    if (state.hasBlockEntity()) {
+                        scannedBlockEntities.add(check);
                     }
+                    // All other blocks could be random ticking, add them to other list
+                    else scannedRandomTickingBlocks.add(check);
                 }
             }
         }
-        active = true;
     }
 
     @Override
@@ -84,6 +80,7 @@ public class OverclockEggEntity extends CustomEggEntity{
             else {
                 World world = this.getWorld();
                 if (!world.isClient()) {
+                    if (scannedBlockEntities.isEmpty()) populateLists(world);
                     this.setNoGravity(true);
                     this.setVelocity(0, 0, 0);
                     Random r = Random.create();
@@ -145,5 +142,21 @@ public class OverclockEggEntity extends CustomEggEntity{
             }
 
         }
+    }
+
+    // Save the activation state and elapsed ticks when exiting the world
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putBoolean("Active", this.active);
+        nbt.putInt("ElapsedTicks", this.elapsedTicks);
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        this.active = nbt.getBoolean("Active");
+        this.elapsedTicks = nbt.getInt("ElapsedTicks");
     }
 }

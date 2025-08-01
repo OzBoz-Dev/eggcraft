@@ -2,7 +2,6 @@ package net.ozbozmodz.eggmod.throwableEggs;
 
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -13,10 +12,6 @@ public class CustomEggEntity extends SnowballEntity {
 
     public CustomEggEntity(EntityType<? extends SnowballEntity> entityType, World world) {
         super(entityType, world);
-    }
-
-    public CustomEggEntity(World world, LivingEntity owner) {
-        super(world, owner);
     }
 
     @Override

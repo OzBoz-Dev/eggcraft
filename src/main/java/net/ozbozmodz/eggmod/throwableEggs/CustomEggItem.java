@@ -36,10 +36,13 @@ public class CustomEggItem extends EggItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         EggHelper.setCooldowns(user, getTypeString());
         type = Registries.ITEM.getId(this).getPath();
-        ourEgg = EggHelper.getType(type, world, user);
+        ourEgg = EggHelper.getType(type, world);
         ItemStack itemStack = user.getStackInHand(hand);
+        if (ourEgg == null) return TypedActionResult.fail(itemStack);
+        ourEgg.setOwner(user);
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
         if (!world.isClient) {
+            ourEgg.setPos(user.getX(), user.getEyeY(), user.getZ());
             ourEgg.setItem(itemStack);
             ourEgg.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 1.5f, 1.0f);
             world.spawnEntity(ourEgg);

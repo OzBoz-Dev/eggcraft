@@ -129,34 +129,34 @@ public class RegisterAll {
     public static final EggshellDispenserBehavior EGGSHELL_DISPENSER_BEHAVIOR = new EggshellDispenserBehavior();
 
     @SuppressWarnings("unchecked")
-    public static final EntityType<BlastEggEntity> BLAST_EGG_ENTITY_ENTITY_TYPE = (EntityType<BlastEggEntity>) registerEntityType("blast_egg_entity", EntityType.Builder.<BlastEggEntity>create(BlastEggEntity::new, SpawnGroup.MISC)
+    public static final EntityType<BlastEggEntity> BLAST_EGG_ENTITY_ENTITY_TYPE = (EntityType<BlastEggEntity>) registerEntityType("blast_egg_entity", EntityType.Builder.create(BlastEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(4).makeFireImmune().build());
     @SuppressWarnings("unchecked")
-    public static final EntityType<IronEggEntity> IRON_EGG_ENTITY_TYPE = (EntityType<IronEggEntity>) registerEntityType("iron_egg_entity", EntityType.Builder.<IronEggEntity>create(IronEggEntity::new, SpawnGroup.MISC)
+    public static final EntityType<IronEggEntity> IRON_EGG_ENTITY_TYPE = (EntityType<IronEggEntity>) registerEntityType("iron_egg_entity", EntityType.Builder.create(IronEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
     @SuppressWarnings("unchecked")
-    public static final EntityType<DiamondEggEntity> DIAMOND_EGG_ENTITY_TYPE = (EntityType<DiamondEggEntity>) registerEntityType("diamond_egg_entity", EntityType.Builder.<DiamondEggEntity>create(DiamondEggEntity::new, SpawnGroup.MISC)
+    public static final EntityType<DiamondEggEntity> DIAMOND_EGG_ENTITY_TYPE = (EntityType<DiamondEggEntity>) registerEntityType("diamond_egg_entity", EntityType.Builder.create(DiamondEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
     @SuppressWarnings("unchecked")
-    public static final EntityType<ExcavatorEggEntity> EXCAVATOR_EGG_ENTITY_TYPE = (EntityType<ExcavatorEggEntity>) registerEntityType("excavator_egg_entity", EntityType.Builder.<ExcavatorEggEntity>create(ExcavatorEggEntity::new, SpawnGroup.MISC)
+    public static final EntityType<ExcavatorEggEntity> EXCAVATOR_EGG_ENTITY_TYPE = (EntityType<ExcavatorEggEntity>) registerEntityType("excavator_egg_entity", EntityType.Builder.create(ExcavatorEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
     @SuppressWarnings("unchecked")
-    public static final EntityType<SpongeEggEntity> SPONGE_EGG_ENTITY_TYPE = (EntityType<SpongeEggEntity>) registerEntityType("sponge_egg_entity", EntityType.Builder.<SpongeEggEntity>create(SpongeEggEntity::new, SpawnGroup.MISC)
+    public static final EntityType<SpongeEggEntity> SPONGE_EGG_ENTITY_TYPE = (EntityType<SpongeEggEntity>) registerEntityType("sponge_egg_entity", EntityType.Builder.create(SpongeEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
     @SuppressWarnings("unchecked")
-    public static final EntityType<OverclockEggEntity> OVERCLOCK_EGG_ENTITY_TYPE = (EntityType<OverclockEggEntity>) registerEntityType("overclock_egg_entity", EntityType.Builder.<OverclockEggEntity>create(OverclockEggEntity::new, SpawnGroup.MISC)
+    public static final EntityType<OverclockEggEntity> OVERCLOCK_EGG_ENTITY_TYPE = (EntityType<OverclockEggEntity>) registerEntityType("overclock_egg_entity", EntityType.Builder.create(OverclockEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
     @SuppressWarnings("unchecked")
-    public static final EntityType<PlasterEggEntity> PLASTER_EGG_ENTITY_TYPE = (EntityType<PlasterEggEntity>) registerEntityType("plaster_egg_entity", EntityType.Builder.<PlasterEggEntity>create(PlasterEggEntity::new, SpawnGroup.MISC)
+    public static final EntityType<PlasterEggEntity> PLASTER_EGG_ENTITY_TYPE = (EntityType<PlasterEggEntity>) registerEntityType("plaster_egg_entity", EntityType.Builder.create(PlasterEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
     @SuppressWarnings("unchecked")
-    public static final EntityType<LureEggEntity> LURE_EGG_ENTITY_TYPE = (EntityType<LureEggEntity>) registerEntityType("lure_egg_entity", EntityType.Builder.<LureEggEntity>create(LureEggEntity::new, SpawnGroup.MISC)
+    public static final EntityType<LureEggEntity> LURE_EGG_ENTITY_TYPE = (EntityType<LureEggEntity>) registerEntityType("lure_egg_entity", EntityType.Builder.create(LureEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
     @SuppressWarnings("unchecked")
-    public static final EntityType<TargetEggEntity> TARGET_EGG_ENTITY_TYPE = (EntityType<TargetEggEntity>) registerEntityType("target_egg_entity", EntityType.Builder.<TargetEggEntity>create(TargetEggEntity::new, SpawnGroup.MISC)
+    public static final EntityType<TargetEggEntity> TARGET_EGG_ENTITY_TYPE = (EntityType<TargetEggEntity>) registerEntityType("target_egg_entity", EntityType.Builder.create(TargetEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
     @SuppressWarnings("unchecked")
-    public static final EntityType<HermesEggEntity> HERMES_EGG_ENTITY_TYPE = (EntityType<HermesEggEntity>) registerEntityType("hermes_egg_entity", EntityType.Builder.<HermesEggEntity>create(HermesEggEntity::new, SpawnGroup.MISC)
+    public static final EntityType<HermesEggEntity> HERMES_EGG_ENTITY_TYPE = (EntityType<HermesEggEntity>) registerEntityType("hermes_egg_entity", EntityType.Builder.create(HermesEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(1).build());
 
     // ITEM GROUP

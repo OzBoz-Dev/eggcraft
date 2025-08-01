@@ -109,11 +109,13 @@ public class Eggzooka extends RangedWeaponItem {
         Item item = projectile.getItem();
         CustomEggEntity ourEgg = null;
         if (item instanceof CustomEggItem) {
-            ourEgg = EggHelper.getType(((CustomEggItem) item).type, world, user);
+            ourEgg = EggHelper.getType(((CustomEggItem) item).type, world);
         }
         if (!world.isClient && ourEgg != null) {
+            ourEgg.setOwner(user);
             world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
             ourEgg.setItem(projectile);
+            ourEgg.setPos(user.getX(), user.getEyeY(), user.getZ());
             ourEgg.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 2.0f, 1.0f);
             world.spawnEntity(ourEgg);
         }

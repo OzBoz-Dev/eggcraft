@@ -20,6 +20,7 @@ public class Client implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterAll.EGGSHELL_BLOCK, RenderLayer.getCutout());
         ModModelPredicateProvider.registerModModels();
         ParticleFactoryRegistry.getInstance().register(RegisterAll.LOCK_ON_PARTICLE, LockOnParticle.Factory::new);
+
         LOGGER.info("Client initalized");
     }
 }

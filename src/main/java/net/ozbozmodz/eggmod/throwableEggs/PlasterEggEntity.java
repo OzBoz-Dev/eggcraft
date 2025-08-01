@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -23,19 +22,13 @@ public class PlasterEggEntity extends CustomEggEntity {
         origin = new BlockPos(0,0,0);
     }
 
-    public PlasterEggEntity(World world, LivingEntity owner) {
-        super(world, owner);
-        firstTick = true;
-        origin = new BlockPos(0,0,0);
-    }
-
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
         World world = this.getWorld();
         if (!world.isClient()) {
             if (this.getOwner() != null) origin = this.getOwner().getBlockPos();
             BlockPos center = new BlockPos((int) blockHitResult.getPos().getX(), (int) blockHitResult.getPos().getY(), (int) blockHitResult.getPos().getZ());
-            int r = 3;
+            int r = 4;
             // Replace air with dirt in an r block radius, but restrict height to only up to the player's feet
             for (int x = -r; x <= r; x++) {
                 for (int y = 0; y <= Math.min(origin.getY() - (center.getY()+1), 15) ; y++) {

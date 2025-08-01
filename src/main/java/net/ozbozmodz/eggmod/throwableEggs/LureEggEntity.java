@@ -5,6 +5,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -28,13 +29,12 @@ public class LureEggEntity extends CustomEggEntity{
         active = false;
         elapsedTicks = 0;
         scannedPassiveMobs = new ArrayList<>();
+        System.out.println("Constructed!");
     }
 
-    public LureEggEntity(World world, LivingEntity owner) {
-        super(world, owner);
-        active = false;
-        elapsedTicks = 0;
-        scannedPassiveMobs = new ArrayList<>();
+    @Override
+    public boolean shouldSave() {
+        return true;
     }
 
     @Override
@@ -42,15 +42,7 @@ public class LureEggEntity extends CustomEggEntity{
         this.setVelocity(0, 0.1, 0, 0.5f, 0.1f);
         World world = this.getWorld();
         if (!world.isClient()) {
-            BlockPos center = this.getBlockPos();
-            // Find nearby entities, filtered down to only passive mobs, and add them to a list
-            List<Entity> nearbyEntities = world.getOtherEntities(this,
-                    new Box(center.getX() - 30,center.getY() - 10, center.getZ() - 30, center.getX() + 30, center.getY() + 10, center.getZ() + 30), Predicates.instanceOf(PassiveEntity.class));
-            for (Entity e : nearbyEntities){
-                if (e instanceof PassiveEntity){
-                    scannedPassiveMobs.add((PassiveEntity) e);
-                }
-            }
+            populateList(world);
         }
         // Activate the egg's behavior
         active = true;
@@ -69,6 +61,8 @@ public class LureEggEntity extends CustomEggEntity{
             else {
                 World world = this.getWorld();
                 if (!world.isClient()) {
+                    // If reloading world
+                    if (scannedPassiveMobs.isEmpty()) populateList(world);
                     // Sound logic
                     if (elapsedTicks == 10) world.playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_USE, SoundCategory.PLAYERS, 0.5F, 0.4F);
                     if (elapsedTicks == 290) world.playSound(this, this.getBlockPos(), SoundEvents.BLOCK_BELL_RESONATE, SoundCategory.PLAYERS, 0.5F, 1.0F);
@@ -107,5 +101,33 @@ public class LureEggEntity extends CustomEggEntity{
             // Elapsed ticks since activation
             elapsedTicks++;
         }
+    }
+
+    protected void populateList(World world){
+        BlockPos center = this.getBlockPos();
+        // Find nearby entities, filtered down to only passive mobs, and add them to a list
+        List<Entity> nearbyEntities = world.getOtherEntities(this,
+                new Box(center.getX() - 30,center.getY() - 10, center.getZ() - 30, center.getX() + 30, center.getY() + 10, center.getZ() + 30), Predicates.instanceOf(PassiveEntity.class));
+        for (Entity e : nearbyEntities){
+            if (e instanceof PassiveEntity){
+                scannedPassiveMobs.add((PassiveEntity) e);
+            }
+        }
+    }
+
+    // Save the activation state and elapsed ticks on exiting the world
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putBoolean("Active", this.active);
+        nbt.putInt("ElapsedTicks", this.elapsedTicks);
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        this.active = nbt.getBoolean("Active");
+        this.elapsedTicks = nbt.getInt("ElapsedTicks");
     }
 }
