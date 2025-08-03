@@ -16,5 +16,17 @@
     "sounds": [
       "eggmod:hermes_takeoff"
     ]
+  },
+  "vortex_ambient": {
+    "subtitle" : "subtitles.eggmod.vortex_ambient",
+    "sounds": [
+      "eggmod:vortex_ambient"
+    ]
+  },
+  "vortex_launch": {
+    "subtitle" : "subtitles.eggmod.vortex_launch",
+    "sounds": [
+      "eggmod:vortex_launch"
+    ]
   }
 }

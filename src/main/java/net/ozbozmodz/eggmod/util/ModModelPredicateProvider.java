@@ -34,6 +34,7 @@ public class ModModelPredicateProvider {
         EntityRendererRegistry.register(RegisterAll.LURE_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterAll.TARGET_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterAll.HERMES_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.VORTEX_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
 
 
 

@@ -5,7 +5,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
-import net.minecraft.nbt.*;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -19,9 +18,7 @@ import net.ozbozmodz.eggmod.util.RegisterAll;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OverclockEggEntity extends CustomEggEntity{
-    private boolean active;
-    private int elapsedTicks;
+public class OverclockEggEntity extends PersistentEggEntity{
     List<BlockPos> scannedBlockEntities;
     List<BlockPos> scannedRandomTickingBlocks;
 
@@ -142,21 +139,5 @@ public class OverclockEggEntity extends CustomEggEntity{
             }
 
         }
-    }
-
-    // Save the activation state and elapsed ticks when exiting the world
-
-    @Override
-    public void writeCustomDataToNbt(NbtCompound nbt) {
-        super.writeCustomDataToNbt(nbt);
-        nbt.putBoolean("Active", this.active);
-        nbt.putInt("ElapsedTicks", this.elapsedTicks);
-    }
-
-    @Override
-    public void readCustomDataFromNbt(NbtCompound nbt) {
-        super.readCustomDataFromNbt(nbt);
-        this.active = nbt.getBoolean("Active");
-        this.elapsedTicks = nbt.getInt("ElapsedTicks");
     }
 }

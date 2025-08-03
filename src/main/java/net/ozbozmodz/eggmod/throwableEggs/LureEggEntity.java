@@ -5,7 +5,6 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -19,9 +18,7 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LureEggEntity extends CustomEggEntity{
-    private boolean active;
-    private int elapsedTicks;
+public class LureEggEntity extends PersistentEggEntity{
     List<PassiveEntity> scannedPassiveMobs;
 
     public LureEggEntity(EntityType<? extends SnowballEntity> entityType, World world) {
@@ -32,10 +29,7 @@ public class LureEggEntity extends CustomEggEntity{
         System.out.println("Constructed!");
     }
 
-    @Override
-    public boolean shouldSave() {
-        return true;
-    }
+
 
     @Override
     protected void onCollision(HitResult hitResult) {
@@ -113,21 +107,5 @@ public class LureEggEntity extends CustomEggEntity{
                 scannedPassiveMobs.add((PassiveEntity) e);
             }
         }
-    }
-
-    // Save the activation state and elapsed ticks on exiting the world
-
-    @Override
-    public void writeCustomDataToNbt(NbtCompound nbt) {
-        super.writeCustomDataToNbt(nbt);
-        nbt.putBoolean("Active", this.active);
-        nbt.putInt("ElapsedTicks", this.elapsedTicks);
-    }
-
-    @Override
-    public void readCustomDataFromNbt(NbtCompound nbt) {
-        super.readCustomDataFromNbt(nbt);
-        this.active = nbt.getBoolean("Active");
-        this.elapsedTicks = nbt.getInt("ElapsedTicks");
     }
 }
