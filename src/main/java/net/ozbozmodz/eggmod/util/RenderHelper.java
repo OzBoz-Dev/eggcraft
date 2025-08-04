@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntityRenderer;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreen;
 
-public class ModModelPredicateProvider {
+public class RenderHelper {
     public static void registerModModels(){
         ModelPredicateProviderRegistry.register(RegisterAll.SPECIAL_SYRINGE_ITEM, Identifier.of("pull"), (stack, world, entity, seed) -> {
             if (entity == null) {
@@ -35,6 +35,7 @@ public class ModModelPredicateProvider {
         EntityRendererRegistry.register(RegisterAll.TARGET_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterAll.HERMES_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterAll.VORTEX_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterAll.EXPERIENCE_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
 
 
 
