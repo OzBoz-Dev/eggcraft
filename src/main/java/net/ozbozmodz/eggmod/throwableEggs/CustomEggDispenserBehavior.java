@@ -18,11 +18,15 @@ public class CustomEggDispenserBehavior extends ProjectileDispenserBehavior {
     @Override
     public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
         ServerWorld world = pointer.world();
-        String typeString = ((CustomEggItem)stack.getItem()).getTypeString();
+        CustomEggItem ourEggItem = (CustomEggItem) stack.getItem();
+        String typeString = ourEggItem.getTypeString();
         Direction direction = pointer.state().get(DispenserBlock.FACING);
         BlockPos pos = pointer.pos();
         CustomEggEntity ourEgg = EggHelper.getType(typeString, world);
+        System.out.println(typeString);
         if (ourEgg != null) {
+            // If we have an experience egg
+            if (ourEggItem instanceof ExperienceEggItem ei) ((ExperienceEggEntity)ourEgg).setExperience(ei.getExperience(stack));
             ourEgg.setItem(stack);
             ourEgg.setPos(pos.getX() + direction.getOffsetX(), pos.getY() + direction.getOffsetY(), pos.getZ() + direction.getOffsetZ());
             ourEgg.setVelocity(direction.getOffsetX(), direction.getOffsetY(), direction.getOffsetZ());

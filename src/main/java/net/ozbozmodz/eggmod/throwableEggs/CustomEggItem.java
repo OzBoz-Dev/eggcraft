@@ -24,11 +24,11 @@ public class CustomEggItem extends EggItem {
 
     public CustomEggItem(Item.Settings settings) {
         super(settings);
-        type = Registries.ITEM.getId(this).getPath();
+        type = getTypeString();
     }
 
     public String getTypeString() {
-        return this.type;
+        return Registries.ITEM.getId(this).getPath();
     }
 
     /* Spawn the correct egg entity and set its default velocity */
@@ -42,14 +42,18 @@ public class CustomEggItem extends EggItem {
         ourEgg.setOwner(user);
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
         if (!world.isClient) {
-            ourEgg.setPos(user.getX(), user.getEyeY(), user.getZ());
-            ourEgg.setItem(itemStack);
-            ourEgg.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 1.5f, 1.0f);
-            world.spawnEntity(ourEgg);
+            spawnSequence(world, user, hand, itemStack);
         }
         user.incrementStat(Stats.USED.getOrCreateStat(this));
         itemStack.decrementUnlessCreative(1, user);
         return TypedActionResult.success(itemStack, true);
+    }
+
+    public void spawnSequence(World world, PlayerEntity user, Hand hand, ItemStack itemStack){
+        ourEgg.setPos(user.getX(), user.getEyeY(), user.getZ());
+        ourEgg.setItem(itemStack);
+        ourEgg.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 1.5f, 1.0f);
+        world.spawnEntity(ourEgg);
     }
 
     @Override

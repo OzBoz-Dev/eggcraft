@@ -47,6 +47,7 @@ public class EggHelper {
             case "target_egg" -> new TargetEggEntity(RegisterAll.TARGET_EGG_ENTITY_TYPE, world);
             case "hermes_egg" -> new HermesEggEntity(RegisterAll.HERMES_EGG_ENTITY_TYPE, world);
             case "vortex_egg" -> new VortexEggEntity(RegisterAll.VORTEX_EGG_ENTITY_TYPE, world);
+            case "experience_egg" -> new ExperienceEggEntity(RegisterAll.EXPERIENCE_EGG_ENTITY_TYPE, world);
             default -> null;
         };
     }
@@ -65,6 +66,7 @@ public class EggHelper {
             case "target_egg" -> user.getItemCooldownManager().set(RegisterAll.TARGET_EGG_ITEM, 50);
             case "hermes_egg" -> user.getItemCooldownManager().set(RegisterAll.HERMES_EGG_ITEM, 10);
             case "vortex_egg" -> user.getItemCooldownManager().set(RegisterAll.VORTEX_EGG_ITEM, 300);
+            case "experience_egg" -> user.getItemCooldownManager().set(RegisterAll.EXPERIENCE_EGG_ITEM, 0);
         }
     }
 

@@ -37,6 +37,7 @@ import net.ozbozmodz.eggmod.statuseffects.RepelEffect;
 import net.ozbozmodz.eggmod.throwableEggs.*;
 
 import java.util.List;
+import java.util.function.UnaryOperator;
 
 public class RegisterAll {
     // COMPONENTS
@@ -81,6 +82,7 @@ public class RegisterAll {
     public static final Item TARGET_EGG_TEMPLATE = registerItem("templates/target_egg_template", new TemplateItem(new Item.Settings()));
     public static final Item HERMES_EGG_TEMPLATE = registerItem("templates/hermes_egg_template", new TemplateItem(new Item.Settings()));
     public static final Item VORTEX_EGG_TEMPLATE = registerItem("templates/vortex_egg_template", new TemplateItem(new Item.Settings()));
+    public static final Item EXPERIENCE_EGG_TEMPLATE = registerItem("templates/experience_egg_template", new TemplateItem(new Item.Settings()));
 
 
     // THROWABLE EGGS
@@ -95,7 +97,7 @@ public class RegisterAll {
     public static final Item TARGET_EGG_ITEM = registerItem("target_egg", new CustomEggItem(new Item.Settings()));
     public static final Item HERMES_EGG_ITEM = registerItem("hermes_egg", new HermesEggItem(new Item.Settings()));
     public static final Item VORTEX_EGG_ITEM = registerItem("vortex_egg", new CustomEggItem(new Item.Settings()));
-
+    public static final Item EXPERIENCE_EGG_ITEM = registerItem("experience_egg", new ExperienceEggItem(new Item.Settings()));
 
     // BLOCKS
     public static final Block EGGSHELL_BLOCK = registerBlock("eggshells", new EggshellBlock(Block.Settings.copy(Blocks.WHITE_CARPET).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.TUFF).strength(0.2F)));
@@ -166,7 +168,9 @@ public class RegisterAll {
     @SuppressWarnings("unchecked")
     public static final EntityType<VortexEggEntity> VORTEX_EGG_ENTITY_TYPE = (EntityType<VortexEggEntity>) registerEntityType("vortex_egg_entity", EntityType.Builder.create(VortexEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
-
+    @SuppressWarnings("unchecked")
+    public static final EntityType<ExperienceEggEntity> EXPERIENCE_EGG_ENTITY_TYPE = (EntityType<ExperienceEggEntity>) registerEntityType("experience_egg_entity", EntityType.Builder.create(ExperienceEggEntity::new, SpawnGroup.MISC)
+            .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
 
     // ITEM GROUP
     public static final ItemGroup EGGMOD = Registry.register(Registries.ITEM_GROUP, Identifier.of("eggmod", "general"),
@@ -207,6 +211,8 @@ public class RegisterAll {
             entries.add(HERMES_EGG_TEMPLATE);
             entries.add(VORTEX_EGG_ITEM);
             entries.add(VORTEX_EGG_TEMPLATE);
+            entries.add(EXPERIENCE_EGG_ITEM);
+            entries.add(EXPERIENCE_EGG_TEMPLATE);
             entries.add(EGGSHELL_HELMET);
             entries.add(EGGSHELL_CHESTPLATE);
             entries.add(EGGSHELL_LEGGINGS);
@@ -241,6 +247,11 @@ public class RegisterAll {
         return Registry.register(Registries.PARTICLE_TYPE, Identifier.of("eggmod", name), particleType);
     }
 
+    private static <T>ComponentType<T> registerComponentType(String name, UnaryOperator<ComponentType.Builder<T>> builderOperator){
+        return Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of("eggmod", name),
+                builderOperator.apply(ComponentType.builder()).build());
+    }
+
     public static void registerBehaviors(){
         // Behaviors
         DispenserBlock.registerBehavior(RegisterAll.EGGSHELL_ITEM, RegisterAll.EGGSHELL_DISPENSER_BEHAVIOR);
@@ -251,5 +262,11 @@ public class RegisterAll {
         DispenserBlock.registerBehavior(RegisterAll.SPONGE_EGG_ITEM, new CustomEggDispenserBehavior(SPONGE_EGG_ITEM));
         DispenserBlock.registerBehavior(RegisterAll.OVERCLOCK_EGG_ITEM, new CustomEggDispenserBehavior(OVERCLOCK_EGG_ITEM));
         DispenserBlock.registerBehavior(RegisterAll.PLASTER_EGG_ITEM, new CustomEggDispenserBehavior(PLASTER_EGG_ITEM));
+        DispenserBlock.registerBehavior(RegisterAll.LURE_EGG_ITEM, new CustomEggDispenserBehavior(LURE_EGG_ITEM));
+        DispenserBlock.registerBehavior(RegisterAll.TARGET_EGG_ITEM, new CustomEggDispenserBehavior(TARGET_EGG_ITEM));
+        DispenserBlock.registerBehavior(RegisterAll.VORTEX_EGG_ITEM, new CustomEggDispenserBehavior(VORTEX_EGG_ITEM));
+        DispenserBlock.registerBehavior(RegisterAll.EXPERIENCE_EGG_ITEM, new CustomEggDispenserBehavior(EXPERIENCE_EGG_ITEM));
+
+
     }
 }
