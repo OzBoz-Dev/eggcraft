@@ -20,6 +20,7 @@
     "block.eggmod.giant_egg" : "Giant Egg",
     "item.eggmod.giant_egg.tooltip" : "Ready to eat!",
     "block.eggmod.etcher_block" : "Etching Station",
+    "block.eggmod.experience_catcher" : "Experience Catcher",
     "block.eggmod.mysterious_egg" : "Mysterious Egg",
     "item.eggmod.eggshell_helmet" : "Eggshell Helmet",
     "item.eggmod.eggshell_chestplate" : "Eggshell Chestplate",

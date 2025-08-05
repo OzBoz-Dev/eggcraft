@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class ExperienceEggItem extends CustomEggItem{
-    public int maxExperience;
+    public static int maxExperience;
 
     public ExperienceEggItem(Item.Settings settings) {
         super(settings.maxCount(1));
@@ -45,7 +45,7 @@ public class ExperienceEggItem extends CustomEggItem{
         return super.use(world, user, hand);
     }
 
-    public void addExp(int addExperience, ItemStack stack){
+    public static void addExp(int addExperience, ItemStack stack){
         int experience = getExperience(stack);
         experience += addExperience;
         if (experience > maxExperience) experience = maxExperience;
@@ -55,7 +55,7 @@ public class ExperienceEggItem extends CustomEggItem{
         stack.set(DataComponentTypes.CUSTOM_DATA, NbtComponent.of(data));
     }
 
-    public int getExperience(ItemStack stack){
+    public static int getExperience(ItemStack stack){
         NbtComponent dataComp = stack.get(DataComponentTypes.CUSTOM_DATA);
         int experience = 0;
         if (dataComp != null && dataComp.copyNbt() != null){

@@ -27,7 +27,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
-import net.ozbozmodz.eggmod.entities.EtcherInventory;
+import net.ozbozmodz.eggmod.entities.ImplementedInventory;
 import net.ozbozmodz.eggmod.throwableEggs.BlastEggEntity;
 import net.ozbozmodz.eggmod.throwableEggs.CustomEggEntity;
 import net.ozbozmodz.eggmod.throwableEggs.CustomEggItem;

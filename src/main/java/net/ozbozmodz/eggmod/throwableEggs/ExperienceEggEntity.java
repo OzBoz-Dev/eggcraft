@@ -21,7 +21,12 @@ public class ExperienceEggEntity extends CustomEggEntity{
         World world = this.getWorld();
         if (!world.isClient()){
             this.getWorld().syncWorldEvent(WorldEvents.SPLASH_POTION_SPLASHED, this.getBlockPos(), PotionContentsComponent.getColor(Potions.WATER));
-            world.spawnEntity(new ExperienceOrbEntity(world, this.getX(), this.getY(), this.getZ(), experience));
+            while (this.experience >= 20){
+                world.spawnEntity(new ExperienceOrbEntity(world, this.getX(), this.getY(), this.getZ(), 20));
+                this.experience -= 20;
+            }
+            if (this.experience > 0) world.spawnEntity(new ExperienceOrbEntity(world, this.getX(), this.getY(), this.getZ(), this.experience));
+
         }
         super.onCollision(hitResult);
     }

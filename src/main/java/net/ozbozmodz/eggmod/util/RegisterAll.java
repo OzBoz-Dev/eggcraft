@@ -27,11 +27,13 @@ import net.ozbozmodz.eggmod.armor.EggshellArmorItem;
 import net.ozbozmodz.eggmod.armor.EggshellArmorMaterial;
 import net.ozbozmodz.eggmod.blocks.*;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntity;
+import net.ozbozmodz.eggmod.entities.ExperienceCatcherEntity;
 import net.ozbozmodz.eggmod.fooditems.*;
 import net.ozbozmodz.eggmod.items.Eggzooka;
 import net.ozbozmodz.eggmod.items.SpecialSyringeItem;
 import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
+import net.ozbozmodz.eggmod.screen.ExperienceCatcherScreenHandler;
 import net.ozbozmodz.eggmod.statuseffects.LockOnEffect;
 import net.ozbozmodz.eggmod.statuseffects.RepelEffect;
 import net.ozbozmodz.eggmod.throwableEggs.*;
@@ -104,6 +106,7 @@ public class RegisterAll {
     public static final Block GIANT_EGG_BLOCK = registerBlock("giant_egg", new GiantEggBlock(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE)));
     public static final Block RAW_GIANT_EGG_BLOCK= registerBlock("raw_giant_egg", new RawGiantEggBlock(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE)));
     public static final Block ETCHER_BLOCK = registerBlock("etcher_block", new EtcherBlock(AbstractBlock.Settings.create().nonOpaque().luminance(EtcherBlock::getLuminance).strength(5.0F, 6.0F)));
+    public static final Block EXPERIENCE_CATCHER_BLOCK = registerBlock("experience_catcher", new ExperienceCatcherBlock(AbstractBlock.Settings.create().nonOpaque().strength(1.0f)));
     public static final Block MYSTERIOUS_EGG_BLOCK = registerBlock("mysterious_egg", new MysteriousEggBlock(AbstractBlock.Settings.create().nonOpaque()));
 
     // BLOCK ITEMS
@@ -111,16 +114,22 @@ public class RegisterAll {
     public static final Item GIANT_EGG_ITEM = registerItem("giant_egg", new BlockItem(GIANT_EGG_BLOCK, new Item.Settings()));
     public static final Item RAW_GIANT_EGG_ITEM = registerItem("raw_giant_egg", new BlockItem(RAW_GIANT_EGG_BLOCK, new Item.Settings()));
     public static final Item ETCHER_ITEM = registerItem("etcher_block", new BlockItem(ETCHER_BLOCK, new Item.Settings()));
+    public static final Item EXPERIENCE_CATCHER_ITEM = registerItem("experience_catcher", new BlockItem(EXPERIENCE_CATCHER_BLOCK, new Item.Settings()));
     public static final Item MYSTERIOUS_EGG_ITEM = registerItem("mysterious_egg", new BlockItem(MYSTERIOUS_EGG_BLOCK, new Item.Settings()));
 
     // BLOCK ENTITIES
-    public static final BlockEntityType<EtcherBlockEntity> ETCHER_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of("eggmod", "eggtcher_block_entity"),
+    public static final BlockEntityType<EtcherBlockEntity> ETCHER_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of("eggmod", "etcher_block_entity"),
             BlockEntityType.Builder.create(EtcherBlockEntity::new, RegisterAll.ETCHER_BLOCK).build());
+    public static final BlockEntityType<ExperienceCatcherEntity> EXPERIENCE_CATCHER_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of("eggmod", "experience_catcher_entity"),
+            BlockEntityType.Builder.create(ExperienceCatcherEntity::new, RegisterAll.EXPERIENCE_CATCHER_BLOCK).build());
 
     // SCREEN
     public static final ScreenHandlerType<EtcherBlockScreenHandler> ETCHER_BLOCK_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of("eggmod", "etcher_screen_handler"),
                     new ExtendedScreenHandlerType<>(EtcherBlockScreenHandler::new, BlockPos.PACKET_CODEC));
+    public static final ScreenHandlerType<ExperienceCatcherScreenHandler> EXPERIENCE_CATCHER_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of("eggmod", "experience_catcher_screen_handler"),
+                    new ExtendedScreenHandlerType<>(ExperienceCatcherScreenHandler::new, BlockPos.PACKET_CODEC));
 
     // PARTICLES
     public static final SimpleParticleType LOCK_ON_PARTICLE = registerParticle("lock_on_particle", FabricParticleTypes.simple());
@@ -187,6 +196,7 @@ public class RegisterAll {
             entries.add(GIANT_EGG_ITEM);
             entries.add(RAW_GIANT_EGG_ITEM);
             entries.add(ETCHER_ITEM);
+            entries.add(EXPERIENCE_CATCHER_ITEM);
             entries.add(BLAST_EGG_ITEM);
             entries.add(IRON_EGG_ITEM);
             entries.add(DIAMOND_EGG_ITEM);

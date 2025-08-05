@@ -33,7 +33,7 @@ import net.ozbozmodz.eggmod.util.RegisterAll;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.World;
 
-public class EtcherBlockEntity extends BlockEntity implements EtcherInventory, SidedInventory, ExtendedScreenHandlerFactory<BlockPos> {
+public class EtcherBlockEntity extends BlockEntity implements ImplementedInventory, SidedInventory, ExtendedScreenHandlerFactory<BlockPos> {
     // 4 Slots: Template, Serum, Egg, Output
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(4, ItemStack.EMPTY);
     private static final int TEMPLATE_SLOT = 0;
