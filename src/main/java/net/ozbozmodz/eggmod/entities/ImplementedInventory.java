@@ -8,10 +8,9 @@ import net.minecraft.util.collection.DefaultedList;
 
 /**
  * A simple {@code Inventory} implementation with only default methods + an item list getter.
- *
  * Originally by Juuz
  */
-public interface EtcherInventory extends Inventory {
+public interface ImplementedInventory extends Inventory {
  
     /**
      * Retrieves the item list of this inventory.
@@ -22,14 +21,14 @@ public interface EtcherInventory extends Inventory {
     /**
      * Creates an inventory from the item list.
      */
-    static EtcherInventory of(DefaultedList<ItemStack> items) {
+    static ImplementedInventory of(DefaultedList<ItemStack> items) {
         return () -> items;
     }
  
     /**
      * Creates a new inventory with the specified size.
      */
-    static EtcherInventory ofSize(int size) {
+    static ImplementedInventory ofSize(int size) {
         return of(DefaultedList.ofSize(size, ItemStack.EMPTY));
     }
  

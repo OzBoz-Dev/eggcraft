@@ -10,6 +10,7 @@ import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.util.Identifier;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntityRenderer;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreen;
+import net.ozbozmodz.eggmod.screen.ExperienceCatcherScreen;
 
 public class RenderHelper {
     public static void registerModModels(){
@@ -45,5 +46,6 @@ public class RenderHelper {
 
         // Screen renderers
         HandledScreens.register(RegisterAll.ETCHER_BLOCK_SCREEN_HANDLER, EtcherBlockScreen::new);
+        HandledScreens.register(RegisterAll.EXPERIENCE_CATCHER_SCREEN_HANDLER, ExperienceCatcherScreen::new);
     }
 }
