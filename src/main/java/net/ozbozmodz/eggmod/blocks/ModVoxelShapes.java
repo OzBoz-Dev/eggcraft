@@ -39,4 +39,27 @@ public class ModVoxelShapes {
             Block.createCuboidShape(6.0, 1.0, 6.0, 10.0, 5.0, 10.0)
                     .simplify()
     );
+
+    public static final VoxelShape EXPERIENCE_CATCHER_SHAPE = VoxelShapes.union(
+            Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 1.0, 14.0),
+            Block.createCuboidShape(3.0, 1.0, 3.0, 13.0, 2.0, 13.0),
+            Block.createCuboidShape(2.0, 15.0, 2.0, 14.0, 16.0, 14.0),
+            Block.createCuboidShape(3.0, 14.0, 3.0, 13.0, 15.0, 13.0),
+            Block.createCuboidShape(5.0, 2.0, 4.0, 11.0, 13.0, 5.0),
+            Block.createCuboidShape(5.0, 3.0, 11.0, 11.0, 13.0, 12.0),
+            Block.createCuboidShape(4.0, 3.0, 5.0, 5.0, 13.0, 11.0),
+            Block.createCuboidShape(11.0, 3.0, 5.0, 12.0, 13.0, 11.0),
+            Block.createCuboidShape(4.0, 2.0, 5.0, 5.0, 3.0, 11.0),
+            Block.createCuboidShape(11.0, 2.0, 5.0, 12.0, 3.0, 11.0),
+            Block.createCuboidShape(4.0, 13.0, 5.0, 5.0, 14.0, 11.0),
+            Block.createCuboidShape(11.0, 13.0, 5.0, 12.0, 14.0, 11.0),
+            Block.createCuboidShape(5.0, 13.0, 4.0, 11.0, 14.0, 5.0),
+            Block.createCuboidShape(5.0, 2.0, 4.0, 11.0, 3.0, 5.0),
+            Block.createCuboidShape(5.0, 13.0, 11.0, 11.0, 14.0, 12.0),
+            Block.createCuboidShape(5.0, 2.0, 11.0, 11.0, 3.0, 12.0),
+            Block.createCuboidShape(4.0, 2.0, 4.0, 5.0, 14.0, 5.0),
+            Block.createCuboidShape(4.0, 2.0, 11.0, 5.0, 14.0, 12.0),
+            Block.createCuboidShape(11.0, 2.0, 11.0, 12.0, 14.0, 12.0),
+            Block.createCuboidShape(11.0, 2.0, 4.0, 12.0, 14.0, 5.0)
+    );
 }

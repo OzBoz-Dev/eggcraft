@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "experience=0": { "model": "eggmod:block/experience_catcher/experience_catcher_0"},
+    "experience=1": { "model": "eggmod:block/experience_catcher/experience_catcher_1"},
+    "experience=2": { "model": "eggmod:block/experience_catcher/experience_catcher_2"},
+    "experience=3": { "model": "eggmod:block/experience_catcher/experience_catcher_3"},
+    "experience=4": { "model": "eggmod:block/experience_catcher/experience_catcher_4"},
+    "experience=5": { "model": "eggmod:block/experience_catcher/experience_catcher_5"},
+    "experience=6": { "model": "eggmod:block/experience_catcher/experience_catcher_6"},
+    "experience=7": { "model": "eggmod:block/experience_catcher/experience_catcher_7"},
+    "experience=8": { "model": "eggmod:block/experience_catcher/experience_catcher_8"},
+    "experience=9": { "model": "eggmod:block/experience_catcher/experience_catcher_9"},
+    "experience=10": { "model": "eggmod:block/experience_catcher/experience_catcher_10"}
+  }
+}

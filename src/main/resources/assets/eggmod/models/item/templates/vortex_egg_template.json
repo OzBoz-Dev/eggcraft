@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0" : "eggmod:item/templates/vortex_egg_template"
+  }
+}

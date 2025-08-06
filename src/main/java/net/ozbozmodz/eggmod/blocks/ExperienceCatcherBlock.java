@@ -15,6 +15,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.ozbozmodz.eggmod.entities.ExperienceCatcherEntity;
 import net.ozbozmodz.eggmod.util.RegisterAll;
@@ -23,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 public class ExperienceCatcherBlock extends BlockWithEntity implements BlockEntityProvider {
-    public static final IntProperty EXPERIENCE = IntProperty.of("experience", 0, 30);
+    public static final IntProperty EXPERIENCE = IntProperty.of("experience", 0, 10);
     public static final MapCodec<ExperienceCatcherBlock> CODEC = ExperienceCatcherBlock.createCodec(ExperienceCatcherBlock::new);
 
     // Set experience level and direction
@@ -95,8 +97,8 @@ public class ExperienceCatcherBlock extends BlockWithEntity implements BlockEnti
         return BlockRenderType.MODEL;
     }
 
-//    @Override
-//    public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-//        return Objects.requireNonNull(super.getPlacementState(ctx)).with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing());
-//    }
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return ModVoxelShapes.EXPERIENCE_CATCHER_SHAPE;
+    }
 }

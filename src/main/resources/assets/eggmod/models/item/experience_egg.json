@@ -1,0 +1,44 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0" : "eggmod:item/experience_egg/experience_egg_0"
+    },
+    "overrides" : [
+        {
+            "predicate" : {
+                "eggmod:exp":0.001
+            },
+            "model" : "eggmod:item/experience_egg/experience_egg_1"
+        },
+        {
+            "predicate" : {
+                "eggmod:exp":0.2
+            },
+            "model" : "eggmod:item/experience_egg/experience_egg_2"
+        },
+        {
+            "predicate" : {
+                "eggmod:exp":0.4
+            },
+            "model" : "eggmod:item/experience_egg/experience_egg_3"
+        },
+        {
+            "predicate" : {
+                "eggmod:exp":0.6
+            },
+            "model" : "eggmod:item/experience_egg/experience_egg_4"
+        },
+        {
+            "predicate" : {
+                "eggmod:exp":0.8
+            },
+            "model" : "eggmod:item/experience_egg/experience_egg_5"
+        },
+        {
+            "predicate" : {
+                "eggmod:exp":1.0
+            },
+            "model" : "eggmod:item/experience_egg/experience_egg_6"
+        }
+    ]
+}
