@@ -107,7 +107,7 @@ public class RegisterAll {
     public static final Block RAW_GIANT_EGG_BLOCK= registerBlock("raw_giant_egg", new RawGiantEggBlock(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE)));
     public static final Block ETCHER_BLOCK = registerBlock("etcher_block", new EtcherBlock(AbstractBlock.Settings.create().nonOpaque().luminance(EtcherBlock::getLuminance).strength(5.0F, 6.0F)));
     public static final Block EXPERIENCE_CATCHER_BLOCK = registerBlock("experience_catcher", new ExperienceCatcherBlock(AbstractBlock.Settings.create().nonOpaque().strength(1.0f)));
-    public static final Block MYSTERIOUS_EGG_BLOCK = registerBlock("mysterious_egg", new MysteriousEggBlock(AbstractBlock.Settings.create().nonOpaque()));
+    public static final Block MYSTERIOUS_EGG_BLOCK = registerBlock("mysterious_egg", new MysteriousEggBlock(AbstractBlock.Settings.create().nonOpaque().sounds(BlockSoundGroup.GLASS)));
 
     // BLOCK ITEMS
     public static final Item EGGSHELL_ITEM = registerItem("eggshells", new BlockItem(EGGSHELL_BLOCK, new Item.Settings()));

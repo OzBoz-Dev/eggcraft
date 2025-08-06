@@ -1,0 +1,6 @@
+{
+    "parent": "eggmod:item/experience_egg",
+    "textures": {
+        "layer0" : "eggmod:item/experience_egg/experience_egg_6"
+    }
+}

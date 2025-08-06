@@ -29,6 +29,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.ozbozmodz.eggmod.blocks.ExperienceCatcherBlock;
 import net.ozbozmodz.eggmod.screen.ExperienceCatcherScreenHandler;
 import net.ozbozmodz.eggmod.throwableEggs.ExperienceEggItem;
 import net.ozbozmodz.eggmod.util.RegisterAll;
@@ -90,21 +91,25 @@ public class ExperienceCatcherEntity extends BlockEntity implements ImplementedI
         }
         // At the same time, if there are nearby experience orbs to collect, suck them in
         if (this.experience < this.maxExperience && !world.isReceivingRedstonePower(pos)) {
-            Box box = new Box(pos.getX() - 10, pos.getY() - 10, pos.getZ() - 10, pos.getX() + 10, pos.getY() + 10, pos.getZ() + 10);
+            Box box = new Box(pos.getX() - 5, pos.getY() - 5, pos.getZ() - 5, pos.getX() + 5, pos.getY() + 5, pos.getZ() + 5);
             List<Entity> nearbyOrbs = world.getOtherEntities(null, box, Predicates.instanceOf(ExperienceOrbEntity.class));
             for (Entity e : nearbyOrbs) {
                 collectOrb((ExperienceOrbEntity)e, world);
             }
+            world.setBlockState(pos, state.with(ExperienceCatcherBlock.EXPERIENCE, this.experience/200));
             markDirty(world, pos, state);
             world.updateListeners(pos, state, state, 0);
         }
     }
 
+    // Find and attract a exp orb, adjust their velocity if they're stuck
     public void collectOrb(ExperienceOrbEntity e, World world){
         if (this.experience < this.maxExperience) {
-            Vec3d moveTo = this.getPos().toCenterPos().add(0,0.5,0).subtract(e.getPos()).multiply(0.03f);
+            Vec3d moveTo = this.getPos().toCenterPos().subtract(e.getPos()).multiply(0.03f);
+            if (e.horizontalCollision || e.verticalCollision) e.addVelocity(0.1f,0.1f,0.1f);
             e.addVelocity(moveTo);
-            if (e.squaredDistanceTo(this.getPos().toCenterPos()) < 1) {
+            // Once close enough, discard them and add their exp amount
+            if (e.squaredDistanceTo(this.getPos().toCenterPos()) < 1.5) {
                 this.experience += e.getExperienceAmount();
                 e.discard();
                 world.playSound(null, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 0.1f, 1.0f + (Random.create().nextBetween(-1, 1) * 0.2f));

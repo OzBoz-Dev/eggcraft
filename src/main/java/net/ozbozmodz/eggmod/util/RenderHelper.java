@@ -11,6 +11,7 @@ import net.minecraft.util.Identifier;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntityRenderer;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreen;
 import net.ozbozmodz.eggmod.screen.ExperienceCatcherScreen;
+import net.ozbozmodz.eggmod.throwableEggs.ExperienceEggItem;
 
 public class RenderHelper {
     public static void registerModModels(){
@@ -23,7 +24,14 @@ public class RenderHelper {
             }
             return (float)(stack.getMaxUseTime(entity) - entity.getItemUseTimeLeft()) / 60.0f;
         });
-        ModelPredicateProviderRegistry.register(RegisterAll.SPECIAL_SYRINGE_ITEM, Identifier.of("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0f : 0.0f);
+        ModelPredicateProviderRegistry.register(RegisterAll.SPECIAL_SYRINGE_ITEM, Identifier.of("pulling"), (stack, world, entity, seed) ->
+                entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0f : 0.0f);
+
+        ModelPredicateProviderRegistry.register(RegisterAll.EXPERIENCE_EGG_ITEM, Identifier.of("eggmod", "exp"), (stack, world, entity, seed) -> {
+            if (entity == null || !stack.isOf(RegisterAll.EXPERIENCE_EGG_ITEM)) return 0.0f;
+            float exp = ExperienceEggItem.getExperience(stack);
+            return exp/ExperienceEggItem.maxExperience;
+        });
         // Entity renderers
         EntityRendererRegistry.register(RegisterAll.BLAST_EGG_ENTITY_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterAll.IRON_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
@@ -43,6 +51,7 @@ public class RenderHelper {
         // Block Rendering
         BlockRenderLayerMap.INSTANCE.putBlock(RegisterAll.ETCHER_BLOCK, RenderLayer.getTranslucent());
         BlockEntityRendererFactories.register(RegisterAll.ETCHER_BLOCK_ENTITY, EtcherBlockEntityRenderer::new);
+        BlockRenderLayerMap.INSTANCE.putBlock(RegisterAll.EXPERIENCE_CATCHER_BLOCK, RenderLayer.getTranslucent());
 
         // Screen renderers
         HandledScreens.register(RegisterAll.ETCHER_BLOCK_SCREEN_HANDLER, EtcherBlockScreen::new);

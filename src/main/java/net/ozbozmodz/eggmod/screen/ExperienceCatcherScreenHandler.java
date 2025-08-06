@@ -38,6 +38,7 @@ public class ExperienceCatcherScreenHandler extends ScreenHandler {
         addProperties(arrayPropertyDelegate);
     }
 
+    // For EXP bar
     public int getEnergyBar(){
         // This is for the energy bar
         int experience = this.propertyDelegate.get(0);
@@ -47,6 +48,7 @@ public class ExperienceCatcherScreenHandler extends ScreenHandler {
         return maxExperience != 0 && experience != 0 ? experience * barSize / maxExperience : 0;
     }
 
+    // For the pipe at the bottom
     public int getPipeWidth(){
         int experience = getExp();
         int maxExperience = 30;
