@@ -29,7 +29,6 @@ import net.ozbozmodz.eggmod.blocks.*;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntity;
 import net.ozbozmodz.eggmod.entities.ExperienceCatcherEntity;
 import net.ozbozmodz.eggmod.fooditems.*;
-import net.ozbozmodz.eggmod.items.Eggzooka;
 import net.ozbozmodz.eggmod.items.SpecialSyringeItem;
 import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
@@ -69,8 +68,6 @@ public class RegisterAll {
     // MISC ITEMS
     public static final Item SPECIAL_SYRINGE_ITEM = registerItem("special_syringe", new SpecialSyringeItem(new Item.Settings()));
     public static final Item ENDER_SERUM_ITEM = registerItem("ender_serum", new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(1)));
-    public static final Item EGGZOOKA = registerItem("eggzooka", new Eggzooka(new Item.Settings().maxCount(1).component(EGG_INV, Eggzooka.defaultList())));
-
     // TEMPLATE ITEMS
     public static final Item BLANK_TEMPLATE = registerItem("templates/blank_template", new TemplateItem(new Item.Settings()));
     public static final Item BLAST_EGG_TEMPLATE = registerItem("templates/blast_egg_template", new TemplateItem(new Item.Settings()));
@@ -130,8 +127,7 @@ public class RegisterAll {
     public static final ScreenHandlerType<ExperienceCatcherScreenHandler> EXPERIENCE_CATCHER_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of("eggmod", "experience_catcher_screen_handler"),
                     new ExtendedScreenHandlerType<>(ExperienceCatcherScreenHandler::new, BlockPos.PACKET_CODEC));
-
-    // PARTICLES
+     // PARTICLES
     public static final SimpleParticleType LOCK_ON_PARTICLE = registerParticle("lock_on_particle", FabricParticleTypes.simple());
 
     // SOUNDS
@@ -191,7 +187,6 @@ public class RegisterAll {
             entries.add(FRIED_EGG_ITEM);
             entries.add(ENDER_SERUM_ITEM);
             entries.add(SPECIAL_SYRINGE_ITEM);
-            entries.add(EGGZOOKA);
             entries.add(EGGSHELL_ITEM);
             entries.add(GIANT_EGG_ITEM);
             entries.add(RAW_GIANT_EGG_ITEM);
@@ -276,7 +271,5 @@ public class RegisterAll {
         DispenserBlock.registerBehavior(RegisterAll.TARGET_EGG_ITEM, new CustomEggDispenserBehavior(TARGET_EGG_ITEM));
         DispenserBlock.registerBehavior(RegisterAll.VORTEX_EGG_ITEM, new CustomEggDispenserBehavior(VORTEX_EGG_ITEM));
         DispenserBlock.registerBehavior(RegisterAll.EXPERIENCE_EGG_ITEM, new CustomEggDispenserBehavior(EXPERIENCE_EGG_ITEM));
-
-
     }
 }
