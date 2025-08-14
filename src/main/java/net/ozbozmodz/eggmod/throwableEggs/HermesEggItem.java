@@ -42,10 +42,8 @@ public class HermesEggItem extends CustomEggItem{
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         if(remainingUseTicks%4==0) {
-            user.playSound(RegisterAll.VORTEX_AMBIENT, 2.0f, Math.min((float) (getMaxUseTime(stack, user) - remainingUseTicks) / 10, 1.0f));
-            Random r = Random.create();
-            if (!world.isClient())
-                ((ServerWorld) world).spawnParticles(ParticleTypes.CLOUD, user.getX() + r.nextBetween(-1,1)*0.5, user.getEyeY()+r.nextBetween(-1,1)*0.5, user.getZ() + r.nextBetween(-1,1)*0.5, 0, 0, 0, 0, 0);
+            user.playSound(RegisterAll.VORTEX_AMBIENT, 2.0f, Math.min((float) (getMaxUseTime(stack, user) - remainingUseTicks) / 20, 1.0f));
+            if (!world.isClient()) ((ServerWorld)world).spawnParticles(ParticleTypes.CLOUD, user.getX(), user.getEyeY(), user.getZ(), 1, Math.cos(remainingUseTicks), 0 , Math.sin(remainingUseTicks) ,0);
         }
         super.usageTick(world, user, stack, remainingUseTicks);
     }

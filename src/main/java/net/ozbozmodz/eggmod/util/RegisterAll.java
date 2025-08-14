@@ -1,6 +1,5 @@
 package net.ozbozmodz.eggmod.util;
 
-import com.mojang.serialization.Codec;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
@@ -23,6 +22,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.GlobalPos;
 import net.ozbozmodz.eggmod.armor.EggshellArmorItem;
 import net.ozbozmodz.eggmod.armor.EggshellArmorMaterial;
 import net.ozbozmodz.eggmod.blocks.*;
@@ -37,13 +37,13 @@ import net.ozbozmodz.eggmod.statuseffects.LockOnEffect;
 import net.ozbozmodz.eggmod.statuseffects.RepelEffect;
 import net.ozbozmodz.eggmod.throwableEggs.*;
 
-import java.util.List;
 import java.util.function.UnaryOperator;
 
 public class RegisterAll {
     // COMPONENTS
-    public static final ComponentType<List<ItemStack>> EGG_INV = Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of("eggmod", "egg_inv"),
-            ComponentType.<List<ItemStack>>builder().codec(Codec.list(ItemStack.CODEC)).build());
+    public static final ComponentType<GlobalPos> RECALL_POS = Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of("eggmod", "recall_pos"),
+            ComponentType.<GlobalPos>builder().codec(GlobalPos.CODEC).build());
+
 
     // STATUS EFFECTS
     public static final RegistryEntry<StatusEffect> LOCK_ON_EFFECT = registerStatusEffect("locked_on", new LockOnEffect());
@@ -82,6 +82,7 @@ public class RegisterAll {
     public static final Item HERMES_EGG_TEMPLATE = registerItem("templates/hermes_egg_template", new TemplateItem(new Item.Settings()));
     public static final Item VORTEX_EGG_TEMPLATE = registerItem("templates/vortex_egg_template", new TemplateItem(new Item.Settings()));
     public static final Item EXPERIENCE_EGG_TEMPLATE = registerItem("templates/experience_egg_template", new TemplateItem(new Item.Settings()));
+    public static final Item RECALL_EGG_TEMPLATE = registerItem("templates/recall_egg_template", new TemplateItem(new Item.Settings()));
 
 
     // THROWABLE EGGS
@@ -97,6 +98,7 @@ public class RegisterAll {
     public static final Item HERMES_EGG_ITEM = registerItem("hermes_egg", new HermesEggItem(new Item.Settings()));
     public static final Item VORTEX_EGG_ITEM = registerItem("vortex_egg", new CustomEggItem(new Item.Settings()));
     public static final Item EXPERIENCE_EGG_ITEM = registerItem("experience_egg", new ExperienceEggItem(new Item.Settings()));
+    public static final Item RECALL_EGG_ITEM = registerItem("recall_egg", new RecallEggItem(new Item.Settings()));
 
     // BLOCKS
     public static final Block EGGSHELL_BLOCK = registerBlock("eggshells", new EggshellBlock(Block.Settings.copy(Blocks.WHITE_CARPET).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.TUFF).strength(0.2F)));
@@ -218,6 +220,8 @@ public class RegisterAll {
             entries.add(VORTEX_EGG_TEMPLATE);
             entries.add(EXPERIENCE_EGG_ITEM);
             entries.add(EXPERIENCE_EGG_TEMPLATE);
+            entries.add(RECALL_EGG_ITEM);
+            entries.add(RECALL_EGG_TEMPLATE);
             entries.add(EGGSHELL_HELMET);
             entries.add(EGGSHELL_CHESTPLATE);
             entries.add(EGGSHELL_LEGGINGS);
