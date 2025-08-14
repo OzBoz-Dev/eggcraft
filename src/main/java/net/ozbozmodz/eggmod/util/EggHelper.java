@@ -30,6 +30,7 @@ public class EggHelper {
             case "target_egg_template" -> (CustomEggItem) RegisterAll.TARGET_EGG_ITEM;
             case "hermes_egg_template" -> (CustomEggItem) RegisterAll.HERMES_EGG_ITEM;
             case "experience_egg_template" -> (CustomEggItem) RegisterAll.EXPERIENCE_EGG_ITEM;
+            case "recall_egg_template" -> (CustomEggItem) RegisterAll.RECALL_EGG_ITEM;
             default -> null;
         };
     }
