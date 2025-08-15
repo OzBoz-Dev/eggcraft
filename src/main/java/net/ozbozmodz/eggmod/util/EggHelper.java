@@ -5,8 +5,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.throwableEggs.*;
@@ -18,21 +20,11 @@ public class EggHelper {
 
     // Convert our template item to the corresponding output item
     public static CustomEggItem getCurrentOutputItem(Item template){
-        return switch(((TemplateItem)template).getType()){
-            case "blast_egg_template" -> (CustomEggItem) RegisterAll.BLAST_EGG_ITEM;
-            case "iron_egg_template" -> (CustomEggItem) RegisterAll.IRON_EGG_ITEM;
-            case "diamond_egg_template" -> (CustomEggItem) RegisterAll.DIAMOND_EGG_ITEM;
-            case "excavator_egg_template" -> (CustomEggItem) RegisterAll.EXCAVATOR_EGG_ITEM;
-            case "sponge_egg_template" -> (CustomEggItem) RegisterAll.SPONGE_EGG_ITEM;
-            case "overclock_egg_template" -> (CustomEggItem) RegisterAll.OVERCLOCK_EGG_ITEM;
-            case "plaster_egg_template" -> (CustomEggItem) RegisterAll.PLASTER_EGG_ITEM;
-            case "lure_egg_template" -> (CustomEggItem) RegisterAll.LURE_EGG_ITEM;
-            case "target_egg_template" -> (CustomEggItem) RegisterAll.TARGET_EGG_ITEM;
-            case "hermes_egg_template" -> (CustomEggItem) RegisterAll.HERMES_EGG_ITEM;
-            case "experience_egg_template" -> (CustomEggItem) RegisterAll.EXPERIENCE_EGG_ITEM;
-            case "recall_egg_template" -> (CustomEggItem) RegisterAll.RECALL_EGG_ITEM;
-            default -> null;
-        };
+        Item output = Registries.ITEM.get(Identifier.of ("eggmod", ((TemplateItem)template).getType()));
+        if (output instanceof CustomEggItem customEggItem){
+            return customEggItem;
+        }
+        else return null;
     }
 
     /* For being summoned by command or dispenser */
@@ -50,6 +42,7 @@ public class EggHelper {
             case "hermes_egg" -> new HermesEggEntity(RegisterAll.HERMES_EGG_ENTITY_TYPE, world);
             case "vortex_egg" -> new VortexEggEntity(RegisterAll.VORTEX_EGG_ENTITY_TYPE, world);
             case "experience_egg" -> new ExperienceEggEntity(RegisterAll.EXPERIENCE_EGG_ENTITY_TYPE, world);
+            case "capture_egg" -> new CaptureEggEntity(RegisterAll.CAPTURE_EGG_ENTITY_TYPE, world);
             default -> null;
         };
     }
@@ -69,6 +62,7 @@ public class EggHelper {
             case "hermes_egg" -> user.getItemCooldownManager().set(RegisterAll.HERMES_EGG_ITEM, 10);
             case "vortex_egg" -> user.getItemCooldownManager().set(RegisterAll.VORTEX_EGG_ITEM, 300);
             case "experience_egg" -> user.getItemCooldownManager().set(RegisterAll.EXPERIENCE_EGG_ITEM, 0);
+            case "capture_egg" -> user.getItemCooldownManager().set(RegisterAll.EXPERIENCE_EGG_ITEM, 10);
         }
     }
 

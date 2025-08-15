@@ -45,7 +45,7 @@ public class RenderHelper {
         EntityRendererRegistry.register(RegisterAll.HERMES_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterAll.VORTEX_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterAll.EXPERIENCE_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
-
+        EntityRendererRegistry.register(RegisterAll.CAPTURE_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);
 
 
         // Block Rendering

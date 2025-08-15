@@ -63,6 +63,8 @@
     "item.eggmod.recall_egg" : "Recall Egg",
     "item.eggmod.recall_egg.tooltip_1" : "Shift+Right Click to bind a location",
     "item.eggmod.recall_egg.tooltip_2" : "Hold a lodestone or recall compass in off hand to bind to it",
+    "item.eggmod.capture_egg" : "Capture Egg",
+    "item.eggmod.capture_egg.tooltip": "Capture any passive mob when thrown, infinite uses",
     "item.eggmod.templates.blank_template" : "Blank Template",
     "item.eggmod.templates.blast_egg_template" : "Blast Egg Template",
     "item.eggmod.templates.iron_egg_template" : "Iron Egg Template",
@@ -72,5 +74,9 @@
     "item.eggmod.templates.overclock_egg_template" : "Overclock Egg Template",
     "item.eggmod.templates.plaster_egg_template" : "Plaster Egg Template",
     "item.eggmod.templates.lure_egg_template" : "Lure Egg Template",
-    "item.eggmod.templates.target_egg_template" : "Target Egg Template"
+    "item.eggmod.templates.target_egg_template" : "Target Egg Template",
+    "item.eggmod.templates.hermes_egg_template" : "Hermes Egg Template",
+    "item.eggmod.templates.experience_egg_template" : "Experience Egg Template",
+    "item.eggmod.templates.recall_egg_template" : "Recall Egg Template",
+    "item.eggmod.templates.capture_egg_template" : "Capture Egg Template"
 }

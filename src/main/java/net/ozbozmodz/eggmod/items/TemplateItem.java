@@ -10,6 +10,6 @@ public class TemplateItem extends Item {
     }
 
     public String getType(){
-        return Registries.ITEM.getId(this).getPath().replaceFirst("templates/", "");
+        return Registries.ITEM.getId(this).getPath().replaceFirst("templates/", "").replace("_template", "");
     }
 }
