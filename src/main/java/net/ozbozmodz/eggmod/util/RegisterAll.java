@@ -44,7 +44,6 @@ public class RegisterAll {
     public static final ComponentType<GlobalPos> RECALL_POS = Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of("eggmod", "recall_pos"),
             ComponentType.<GlobalPos>builder().codec(GlobalPos.CODEC).build());
 
-
     // STATUS EFFECTS
     public static final RegistryEntry<StatusEffect> LOCK_ON_EFFECT = registerStatusEffect("locked_on", new LockOnEffect());
     public static final RegistryEntry<StatusEffect> REPEL_EFFECT = registerStatusEffect("repel", new RepelEffect());
@@ -83,7 +82,7 @@ public class RegisterAll {
     public static final Item VORTEX_EGG_TEMPLATE = registerItem("templates/vortex_egg_template", new TemplateItem(new Item.Settings()));
     public static final Item EXPERIENCE_EGG_TEMPLATE = registerItem("templates/experience_egg_template", new TemplateItem(new Item.Settings()));
     public static final Item RECALL_EGG_TEMPLATE = registerItem("templates/recall_egg_template", new TemplateItem(new Item.Settings()));
-
+    public static final Item CAPTURE_EGG_TEMPLATE = registerItem("templates/capture_egg_template", new TemplateItem(new Item.Settings()));
 
     // THROWABLE EGGS
     public static final Item BLAST_EGG_ITEM = registerItem("blast_egg", new CustomEggItem(new Item.Settings()));
@@ -99,6 +98,7 @@ public class RegisterAll {
     public static final Item VORTEX_EGG_ITEM = registerItem("vortex_egg", new CustomEggItem(new Item.Settings()));
     public static final Item EXPERIENCE_EGG_ITEM = registerItem("experience_egg", new ExperienceEggItem(new Item.Settings()));
     public static final Item RECALL_EGG_ITEM = registerItem("recall_egg", new RecallEggItem(new Item.Settings()));
+    public static final Item CAPTURE_EGG_ITEM = registerItem("capture_egg", new CaptureEggItem(new Item.Settings()));
 
     // BLOCKS
     public static final Block EGGSHELL_BLOCK = registerBlock("eggshells", new EggshellBlock(Block.Settings.copy(Blocks.WHITE_CARPET).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.TUFF).strength(0.2F)));
@@ -178,6 +178,9 @@ public class RegisterAll {
     @SuppressWarnings("unchecked")
     public static final EntityType<ExperienceEggEntity> EXPERIENCE_EGG_ENTITY_TYPE = (EntityType<ExperienceEggEntity>) registerEntityType("experience_egg_entity", EntityType.Builder.create(ExperienceEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
+    @SuppressWarnings("unchecked")
+    public static final EntityType<CaptureEggEntity> CAPTURE_EGG_ENTITY_TYPE = (EntityType<CaptureEggEntity>) registerEntityType("capture_egg_entity", EntityType.Builder.create(CaptureEggEntity::new, SpawnGroup.MISC)
+            .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
 
     // ITEM GROUP
     public static final ItemGroup EGGMOD = Registry.register(Registries.ITEM_GROUP, Identifier.of("eggmod", "general"),
@@ -222,6 +225,8 @@ public class RegisterAll {
             entries.add(EXPERIENCE_EGG_TEMPLATE);
             entries.add(RECALL_EGG_ITEM);
             entries.add(RECALL_EGG_TEMPLATE);
+            entries.add(CAPTURE_EGG_ITEM);
+            entries.add(CAPTURE_EGG_TEMPLATE);
             entries.add(EGGSHELL_HELMET);
             entries.add(EGGSHELL_CHESTPLATE);
             entries.add(EGGSHELL_LEGGINGS);
