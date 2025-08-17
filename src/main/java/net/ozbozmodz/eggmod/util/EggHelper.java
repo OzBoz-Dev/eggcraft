@@ -1,6 +1,7 @@
 package net.ozbozmodz.eggmod.util;
 
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,24 +28,11 @@ public class EggHelper {
         else return null;
     }
 
-    /* For being summoned by command or dispenser */
+    /* Return the right egg entity */
     public static CustomEggEntity getType(String type, World world){
-        return switch (type) {
-            case "blast_egg" -> new BlastEggEntity(RegisterAll.BLAST_EGG_ENTITY_ENTITY_TYPE, world);
-            case "iron_egg" -> new IronEggEntity(RegisterAll.IRON_EGG_ENTITY_TYPE, world);
-            case "diamond_egg" -> new DiamondEggEntity(RegisterAll.DIAMOND_EGG_ENTITY_TYPE, world);
-            case "excavator_egg" -> new ExcavatorEggEntity(RegisterAll.EXCAVATOR_EGG_ENTITY_TYPE, world);
-            case "sponge_egg" -> new SpongeEggEntity(RegisterAll.SPONGE_EGG_ENTITY_TYPE, world);
-            case "overclock_egg" -> new OverclockEggEntity(RegisterAll.OVERCLOCK_EGG_ENTITY_TYPE, world);
-            case "plaster_egg" -> new PlasterEggEntity(RegisterAll.PLASTER_EGG_ENTITY_TYPE, world);
-            case "lure_egg" -> new LureEggEntity(RegisterAll.LURE_EGG_ENTITY_TYPE, world);
-            case "target_egg" -> new TargetEggEntity(RegisterAll.TARGET_EGG_ENTITY_TYPE, world);
-            case "hermes_egg" -> new HermesEggEntity(RegisterAll.HERMES_EGG_ENTITY_TYPE, world);
-            case "vortex_egg" -> new VortexEggEntity(RegisterAll.VORTEX_EGG_ENTITY_TYPE, world);
-            case "experience_egg" -> new ExperienceEggEntity(RegisterAll.EXPERIENCE_EGG_ENTITY_TYPE, world);
-            case "capture_egg" -> new CaptureEggEntity(RegisterAll.CAPTURE_EGG_ENTITY_TYPE, world);
-            default -> null;
-        };
+        EntityType<?> entityType = Registries.ENTITY_TYPE.get(Identifier.of("eggmod", type.concat("_entity")));
+        if (!(entityType.create(world) instanceof CustomEggEntity entity)) return null;
+        return entity;
     }
 
     /* Set cooldowns for each egg type */
@@ -61,8 +49,8 @@ public class EggHelper {
             case "target_egg" -> user.getItemCooldownManager().set(RegisterAll.TARGET_EGG_ITEM, 50);
             case "hermes_egg" -> user.getItemCooldownManager().set(RegisterAll.HERMES_EGG_ITEM, 10);
             case "vortex_egg" -> user.getItemCooldownManager().set(RegisterAll.VORTEX_EGG_ITEM, 300);
-            case "experience_egg" -> user.getItemCooldownManager().set(RegisterAll.EXPERIENCE_EGG_ITEM, 0);
-            case "capture_egg" -> user.getItemCooldownManager().set(RegisterAll.EXPERIENCE_EGG_ITEM, 10);
+            case "experience_egg" -> user.getItemCooldownManager().set(RegisterAll.EXPERIENCE_EGG_ITEM, 10);
+            case "capture_egg" -> user.getItemCooldownManager().set(RegisterAll.CAPTURE_EGG_ITEM, 10);
         }
     }
 
