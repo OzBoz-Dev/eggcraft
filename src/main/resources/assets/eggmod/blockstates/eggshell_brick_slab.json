@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "eggmod:block/eggshell_bricks/eggshell_brick_slab"
+    },
+    "type=double": {
+      "model": "eggmod:block/eggshell_bricks/eggshell_bricks"
+    },
+    "type=top": {
+      "model": "eggmod:block/eggshell_bricks/eggshell_brick_slab_top"
+    }
+  }
+}

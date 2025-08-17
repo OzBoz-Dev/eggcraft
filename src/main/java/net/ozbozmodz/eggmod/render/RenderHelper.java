@@ -1,4 +1,4 @@
-package net.ozbozmodz.eggmod.util;
+package net.ozbozmodz.eggmod.render;
 
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
@@ -11,7 +11,9 @@ import net.minecraft.util.Identifier;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntityRenderer;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreen;
 import net.ozbozmodz.eggmod.screen.ExperienceCatcherScreen;
+import net.ozbozmodz.eggmod.throwableEggs.CaptureEggItem;
 import net.ozbozmodz.eggmod.throwableEggs.ExperienceEggItem;
+import net.ozbozmodz.eggmod.util.RegisterAll;
 
 public class RenderHelper {
     public static void registerModModels(){
@@ -28,10 +30,16 @@ public class RenderHelper {
                 entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0f : 0.0f);
 
         ModelPredicateProviderRegistry.register(RegisterAll.EXPERIENCE_EGG_ITEM, Identifier.of("eggmod", "exp"), (stack, world, entity, seed) -> {
-            if (entity == null || !stack.isOf(RegisterAll.EXPERIENCE_EGG_ITEM)) return 0.0f;
+            if (!stack.isOf(RegisterAll.EXPERIENCE_EGG_ITEM)) return 0.0f;
             float exp = ExperienceEggItem.getExperience(stack);
             return exp/ExperienceEggItem.maxExperience;
         });
+
+        ModelPredicateProviderRegistry.register(RegisterAll.CAPTURE_EGG_ITEM, Identifier.of("eggmod", "captured"), (stack, world, entity, seed) -> {
+            if (!stack.isOf(RegisterAll.CAPTURE_EGG_ITEM)) return 0;
+            return CaptureEggItem.getStoredEntity(stack, world) != null ? 1 : 0;
+        });
+
         // Entity renderers
         EntityRendererRegistry.register(RegisterAll.BLAST_EGG_ENTITY_ENTITY_TYPE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(RegisterAll.IRON_EGG_ENTITY_TYPE, FlyingItemEntityRenderer::new);

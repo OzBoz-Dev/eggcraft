@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.ozbozmodz.eggmod.util.RenderHelper;
+import net.ozbozmodz.eggmod.render.RenderHelper;
 
 
 public class Client implements ClientModInitializer {

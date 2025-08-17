@@ -1,0 +1,14 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0" : "eggmod:item/capture_egg_0"
+    },
+    "overrides" : [
+        {
+            "predicate" : {
+                "eggmod:captured":1
+            },
+            "model" : "eggmod:item/capture_egg_1"
+        }
+    ]
+}

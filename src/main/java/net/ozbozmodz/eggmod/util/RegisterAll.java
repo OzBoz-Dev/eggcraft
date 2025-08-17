@@ -101,7 +101,12 @@ public class RegisterAll {
     public static final Item CAPTURE_EGG_ITEM = registerItem("capture_egg", new CaptureEggItem(new Item.Settings()));
 
     // BLOCKS
-    public static final Block EGGSHELL_BLOCK = registerBlock("eggshells", new EggshellBlock(Block.Settings.copy(Blocks.WHITE_CARPET).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.TUFF).strength(0.2F)));
+    public static final Block EGGSHELL_BLOCK = registerBlock("eggshells", new EggshellBlock(Block.Settings.copy(Blocks.WHITE_CARPET).nonOpaque().sounds(BlockSoundGroup.TUFF).strength(0.2F)));
+    public static final Block EGGSHELL_BRICKS = registerBlock("eggshell_bricks", new Block(AbstractBlock.Settings.create().strength(0.5f).sounds(BlockSoundGroup.TUFF)));
+    public static final Block EGGSHELL_BRICK_STAIRS = registerBlock("eggshell_brick_stairs", new StairsBlock(EGGSHELL_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(EGGSHELL_BRICKS)));
+    public static final Block EGGSHELL_BRICK_SLAB = registerBlock("eggshell_brick_slab", new SlabBlock(AbstractBlock.Settings.copy(EGGSHELL_BRICKS)));
+    public static final Block EGGSHELL_BRICK_WALL = registerBlock("eggshell_brick_wall", new WallBlock(AbstractBlock.Settings.copy(EGGSHELL_BRICKS)));
+
     public static final Block GIANT_EGG_BLOCK = registerBlock("giant_egg", new GiantEggBlock(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE)));
     public static final Block RAW_GIANT_EGG_BLOCK= registerBlock("raw_giant_egg", new RawGiantEggBlock(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE)));
     public static final Block ETCHER_BLOCK = registerBlock("etcher_block", new EtcherBlock(AbstractBlock.Settings.create().nonOpaque().luminance(EtcherBlock::getLuminance).strength(5.0F, 6.0F)));
@@ -110,6 +115,10 @@ public class RegisterAll {
 
     // BLOCK ITEMS
     public static final Item EGGSHELL_ITEM = registerItem("eggshells", new BlockItem(EGGSHELL_BLOCK, new Item.Settings()));
+    public static final Item EGGSHELL_BRICKS_ITEM = registerItem("eggshell_bricks", new BlockItem(EGGSHELL_BRICKS, new Item.Settings()));
+    public static final Item EGGSHELL_BRICK_STAIRS_ITEM = registerItem("eggshell_brick_stairs", new BlockItem(EGGSHELL_BRICK_STAIRS, new Item.Settings()));
+    public static final Item EGGSHELL_BRICK_SLAB_ITEM = registerItem("eggshell_brick_slab", new BlockItem(EGGSHELL_BRICK_SLAB, new Item.Settings()));
+    public static final Item EGGSHELL_BRICK_WALL_ITEM = registerItem("eggshell_brick_wall", new BlockItem(EGGSHELL_BRICK_WALL, new Item.Settings()));
     public static final Item GIANT_EGG_ITEM = registerItem("giant_egg", new BlockItem(GIANT_EGG_BLOCK, new Item.Settings()));
     public static final Item RAW_GIANT_EGG_ITEM = registerItem("raw_giant_egg", new BlockItem(RAW_GIANT_EGG_BLOCK, new Item.Settings()));
     public static final Item ETCHER_ITEM = registerItem("etcher_block", new BlockItem(ETCHER_BLOCK, new Item.Settings()));
@@ -195,6 +204,10 @@ public class RegisterAll {
             entries.add(EGGSHELL_ITEM);
             entries.add(GIANT_EGG_ITEM);
             entries.add(RAW_GIANT_EGG_ITEM);
+            entries.add(EGGSHELL_BRICKS_ITEM);
+            entries.add(EGGSHELL_BRICK_STAIRS_ITEM);
+            entries.add(EGGSHELL_BRICK_SLAB_ITEM);
+            entries.add(EGGSHELL_BRICK_WALL_ITEM);
             entries.add(ETCHER_ITEM);
             entries.add(EXPERIENCE_CATCHER_ITEM);
             entries.add(BLAST_EGG_ITEM);
