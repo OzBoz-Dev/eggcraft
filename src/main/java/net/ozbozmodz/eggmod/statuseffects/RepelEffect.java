@@ -27,8 +27,8 @@ public class RepelEffect extends StatusEffect {
     public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         World world = entity.getWorld();
         // Box where we will capture all nearby mobs
-        int rD = amplifier * 6;
-        Box bound = new Box(entity.getX() - rD,entity.getY() - rD, entity.getZ() - rD, entity.getX() + rD, entity.getY() + rD, entity.getZ() + rD);
+        double rD = amplifier * 12;
+        Box bound = Box.of(entity.getPos(), rD, rD, rD);
         List<Entity> nearbyMobs = world.getOtherEntities(entity, bound, Predicates.instanceOf(LivingEntity.class));
         for (Entity target : nearbyMobs){
             // If we find any living entities nearby

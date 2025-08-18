@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "T": {
+      "item": "eggmod:templates/blank_template"
+    },
+    "S": {
+      "item": "minecraft:clock"
+    },
+    "A": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "pattern": [
+    "SAS",
+    "ATA",
+    "SAS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "eggmod:templates/overclock_egg_template"
+  }
+}

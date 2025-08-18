@@ -40,7 +40,7 @@ public class TargetEggEntity extends CustomEggEntity{
         // If the egg misses, then find the nearest livingEntity, if there is one
         else {
             BlockPos center = this.getBlockPos();
-            Box bound = new Box(center.getX() - 10,center.getY() - 10, center.getZ() - 10, center.getX() + 10, center.getY() + 10, center.getZ() + 10);
+            Box bound = Box.of(center.toCenterPos(), 20, 20, 20);
             List<? extends Entity> nearbyEntities = world.getOtherEntities(this, bound, Predicates.instanceOf(LivingEntity.class));
             if (!nearbyEntities.isEmpty()) {
                 // Find the nearest one, if it exists, then apply to that one

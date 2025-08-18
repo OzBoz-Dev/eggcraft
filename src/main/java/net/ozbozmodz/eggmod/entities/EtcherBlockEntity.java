@@ -89,12 +89,13 @@ public class EtcherBlockEntity extends BlockEntity implements ImplementedInvento
     // Calls on every tick and does our crafting block logic
     public void tick(World world, BlockPos pos, BlockState state){
         // Set energy. If we have an ender serum in the slot, empty it and fill energy to max
-        if (!getStack(SERUM_SLOT).isEmpty() && energy == 0
+        if (!getStack(SERUM_SLOT).isEmpty() && energy <= 12
                 && getStack(SERUM_SLOT).isOf(RegisterAll.ENDER_SERUM_ITEM)){
-            this.energy = maxEnergy;
+            world.playSound(null, pos, SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.2f);
+            this.energy += 4;
+            if (this.energy > maxEnergy) this.energy = maxEnergy;
             setStack(SERUM_SLOT, new ItemStack(RegisterAll.SPECIAL_SYRINGE_ITEM));
             world.setBlockState(pos, state.with(EtcherBlock.ENERGY, true));
-            world.playSound(null, pos, SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.2f);
             markDirty(world, pos, state);
             world.updateListeners(pos, state, state, 0);
         }
@@ -130,11 +131,12 @@ public class EtcherBlockEntity extends BlockEntity implements ImplementedInvento
 
     private void craftItem(){
         Item output = EggHelper.getCurrentOutputItem(getStack(TEMPLATE_SLOT).getItem());
+        if (output == null) return;
         // Decrease the eggs
         this.getStack(EGG_SLOT).decrement(1);
         // Do durability damage to the template, and remove it if it falls to 0
         this.getStack(TEMPLATE_SLOT).setDamage(this.getStack(TEMPLATE_SLOT).getDamage()+1);
-        if (this.getStack(TEMPLATE_SLOT).getDamage() == 16) this.getStack(TEMPLATE_SLOT).decrement(1);
+        if (this.getStack(TEMPLATE_SLOT).getDamage() == this.getStack(TEMPLATE_SLOT).getMaxDamage()) this.getStack(TEMPLATE_SLOT).decrement(1);
         // Put the result in the output
         this.setStack(OUTPUT_SLOT, new ItemStack(output, this.getStack(OUTPUT_SLOT).getCount() + 1));
     }

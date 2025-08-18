@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "T": {
+      "item": "eggmod:templates/blank_template"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "III",
+    "ITI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "eggmod:templates/iron_egg_template"
+  }
+}

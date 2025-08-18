@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "eggmod:eggshell"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XSX",
+    "X X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "eggmod:eggshell_leggings"
+  }
+}

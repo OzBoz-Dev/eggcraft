@@ -7,16 +7,23 @@
         {
             "predicate" : {
                 "minecraft:pulling":1,
-                "minecraft:pull" : 0.35
+                "minecraft:pull" : 0.25
             },
             "model" : "eggmod:item/ender_serum_1"
         },
         {
             "predicate" : {
                 "minecraft:pulling":1,
-                "minecraft:pull" : 0.70
+                "minecraft:pull" : 0.5
             },
             "model" : "eggmod:item/ender_serum_2"
+        },
+        {
+            "predicate" : {
+                "minecraft:pulling":1,
+                "minecraft:pull" : 0.75
+            },
+            "model" : "eggmod:item/ender_serum"
         }
     ]
 }
