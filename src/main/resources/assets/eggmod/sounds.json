@@ -28,5 +28,11 @@
     "sounds": [
       "eggmod:vortex_launch"
     ]
+  },
+  "mysterious_egg_laid": {
+    "subtitle" : "subtitles.eggmod.mysterious_egg_laid",
+    "sounds": [
+      "eggmod:mysterious_egg_laid"
+    ]
   }
 }

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "T": {
+      "item": "eggmod:templates/blank_template"
+    },
+    "S": {
+      "item": "minecraft:sponge"
+    },
+    "A": {
+      "item": "minecraft:prismarine_shard"
+    }
+  },
+  "pattern": [
+    "SAS",
+    "ATA",
+    "SAS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "eggmod:templates/sponge_egg_template"
+  }
+}

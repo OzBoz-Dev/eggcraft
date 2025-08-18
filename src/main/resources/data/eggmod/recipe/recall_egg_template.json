@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "T": {
+      "item": "eggmod:templates/blank_template"
+    },
+    "R": {
+      "item": "minecraft:crying_obsidian"
+    },
+    "S": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    "RSR",
+    "STS",
+    "RSR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "eggmod:templates/recall_egg_template"
+  }
+}

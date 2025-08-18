@@ -24,7 +24,7 @@ public class RenderHelper {
             if (entity.getActiveItem() != stack) {
                 return 0.0f;
             }
-            return (float)(stack.getMaxUseTime(entity) - entity.getItemUseTimeLeft()) / 60.0f;
+            return (float)(stack.getMaxUseTime(entity) - entity.getItemUseTimeLeft()) / 100.0f;
         });
         ModelPredicateProviderRegistry.register(RegisterAll.SPECIAL_SYRINGE_ITEM, Identifier.of("pulling"), (stack, world, entity, seed) ->
                 entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0f : 0.0f);

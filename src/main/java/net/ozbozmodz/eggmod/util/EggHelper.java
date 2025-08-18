@@ -43,9 +43,9 @@ public class EggHelper {
             case "diamond_egg" -> user.getItemCooldownManager().set(RegisterAll.DIAMOND_EGG_ITEM, 8);
             case "excavator_egg" -> user.getItemCooldownManager().set(RegisterAll.EXCAVATOR_EGG_ITEM, 16);
             case "sponge_egg" -> user.getItemCooldownManager().set(RegisterAll.SPONGE_EGG_ITEM, 16);
-            case "overclock_egg" -> user.getItemCooldownManager().set(RegisterAll.OVERCLOCK_EGG_ITEM, 200);
+            case "overclock_egg" -> user.getItemCooldownManager().set(RegisterAll.OVERCLOCK_EGG_ITEM, 20);
             case "plaster_egg" -> user.getItemCooldownManager().set(RegisterAll.PLASTER_EGG_ITEM, 16);
-            case "lure_egg" -> user.getItemCooldownManager().set(RegisterAll.LURE_EGG_ITEM, 200);
+            case "lure_egg" -> user.getItemCooldownManager().set(RegisterAll.LURE_EGG_ITEM, 20);
             case "target_egg" -> user.getItemCooldownManager().set(RegisterAll.TARGET_EGG_ITEM, 50);
             case "hermes_egg" -> user.getItemCooldownManager().set(RegisterAll.HERMES_EGG_ITEM, 10);
             case "vortex_egg" -> user.getItemCooldownManager().set(RegisterAll.VORTEX_EGG_ITEM, 300);

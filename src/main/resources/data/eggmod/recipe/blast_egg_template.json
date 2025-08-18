@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "T": {
+      "item": "eggmod:templates/blank_template"
+    },
+    "N": {
+      "item": "minecraft:tnt"
+    },
+    "F": {
+      "item": "minecraft:fire_charge"
+    },
+    "S": {
+      "item": "minecraft:stone"
+    }
+  },
+  "pattern": [
+    "NSN",
+    "FTF",
+    "NSN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "eggmod:templates/blast_egg_template"
+  }
+}

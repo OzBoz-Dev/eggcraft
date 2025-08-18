@@ -100,8 +100,7 @@ public class LureEggEntity extends PersistentEggEntity{
     protected void populateList(World world){
         BlockPos center = this.getBlockPos();
         // Find nearby entities, filtered down to only passive mobs, and add them to a list
-        List<Entity> nearbyEntities = world.getOtherEntities(this,
-                new Box(center.getX() - 30,center.getY() - 10, center.getZ() - 30, center.getX() + 30, center.getY() + 10, center.getZ() + 30), Predicates.instanceOf(PassiveEntity.class));
+        List<Entity> nearbyEntities = world.getOtherEntities(this, Box.of(center.toCenterPos(), 60, 20, 60), Predicates.instanceOf(PassiveEntity.class));
         for (Entity e : nearbyEntities){
             if (e instanceof PassiveEntity){
                 scannedPassiveMobs.add((PassiveEntity) e);

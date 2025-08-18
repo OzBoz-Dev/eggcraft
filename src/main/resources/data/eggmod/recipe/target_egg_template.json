@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "T": {
+      "item": "eggmod:templates/blank_template"
+    },
+    "R": {
+      "item": "minecraft:target"
+    },
+    "S": {
+      "item": "minecraft:spectral_arrow"
+    }
+  },
+  "pattern": [
+    "RSR",
+    "STS",
+    "RSR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "eggmod:templates/target_egg_template"
+  }
+}

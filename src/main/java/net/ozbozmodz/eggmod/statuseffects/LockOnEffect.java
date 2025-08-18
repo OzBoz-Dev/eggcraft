@@ -29,7 +29,7 @@ public class LockOnEffect extends StatusEffect {
         World world = entity.getWorld();
         if(ticksElapsed % 40 == 0 && !world.isClient()) ((ServerWorld)world).spawnParticles(RegisterAll.LOCK_ON_PARTICLE, entity.getX(), entity.getY()+entity.getHeight()+0.5, entity.getZ(), 1, entity.getMovement().getX(),0,entity.getMovement().getZ(),0.5f);
         // Box where we will capture all nearby arrows
-        Box bound = new Box(entity.getX() - 10,entity.getY() - 10, entity.getZ() - 10, entity.getX() + 10, entity.getY() + 10, entity.getZ() + 10);
+        Box bound = Box.of(entity.getPos(), 20,20,20);
         List<Entity> projectiles = world.getOtherEntities(entity, bound, Predicates.instanceOf(ProjectileEntity.class));
         if (!world.isClient()) {
             for (Entity e : projectiles) {

@@ -69,20 +69,20 @@ public class RegisterAll {
     public static final Item ENDER_SERUM_ITEM = registerItem("ender_serum", new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(1)));
     // TEMPLATE ITEMS
     public static final Item BLANK_TEMPLATE = registerItem("templates/blank_template", new TemplateItem(new Item.Settings()));
-    public static final Item BLAST_EGG_TEMPLATE = registerItem("templates/blast_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item IRON_EGG_TEMPLATE = registerItem("templates/iron_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item DIAMOND_EGG_TEMPLATE = registerItem("templates/diamond_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item EXCAVATOR_EGG_TEMPLATE = registerItem("templates/excavator_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item SPONGE_EGG_TEMPLATE = registerItem("templates/sponge_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item OVERCLOCK_EGG_TEMPLATE = registerItem("templates/overclock_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item PLASTER_EGG_TEMPLATE = registerItem("templates/plaster_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item LURE_EGG_TEMPLATE = registerItem("templates/lure_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item TARGET_EGG_TEMPLATE = registerItem("templates/target_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item HERMES_EGG_TEMPLATE = registerItem("templates/hermes_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item VORTEX_EGG_TEMPLATE = registerItem("templates/vortex_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item EXPERIENCE_EGG_TEMPLATE = registerItem("templates/experience_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item RECALL_EGG_TEMPLATE = registerItem("templates/recall_egg_template", new TemplateItem(new Item.Settings()));
-    public static final Item CAPTURE_EGG_TEMPLATE = registerItem("templates/capture_egg_template", new TemplateItem(new Item.Settings()));
+    public static final Item BLAST_EGG_TEMPLATE = registerItem("templates/blast_egg_template", new TemplateItem(new Item.Settings().maxDamage(4)));
+    public static final Item IRON_EGG_TEMPLATE = registerItem("templates/iron_egg_template", new TemplateItem(new Item.Settings().maxDamage(8)));
+    public static final Item DIAMOND_EGG_TEMPLATE = registerItem("templates/diamond_egg_template", new TemplateItem(new Item.Settings().maxDamage(8)));
+    public static final Item EXCAVATOR_EGG_TEMPLATE = registerItem("templates/excavator_egg_template", new TemplateItem(new Item.Settings().maxDamage(16)));
+    public static final Item SPONGE_EGG_TEMPLATE = registerItem("templates/sponge_egg_template", new TemplateItem(new Item.Settings().maxDamage(16)));
+    public static final Item OVERCLOCK_EGG_TEMPLATE = registerItem("templates/overclock_egg_template", new TemplateItem(new Item.Settings().maxDamage(8)));
+    public static final Item PLASTER_EGG_TEMPLATE = registerItem("templates/plaster_egg_template", new TemplateItem(new Item.Settings().maxDamage(16)));
+    public static final Item LURE_EGG_TEMPLATE = registerItem("templates/lure_egg_template", new TemplateItem(new Item.Settings().maxDamage(8)));
+    public static final Item TARGET_EGG_TEMPLATE = registerItem("templates/target_egg_template", new TemplateItem(new Item.Settings().maxDamage(4)));
+    public static final Item HERMES_EGG_TEMPLATE = registerItem("templates/hermes_egg_template", new TemplateItem(new Item.Settings().maxDamage(8)));
+    public static final Item VORTEX_EGG_TEMPLATE = registerItem("templates/vortex_egg_template", new TemplateItem(new Item.Settings().maxDamage(8)));
+    public static final Item EXPERIENCE_EGG_TEMPLATE = registerItem("templates/experience_egg_template", new TemplateItem(new Item.Settings().maxDamage(4)));
+    public static final Item RECALL_EGG_TEMPLATE = registerItem("templates/recall_egg_template", new TemplateItem(new Item.Settings().maxDamage(4)));
+    public static final Item CAPTURE_EGG_TEMPLATE = registerItem("templates/capture_egg_template", new TemplateItem(new Item.Settings().maxDamage(1)));
 
     // THROWABLE EGGS
     public static final Item BLAST_EGG_ITEM = registerItem("blast_egg", new CustomEggItem(new Item.Settings()));
@@ -101,7 +101,7 @@ public class RegisterAll {
     public static final Item CAPTURE_EGG_ITEM = registerItem("capture_egg", new CaptureEggItem(new Item.Settings()));
 
     // BLOCKS
-    public static final Block EGGSHELL_BLOCK = registerBlock("eggshells", new EggshellBlock(Block.Settings.copy(Blocks.WHITE_CARPET).nonOpaque().sounds(BlockSoundGroup.TUFF).strength(0.2F)));
+    public static final Block EGGSHELL_BLOCK = registerBlock("eggshell", new EggshellBlock(Block.Settings.copy(Blocks.WHITE_CARPET).nonOpaque().sounds(BlockSoundGroup.TUFF).strength(0.2F)));
     public static final Block EGGSHELL_BRICKS = registerBlock("eggshell_bricks", new Block(AbstractBlock.Settings.create().strength(0.5f).sounds(BlockSoundGroup.TUFF)));
     public static final Block EGGSHELL_BRICK_STAIRS = registerBlock("eggshell_brick_stairs", new StairsBlock(EGGSHELL_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(EGGSHELL_BRICKS)));
     public static final Block EGGSHELL_BRICK_SLAB = registerBlock("eggshell_brick_slab", new SlabBlock(AbstractBlock.Settings.copy(EGGSHELL_BRICKS)));
@@ -110,11 +110,11 @@ public class RegisterAll {
     public static final Block GIANT_EGG_BLOCK = registerBlock("giant_egg", new GiantEggBlock(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE)));
     public static final Block RAW_GIANT_EGG_BLOCK= registerBlock("raw_giant_egg", new RawGiantEggBlock(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE)));
     public static final Block ETCHER_BLOCK = registerBlock("etcher_block", new EtcherBlock(AbstractBlock.Settings.create().nonOpaque().luminance(EtcherBlock::getLuminance).strength(5.0F, 6.0F)));
-    public static final Block EXPERIENCE_CATCHER_BLOCK = registerBlock("experience_catcher", new ExperienceCatcherBlock(AbstractBlock.Settings.create().nonOpaque().strength(1.0f)));
-    public static final Block MYSTERIOUS_EGG_BLOCK = registerBlock("mysterious_egg", new MysteriousEggBlock(AbstractBlock.Settings.create().nonOpaque().sounds(BlockSoundGroup.GLASS)));
+    public static final Block EXPERIENCE_CATCHER_BLOCK = registerBlock("experience_catcher", new ExperienceCatcherBlock(AbstractBlock.Settings.create().nonOpaque().strength(1.0f).sounds(BlockSoundGroup.GLASS)));
+    public static final Block MYSTERIOUS_EGG_BLOCK = registerBlock("mysterious_egg", new MysteriousEggBlock(AbstractBlock.Settings.create().nonOpaque().sounds(BlockSoundGroup.AMETHYST_CLUSTER)));
 
     // BLOCK ITEMS
-    public static final Item EGGSHELL_ITEM = registerItem("eggshells", new BlockItem(EGGSHELL_BLOCK, new Item.Settings()));
+    public static final Item EGGSHELL_ITEM = registerItem("eggshell", new BlockItem(EGGSHELL_BLOCK, new Item.Settings()));
     public static final Item EGGSHELL_BRICKS_ITEM = registerItem("eggshell_bricks", new BlockItem(EGGSHELL_BRICKS, new Item.Settings()));
     public static final Item EGGSHELL_BRICK_STAIRS_ITEM = registerItem("eggshell_brick_stairs", new BlockItem(EGGSHELL_BRICK_STAIRS, new Item.Settings()));
     public static final Item EGGSHELL_BRICK_SLAB_ITEM = registerItem("eggshell_brick_slab", new BlockItem(EGGSHELL_BRICK_SLAB, new Item.Settings()));
@@ -147,6 +147,7 @@ public class RegisterAll {
     public static final SoundEvent HERMES_TAKEOFF = registerSoundEvent("eggmod:hermes_takeoff", SoundEvent.of(Identifier.of("eggmod:hermes_takeoff")));
     public static final SoundEvent VORTEX_AMBIENT = registerSoundEvent("eggmod:vortex_ambient", SoundEvent.of(Identifier.of("eggmod:vortex_ambient")));
     public static final SoundEvent VORTEX_LAUNCH = registerSoundEvent("eggmod:vortex_launch", SoundEvent.of(Identifier.of("eggmod:vortex_launch")));
+    public static final SoundEvent MYSTERIOUS_EGG_LAID = registerSoundEvent("eggmod:mysterious_egg_laid", SoundEvent.of(Identifier.of("eggmod:mysterious_egg_laid")));
 
     // BEHAVIORS
     public static final EggshellDispenserBehavior EGGSHELL_DISPENSER_BEHAVIOR = new EggshellDispenserBehavior();

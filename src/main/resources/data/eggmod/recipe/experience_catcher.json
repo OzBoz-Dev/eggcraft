@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "minecraft:emerald_block"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "X": {
+      "item": "eggmod:experience_egg"
+    }
+  },
+  "pattern": [
+    "EEE",
+    "GXG",
+    "EEE"
+  ],
+  "result": {
+    "count": 1,
+    "id": "eggmod:experience_catcher"
+  }
+}

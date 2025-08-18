@@ -41,7 +41,7 @@ public class IronEggEntity extends CustomEggEntity {
         double dist = Vector3d.distanceSquared(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), this.getX(), this.getY(), this.getZ());
         // Do extra damage depending on how far the thrower is from it. Else just only do base dmg
         if (this.getOwner() != null) {
-                       entityHitResult.getEntity().damage(world.getDamageSources().playerAttack((PlayerEntity) this.getOwner()), (float) (baseDmg + (dist / 15)));
+                       entityHitResult.getEntity().damage(world.getDamageSources().playerAttack((PlayerEntity) this.getOwner()), (float) Math.min(baseDmg + (dist / 20), 100.0f));
         }
         else {
             entityHitResult.getEntity().damage(world.getDamageSources().generic(), (float) (baseDmg + (dist/15)));

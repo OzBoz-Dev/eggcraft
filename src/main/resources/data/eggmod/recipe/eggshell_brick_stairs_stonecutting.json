@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "eggmod:eggshell_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "eggmod:eggshell_brick_stairs"
+  }
+}

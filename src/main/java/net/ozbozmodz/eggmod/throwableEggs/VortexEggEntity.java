@@ -1,5 +1,6 @@
 package net.ozbozmodz.eggmod.throwableEggs;
 
+import com.google.common.base.Predicates;
 import net.minecraft.entity.*;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.particle.ParticleTypes;
@@ -38,8 +39,7 @@ public class VortexEggEntity extends PersistentEggEntity{
 
     protected void populateLists(World world){
         BlockPos center = this.getBlockPos();
-        List<Entity> nearbyEntities = world.getOtherEntities(this,
-                new Box(center.getX() - 20,center.getY() - 10, center.getZ() - 20, center.getX() + 20, center.getY() + 10, center.getZ() + 20));
+        List<Entity> nearbyEntities = world.getOtherEntities(this, Box.of(center.toCenterPos(), 40, 20, 40), Predicates.instanceOf(LivingEntity.class));
         targets.addAll(nearbyEntities);
     }
 
