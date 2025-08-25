@@ -1,0 +1,6 @@
+{
+  "parent": "eggmod:item/eggs_in_a_basket",
+  "textures": {
+    "layer0" : "eggmod:item/eggs_basket/eggs_basket_6"
+  }
+}

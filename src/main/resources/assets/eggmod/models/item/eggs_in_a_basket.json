@@ -1,0 +1,50 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0" : "eggmod:item/eggs_basket/eggs_basket"
+  },
+  "overrides" : [
+    {
+      "predicate" : {
+        "eggmod:effect":0.1
+      },
+      "model" : "eggmod:item/eggs_basket/eggs_basket_1"
+    },
+    {
+      "predicate" : {
+        "eggmod:effect":0.2
+      },
+      "model" : "eggmod:item/eggs_basket/eggs_basket_2"
+    },
+    {
+      "predicate" : {
+        "eggmod:effect":0.3
+      },
+      "model" : "eggmod:item/eggs_basket/eggs_basket_3"
+    },
+    {
+      "predicate" : {
+        "eggmod:effect":0.4
+      },
+      "model" : "eggmod:item/eggs_basket/eggs_basket_4"
+    },
+    {
+      "predicate" : {
+        "eggmod:effect":0.5
+      },
+      "model" : "eggmod:item/eggs_basket/eggs_basket_5"
+    },
+    {
+      "predicate" : {
+        "eggmod:effect":0.6
+      },
+      "model" : "eggmod:item/eggs_basket/eggs_basket_6"
+    },
+    {
+      "predicate" : {
+        "eggmod:effect":0.7
+      },
+      "model" : "eggmod:item/eggs_basket/eggs_basket_7"
+    }
+  ]
+}

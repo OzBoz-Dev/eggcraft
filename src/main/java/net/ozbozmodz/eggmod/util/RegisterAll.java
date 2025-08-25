@@ -29,11 +29,13 @@ import net.ozbozmodz.eggmod.blocks.*;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntity;
 import net.ozbozmodz.eggmod.entities.ExperienceCatcherEntity;
 import net.ozbozmodz.eggmod.fooditems.*;
+import net.ozbozmodz.eggmod.items.EggsInABasketItem;
 import net.ozbozmodz.eggmod.items.SpecialSyringeItem;
 import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
 import net.ozbozmodz.eggmod.screen.ExperienceCatcherScreenHandler;
 import net.ozbozmodz.eggmod.statuseffects.LockOnEffect;
+import net.ozbozmodz.eggmod.statuseffects.ReachEffect;
 import net.ozbozmodz.eggmod.statuseffects.RepelEffect;
 import net.ozbozmodz.eggmod.throwableEggs.*;
 
@@ -47,6 +49,7 @@ public class RegisterAll {
     // STATUS EFFECTS
     public static final RegistryEntry<StatusEffect> LOCK_ON_EFFECT = registerStatusEffect("locked_on", new LockOnEffect());
     public static final RegistryEntry<StatusEffect> REPEL_EFFECT = registerStatusEffect("repel", new RepelEffect());
+    public static final RegistryEntry<StatusEffect> REACH_EFFECT = registerStatusEffect("reach", new ReachEffect());
 
     // ENTITIES
     
@@ -67,6 +70,7 @@ public class RegisterAll {
     // MISC ITEMS
     public static final Item SPECIAL_SYRINGE_ITEM = registerItem("special_syringe", new SpecialSyringeItem(new Item.Settings()));
     public static final Item ENDER_SERUM_ITEM = registerItem("ender_serum", new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(1)));
+    public static final Item EGGS_IN_A_BASKET_ITEM = registerItem("eggs_in_a_basket", new EggsInABasketItem(new Item.Settings()));
     // TEMPLATE ITEMS
     public static final Item BLANK_TEMPLATE = registerItem("templates/blank_template", new TemplateItem(new Item.Settings()));
     public static final Item BLAST_EGG_TEMPLATE = registerItem("templates/blast_egg_template", new TemplateItem(new Item.Settings().maxDamage(4)));
@@ -241,6 +245,7 @@ public class RegisterAll {
             entries.add(RECALL_EGG_TEMPLATE);
             entries.add(CAPTURE_EGG_ITEM);
             entries.add(CAPTURE_EGG_TEMPLATE);
+            entries.add(EGGS_IN_A_BASKET_ITEM);
             entries.add(EGGSHELL_HELMET);
             entries.add(EGGSHELL_CHESTPLATE);
             entries.add(EGGSHELL_LEGGINGS);

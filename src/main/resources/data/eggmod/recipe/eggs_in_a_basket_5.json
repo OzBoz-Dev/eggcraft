@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    },
+    "A": {
+      "item": "eggmod:lure_egg"
+    },
+    "B": {
+      "item": "eggmod:experience_egg"
+    },
+    "C": {
+      "item": "eggmod:recall_egg"
+    }
+  },
+  "pattern": [
+    "ASB",
+    "SCS",
+    "PPP"
+  ],
+  "result": {
+    "components": {
+      "minecraft:custom_data": {
+        "effect": 5
+      }
+    },
+    "count": 1,
+    "id": "eggmod:eggs_in_a_basket"
+  }
+}
