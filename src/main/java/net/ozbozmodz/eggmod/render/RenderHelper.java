@@ -7,6 +7,9 @@ import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import net.ozbozmodz.eggmod.entities.EtcherBlockEntityRenderer;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreen;
@@ -38,6 +41,14 @@ public class RenderHelper {
         ModelPredicateProviderRegistry.register(RegisterAll.CAPTURE_EGG_ITEM, Identifier.of("eggmod", "captured"), (stack, world, entity, seed) -> {
             if (!stack.isOf(RegisterAll.CAPTURE_EGG_ITEM)) return 0;
             return CaptureEggItem.getStoredEntity(stack, world) != null ? 1 : 0;
+        });
+
+        ModelPredicateProviderRegistry.register(RegisterAll.EGGS_IN_A_BASKET_ITEM, Identifier.of("eggmod", "effect"), (stack, world, entity, seed) -> {
+            NbtComponent component = stack.get(DataComponentTypes.CUSTOM_DATA);
+            if (component == null) return 0;
+            NbtCompound compound = component.copyNbt();
+            if (compound == null) return 0;
+            return (float) (compound.getDouble("effect") / 10);
         });
 
         // Entity renderers
