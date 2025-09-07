@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "eggmod:recall_egg",
+    "eggmod:capture_egg",
+    "eggmod:experience_egg",
+    "eggmod:vortex_egg"
+  ]
+}

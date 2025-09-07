@@ -26,9 +26,9 @@ public class CustomEggDispenserBehavior extends ProjectileDispenserBehavior {
         System.out.println(typeString);
         if (ourEgg != null) {
             // If we have an experience egg
-            if (ourEggItem instanceof ExperienceEggItem ei) ((ExperienceEggEntity)ourEgg).setExperience(ei.getExperience(stack));
+            if (ourEggItem instanceof ExperienceEggItem ei) ((ExperienceEggEntity)ourEgg).setExperience(ExperienceEggItem.getExperience(stack));
             ourEgg.setItem(stack);
-            ourEgg.setPos(pos.getX() + direction.getOffsetX(), pos.getY() + direction.getOffsetY(), pos.getZ() + direction.getOffsetZ());
+            ourEgg.setPos(pos.getX() + direction.getOffsetX(), pos.getY() + direction.getOffsetY()+0.5, pos.getZ() + direction.getOffsetZ());
             ourEgg.setVelocity(direction.getOffsetX(), direction.getOffsetY(), direction.getOffsetZ());
             world.spawnEntity(ourEgg);
             stack.decrement(1);

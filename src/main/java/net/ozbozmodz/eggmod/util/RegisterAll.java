@@ -11,10 +11,14 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.*;
+import net.minecraft.loot.LootTable;
 import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
@@ -195,6 +199,14 @@ public class RegisterAll {
     @SuppressWarnings("unchecked")
     public static final EntityType<CaptureEggEntity> CAPTURE_EGG_ENTITY_TYPE = (EntityType<CaptureEggEntity>) registerEntityType("capture_egg_entity", EntityType.Builder.create(CaptureEggEntity::new, SpawnGroup.MISC)
             .dimensions(0.25F, 0.25F).maxTrackingRange(20).trackingTickInterval(20).build());
+
+    // LOOT TABLE
+    public static final RegistryKey<LootTable> GIANT_EGG_LOOT = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of("eggmod", "chests/giant_egg_loot"));
+    public static final RegistryKey<LootTable> EGG_ALTAR_LOOT = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of("eggmod", "chests/egg_altar_loot"));
+
+    // TAGS
+    public static final TagKey<Item> COMMON_EGGS = TagKey.of(RegistryKeys.ITEM, Identifier.of("eggmod", "common_eggs"));
+    public static final TagKey<Item> RARE_EGGS = TagKey.of(RegistryKeys.ITEM, Identifier.of("eggmod", "rare_eggs"));
 
     // ITEM GROUP
     public static final ItemGroup EGGMOD = Registry.register(Registries.ITEM_GROUP, Identifier.of("eggmod", "general"),

@@ -1,13 +1,17 @@
 package net.ozbozmodz.eggmod.mixin;
 
+import net.minecraft.advancement.AdvancementEntry;
+import net.minecraft.advancement.AdvancementProgress;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.Identifier;
 import net.ozbozmodz.eggmod.armor.EggshellArmorMaterial;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -38,6 +42,15 @@ public abstract class EggshellArmorMixin {
                         world.spawnParticles(ParticleTypes.ENCHANTED_HIT, ourEntity.getX(), ourEntity.getY(), ourEntity.getZ(), 5, 0, 0.3f, 0, 1);
                         // Return false
                         cir.setReturnValue(false);
+                        if (ourEntity instanceof ServerPlayerEntity serverUser && serverUser.getServer() != null) {
+                            AdvancementEntry adv = serverUser.getServer().getAdvancementLoader().get(Identifier.of("eggmod/absorb_damage"));
+                            if (adv != null) {
+                                AdvancementProgress progress = serverUser.getAdvancementTracker().getProgress(adv);
+                                for (String criterion : progress.getUnobtainedCriteria()) {
+                                    serverUser.getAdvancementTracker().grantCriterion(adv, criterion);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
