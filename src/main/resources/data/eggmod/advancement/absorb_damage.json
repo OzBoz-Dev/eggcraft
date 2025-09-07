@@ -1,0 +1,22 @@
+{
+  "parent": "minecraft:eggmod/get_eggshell",
+  "criteria": {
+    "absorb_damage": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": "Fully absorb a hit of damage with Eggshell Armor",
+    "icon": {
+      "count": 1,
+      "id": "eggmod:eggshell_chestplate"
+    },
+    "title": "Invincible"
+  },
+  "requirements": [
+    [
+      "absorb_damage"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

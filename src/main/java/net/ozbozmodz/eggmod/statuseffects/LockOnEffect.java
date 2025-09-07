@@ -5,6 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -34,7 +35,8 @@ public class LockOnEffect extends StatusEffect {
         if (!world.isClient()) {
             for (Entity e : projectiles) {
                 // If we find a projectile entity in the air
-                if (e instanceof ProjectileEntity p && !p.isOnGround()) {
+                if (e instanceof ProjectileEntity p && p.distanceTo(entity) > 2 && !p.isOnGround()) {
+                    if (p instanceof PersistentProjectileEntity pe && pe.groundCollision) pe.discard();
                     // Send it flying towards the target
                     Vec3d vecToTarget = new Vec3d(entity.getX() - p.getX(), entity.getY() + 1 - p.getY(), entity.getZ() - p.getZ());
                     ((ServerWorld) world).spawnParticles(ParticleTypes.CRIMSON_SPORE, p.getX(), p.getY(), p.getZ(), 1, 0, 0, 0, 0);

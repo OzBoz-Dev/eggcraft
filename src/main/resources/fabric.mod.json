@@ -23,6 +23,9 @@
     ],
     "client" : [
       "net.ozbozmodz.eggmod.Client"
+    ],
+    "fabric-datagen": [
+      "net.ozbozmodz.eggmod.util.EggDataGenerator"
     ]
   },
   "mixins": [

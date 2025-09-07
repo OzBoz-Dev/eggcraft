@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:eggmod/root",
+  "criteria": {
+    "get_eggshell": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:eggshell"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Collect an Eggshell",
+    "icon": {
+      "count": 1,
+      "id": "eggmod:eggshell"
+    },
+    "title": "An Empty Shell"
+  },
+  "requirements": [
+    [
+      "get_eggshell"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:eggmod/get_etcher",
+  "criteria": {
+    "get_basket": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:eggs_in_a_basket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Craft Eggs in a Basket",
+    "frame": "goal",
+    "icon": {
+      "components": {
+        "minecraft:custom_data": {
+          "amplifier": 0,
+          "effect": 1.0,
+          "ticks": 0
+        }
+      },
+      "count": 1,
+      "id": "eggmod:eggs_in_a_basket"
+    },
+    "title": "Basketeer"
+  },
+  "requirements": [
+    [
+      "get_basket"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

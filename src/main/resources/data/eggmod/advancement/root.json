@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "root": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "eggmod:textures/block/eggshell_bricks.png",
+    "description": "Oh the eggs you will make!",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:egg"
+    },
+    "show_toast": false,
+    "title": "The World of Eggs"
+  },
+  "requirements": [
+    [
+      "root"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

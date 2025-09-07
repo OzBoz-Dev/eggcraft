@@ -80,8 +80,9 @@ public class EggsInABasketItem extends Item {
         try {
             RegistryEntry<StatusEffect> effect = readEffect(stack);
             if (effect != null && effect.value() != null && getElapsedTicks(stack) % 20 == 0) {
+                if (le.hasStatusEffect(effect)) return;
                 stack.damage(getAmplifier(stack)+1, le, slot);
-                StatusEffectInstance instance = new StatusEffectInstance(effect, 25, getAmplifier(stack), true, true, true);
+                StatusEffectInstance instance = new StatusEffectInstance(effect, 20, getAmplifier(stack), true, true, true);
                 le.addStatusEffect(instance);
             }
         } catch (Exception e) {LoggerFactory.getLogger("eggmod").debug("No valid status effect on this basket");}

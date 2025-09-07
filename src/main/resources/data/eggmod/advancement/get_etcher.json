@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:eggmod/root",
+  "criteria": {
+    "get_etcher": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:etcher_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Craft an Etching Station",
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "eggmod:etcher_block"
+    },
+    "title": "Straight up Etchin' it"
+  },
+  "requirements": [
+    [
+      "get_etcher"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

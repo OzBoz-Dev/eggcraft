@@ -1,0 +1,23 @@
+{
+  "parent": "minecraft:eggmod/root",
+  "criteria": {
+    "get_burnt_egg": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": "Cook an egg in a furnace, realize why you shouldn't cook an egg in a furnace",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "eggmod:burnt_egg"
+    },
+    "title": "Kitchen Mishap"
+  },
+  "requirements": [
+    [
+      "get_burnt_egg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
