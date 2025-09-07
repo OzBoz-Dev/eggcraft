@@ -77,7 +77,7 @@ public class TargetEggEntity extends CustomEggEntity{
         if (!nearby.isEmpty()) {
             nearby.sort(Comparator.comparingDouble(e -> e.distanceTo(this)));
             Entity target = nearby.get(0);
-            this.setVelocity(target.getPos().subtract(this.getPos()));
+            this.addVelocity(target.getEyePos().subtract(this.getPos()));
         }
         super.tick();
     }
