@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:eggmod/root",
+  "criteria": {
+    "get_giant_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:giant_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Cook a Giant Egg, the right way",
+    "icon": {
+      "count": 1,
+      "id": "eggmod:giant_egg"
+    },
+    "title": "Full Course Meal"
+  },
+  "requirements": [
+    [
+      "get_giant_egg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -34,7 +34,7 @@ public class LockOnEffect extends StatusEffect {
         if (!world.isClient()) {
             for (Entity e : projectiles) {
                 // If we find a projectile entity in the air
-                if (e instanceof ProjectileEntity p && !p.isOnGround()) {
+                if (e instanceof ProjectileEntity p && p.distanceTo(entity) > 2 && !p.isOnGround()) {
                     // Send it flying towards the target
                     Vec3d vecToTarget = new Vec3d(entity.getX() - p.getX(), entity.getY() + 1 - p.getY(), entity.getZ() - p.getZ());
                     ((ServerWorld) world).spawnParticles(ParticleTypes.CRIMSON_SPORE, p.getX(), p.getY(), p.getZ(), 1, 0, 0, 0, 0);

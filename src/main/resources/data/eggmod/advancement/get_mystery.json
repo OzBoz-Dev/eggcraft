@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:eggmod/root",
+  "criteria": {
+    "get_mystery": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:mysterious_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Discover a Mysterious Egg",
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "eggmod:mysterious_egg"
+    },
+    "title": "Out of Thin Air"
+  },
+  "requirements": [
+    [
+      "get_mystery"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

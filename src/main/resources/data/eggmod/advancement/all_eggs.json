@@ -1,0 +1,199 @@
+{
+  "parent": "minecraft:eggmod/get_etcher",
+  "criteria": {
+    "blast_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:blast_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "capture_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:capture_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "diamond_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:diamond_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "excavator_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:excavator_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "experience_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:experience_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "hermes_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:hermes_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "iron_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:iron_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "lure_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:lure_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "overclock_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:overclock_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "plaster_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:plaster_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "recall_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:recall_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sponge_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:sponge_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "target_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:target_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "vortex_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eggmod:vortex_egg"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Gather every type of egg",
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "eggmod:excavator_egg"
+    },
+    "title": "Eggs Galore"
+  },
+  "requirements": [
+    [
+      "blast_egg"
+    ],
+    [
+      "iron_egg"
+    ],
+    [
+      "diamond_egg"
+    ],
+    [
+      "excavator_egg"
+    ],
+    [
+      "recall_egg"
+    ],
+    [
+      "capture_egg"
+    ],
+    [
+      "experience_egg"
+    ],
+    [
+      "hermes_egg"
+    ],
+    [
+      "lure_egg"
+    ],
+    [
+      "overclock_egg"
+    ],
+    [
+      "plaster_egg"
+    ],
+    [
+      "sponge_egg"
+    ],
+    [
+      "target_egg"
+    ],
+    [
+      "vortex_egg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

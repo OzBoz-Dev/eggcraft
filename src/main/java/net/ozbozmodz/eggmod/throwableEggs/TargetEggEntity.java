@@ -17,6 +17,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.ozbozmodz.eggmod.util.RegisterAll;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class TargetEggEntity extends CustomEggEntity{
@@ -65,6 +66,19 @@ public class TargetEggEntity extends CustomEggEntity{
         }
         // Play a sound at the player/caster's position
         if(this.getOwner() != null) this.getWorld().playSound(this, this.getOwner().getBlockPos(), SoundEvents.ITEM_LODESTONE_COMPASS_LOCK, SoundCategory.PLAYERS, 1.0f, 0.5f);
+    }
 
+    @Override
+    public void tick() {
+        Box box = Box.of(this.getPos(), 10, 10, 10);
+        World world = this.getWorld();
+        List<Entity> nearby = world.getOtherEntities(this, box, Predicates.instanceOf(LivingEntity.class));
+        if (this.getOwner() != null) nearby.remove(this.getOwner());
+        if (!nearby.isEmpty()) {
+            nearby.sort(Comparator.comparingDouble(e -> e.distanceTo(this)));
+            Entity target = nearby.get(0);
+            this.setVelocity(target.getPos().subtract(this.getPos()));
+        }
+        super.tick();
     }
 }

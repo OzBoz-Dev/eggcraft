@@ -64,7 +64,7 @@ public class LureEggEntity extends PersistentEggEntity{
                     this.setVelocity(0, 0, 0);
                     // Spawn particles while it ticks
                     Random r = Random.create();
-                    if (elapsedTicks % 4 == 0) ((ServerWorld)world).spawnParticles(ParticleTypes.HEART, this.getX()+(r.nextBetween(-1,1)*0.5f), this.getY(), this.getZ()+(r.nextBetween(-1,1)*0.5f), 1, 0, -1, 0, 0.1f);
+                    if (elapsedTicks % 4 == 0) ((ServerWorld)world).spawnParticles(ParticleTypes.HAPPY_VILLAGER, this.getX()+(r.nextBetween(-1,1)*0.5f), this.getY(), this.getZ()+(r.nextBetween(-1,1)*0.5f), 1, 0, -1, 0, 0.1f);
                     // Discard the lure egg when its time is up, with a sound and particles
                     if (elapsedTicks > 300) {
                         active = false;
