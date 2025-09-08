@@ -1,5 +1,6 @@
 package net.ozbozmodz.eggmod.items;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.entity.LivingEntity;
@@ -8,14 +9,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.ozbozmodz.eggmod.util.EggHelper;
 import net.ozbozmodz.eggmod.util.RegisterAll;
 
 public class SpecialSyringeItem extends Item{
@@ -65,5 +69,11 @@ public class SpecialSyringeItem extends Item{
             return ItemUsage.consumeHeldItem(world, player, player.getActiveHand()).getResult();
         }
         return super.useOnBlock(context);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+        EggHelper.appendTooltip(stack, context, tooltip, type, "item.eggmod.special_syringe.tooltip");
+        super.appendTooltip(stack, context, tooltip, type);
     }
 }

@@ -54,7 +54,7 @@ public class EggshellBlock extends Block {
         PlayerEntity nearestPlayer = world.getClosestPlayer(entity, 20);
         // Damage the entity that steps on it based on the number of EggshellBlock in the pile
         if (entity.isAttackable() &&
-            entity.damage(entity.isPlayer() || nearestPlayer == null ? world.getDamageSources().generic() : world.getDamageSources().playerAttack(nearestPlayer), 0.8f * numLayers)){
+            entity.damage(entity.isPlayer() || nearestPlayer == null ? world.getDamageSources().generic() : world.getDamageSources().playerAttack(nearestPlayer), 1.0f * numLayers)){
             if (numLayers > 1)
                 world.setBlockState(pos, state.with(SHELLS, numLayers - 1));
             else

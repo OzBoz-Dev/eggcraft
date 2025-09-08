@@ -8,8 +8,6 @@ public class EggDataGenerator implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-
         pack.addProvider(EggAdvancementProvider::new);
-//        pack.addProvider(ChestLootTableProvider::new);
     }
 }

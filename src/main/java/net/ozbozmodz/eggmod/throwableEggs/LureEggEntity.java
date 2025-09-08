@@ -26,7 +26,6 @@ public class LureEggEntity extends PersistentEggEntity{
         active = false;
         elapsedTicks = 0;
         scannedPassiveMobs = new ArrayList<>();
-        System.out.println("Constructed!");
     }
 
 

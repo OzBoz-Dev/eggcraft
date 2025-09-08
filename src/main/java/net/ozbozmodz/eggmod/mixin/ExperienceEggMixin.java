@@ -17,8 +17,8 @@ public class ExperienceEggMixin {
     protected void onPlayerCollision(PlayerEntity player, CallbackInfo ci, @Local int i){
         ExperienceOrbEntity ourEntity = (ExperienceOrbEntity)(Object)this;
         for (ItemStack stack : player.getEquippedItems()){
-            if (stack.getItem() instanceof ExperienceEggItem ei && ei.getExperience(stack) < ei.maxExperience){
-                ei.addExp(i, stack);
+            if (stack.getItem() instanceof ExperienceEggItem && ExperienceEggItem.getExperience(stack) < ExperienceEggItem.maxExperience){
+                ExperienceEggItem.addExp(i, stack);
                 ourEntity.discard();
                 ci.cancel();
             }

@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:eggmod/get_etcher",
+  "parent": "eggmod:get_etcher",
   "criteria": {
     "blast_egg": {
       "conditions": {
@@ -149,7 +149,8 @@
       "count": 1,
       "id": "eggmod:excavator_egg"
     },
-    "title": "Eggs Galore"
+    "title": "Eggs Galore",
+    "show_toast": true
   },
   "requirements": [
     [

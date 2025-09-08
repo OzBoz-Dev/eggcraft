@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:eggmod/get_eggshell",
+  "parent": "eggmod:get_eggshell",
   "criteria": {
     "absorb_damage": {
       "trigger": "minecraft:impossible"
@@ -11,7 +11,8 @@
       "count": 1,
       "id": "eggmod:eggshell_chestplate"
     },
-    "title": "Invincible"
+    "title": "Invincible",
+    "show_toast": true
   },
   "requirements": [
     [

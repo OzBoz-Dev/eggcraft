@@ -70,6 +70,7 @@ public class TargetEggEntity extends CustomEggEntity{
 
     @Override
     public void tick() {
+        // It can auto aim now
         Box box = Box.of(this.getPos(), 10, 10, 10);
         World world = this.getWorld();
         List<Entity> nearby = world.getOtherEntities(this, box, Predicates.instanceOf(LivingEntity.class));
@@ -77,7 +78,7 @@ public class TargetEggEntity extends CustomEggEntity{
         if (!nearby.isEmpty()) {
             nearby.sort(Comparator.comparingDouble(e -> e.distanceTo(this)));
             Entity target = nearby.get(0);
-            this.addVelocity(target.getEyePos().subtract(this.getPos()));
+            this.addVelocity(target.getPos().subtract(this.getPos()));
         }
         super.tick();
     }

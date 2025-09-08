@@ -26,10 +26,10 @@ public class DiamondEggEntity extends IronEggEntity {
         double dist = Vector3d.distanceSquared(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), this.getX(), this.getY(), this.getZ());
 
         if (this.getOwner() != null) {
-            entityHitResult.getEntity().damage(world.getDamageSources().playerAttack((PlayerEntity) this.getOwner()), (float) Math.min(baseDmg + (dist / 20), 100.0f));
+            entityHitResult.getEntity().damage(world.getDamageSources().playerAttack((PlayerEntity) this.getOwner()), (float) Math.min(baseDmg + (dist / 15), 70.0f));
         }
         else {
-            entityHitResult.getEntity().damage(world.getDamageSources().generic(), (float) (baseDmg + (dist/15)));
+            entityHitResult.getEntity().damage(world.getDamageSources().generic(), (float) Math.min(baseDmg + (dist / 15), 80.0f));
         }
         world.playSound(this, this.getBlockPos(), SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.PLAYERS, 1.0F, 2.0F);
         Random r = new Random();

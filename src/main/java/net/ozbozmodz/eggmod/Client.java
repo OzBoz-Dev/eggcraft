@@ -12,7 +12,7 @@ import net.ozbozmodz.eggmod.render.RenderHelper;
 
 
 public class Client implements ClientModInitializer {
-    public static final Logger LOGGER = LoggerFactory.getLogger("ozutilities");
+    public static final Logger LOGGER = LoggerFactory.getLogger("eggmod");
 
 
     @Override

@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:eggmod/root",
+  "parent": "eggmod:root",
   "criteria": {
     "get_burnt_egg": {
       "trigger": "minecraft:impossible"
@@ -12,7 +12,8 @@
       "count": 1,
       "id": "eggmod:burnt_egg"
     },
-    "title": "Kitchen Mishap"
+    "title": "Kitchen Mishap",
+    "show_toast": true
   },
   "requirements": [
     [

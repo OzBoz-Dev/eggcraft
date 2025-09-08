@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:eggmod/root",
+  "parent": "eggmod:root",
   "criteria": {
     "get_giant_egg": {
       "conditions": {
@@ -18,7 +18,8 @@
       "count": 1,
       "id": "eggmod:giant_egg"
     },
-    "title": "Full Course Meal"
+    "title": "Full Course Meal",
+    "show_toast": true
   },
   "requirements": [
     [

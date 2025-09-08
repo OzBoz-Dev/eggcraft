@@ -34,6 +34,7 @@ import net.ozbozmodz.eggmod.entities.EtcherBlockEntity;
 import net.ozbozmodz.eggmod.entities.ExperienceCatcherEntity;
 import net.ozbozmodz.eggmod.fooditems.*;
 import net.ozbozmodz.eggmod.items.EggsInABasketItem;
+import net.ozbozmodz.eggmod.items.EggshellItem;
 import net.ozbozmodz.eggmod.items.SpecialSyringeItem;
 import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
@@ -75,6 +76,7 @@ public class RegisterAll {
     public static final Item SPECIAL_SYRINGE_ITEM = registerItem("special_syringe", new SpecialSyringeItem(new Item.Settings()));
     public static final Item ENDER_SERUM_ITEM = registerItem("ender_serum", new Item(new Item.Settings().rarity(Rarity.EPIC).maxCount(1)));
     public static final Item EGGS_IN_A_BASKET_ITEM = registerItem("eggs_in_a_basket", new EggsInABasketItem(new Item.Settings()));
+
     // TEMPLATE ITEMS
     public static final Item BLANK_TEMPLATE = registerItem("templates/blank_template", new TemplateItem(new Item.Settings()));
     public static final Item BLAST_EGG_TEMPLATE = registerItem("templates/blast_egg_template", new TemplateItem(new Item.Settings().maxDamage(4)));
@@ -114,7 +116,6 @@ public class RegisterAll {
     public static final Block EGGSHELL_BRICK_STAIRS = registerBlock("eggshell_brick_stairs", new StairsBlock(EGGSHELL_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(EGGSHELL_BRICKS)));
     public static final Block EGGSHELL_BRICK_SLAB = registerBlock("eggshell_brick_slab", new SlabBlock(AbstractBlock.Settings.copy(EGGSHELL_BRICKS)));
     public static final Block EGGSHELL_BRICK_WALL = registerBlock("eggshell_brick_wall", new WallBlock(AbstractBlock.Settings.copy(EGGSHELL_BRICKS)));
-
     public static final Block GIANT_EGG_BLOCK = registerBlock("giant_egg", new GiantEggBlock(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE)));
     public static final Block RAW_GIANT_EGG_BLOCK= registerBlock("raw_giant_egg", new RawGiantEggBlock(AbstractBlock.Settings.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.OFF_WHITE)));
     public static final Block ETCHER_BLOCK = registerBlock("etcher_block", new EtcherBlock(AbstractBlock.Settings.create().nonOpaque().luminance(EtcherBlock::getLuminance).strength(5.0F, 6.0F)));
@@ -122,16 +123,16 @@ public class RegisterAll {
     public static final Block MYSTERIOUS_EGG_BLOCK = registerBlock("mysterious_egg", new MysteriousEggBlock(AbstractBlock.Settings.create().nonOpaque().sounds(BlockSoundGroup.AMETHYST_CLUSTER)));
 
     // BLOCK ITEMS
-    public static final Item EGGSHELL_ITEM = registerItem("eggshell", new BlockItem(EGGSHELL_BLOCK, new Item.Settings()));
+    public static final Item EGGSHELL_ITEM = registerItem("eggshell", new EggshellItem(EGGSHELL_BLOCK, new Item.Settings()));
     public static final Item EGGSHELL_BRICKS_ITEM = registerItem("eggshell_bricks", new BlockItem(EGGSHELL_BRICKS, new Item.Settings()));
     public static final Item EGGSHELL_BRICK_STAIRS_ITEM = registerItem("eggshell_brick_stairs", new BlockItem(EGGSHELL_BRICK_STAIRS, new Item.Settings()));
     public static final Item EGGSHELL_BRICK_SLAB_ITEM = registerItem("eggshell_brick_slab", new BlockItem(EGGSHELL_BRICK_SLAB, new Item.Settings()));
     public static final Item EGGSHELL_BRICK_WALL_ITEM = registerItem("eggshell_brick_wall", new BlockItem(EGGSHELL_BRICK_WALL, new Item.Settings()));
-    public static final Item GIANT_EGG_ITEM = registerItem("giant_egg", new BlockItem(GIANT_EGG_BLOCK, new Item.Settings()));
-    public static final Item RAW_GIANT_EGG_ITEM = registerItem("raw_giant_egg", new BlockItem(RAW_GIANT_EGG_BLOCK, new Item.Settings()));
+    public static final Item GIANT_EGG_ITEM = registerItem("giant_egg", new BlockItem(GIANT_EGG_BLOCK, new Item.Settings().maxCount(16)));
+    public static final Item RAW_GIANT_EGG_ITEM = registerItem("raw_giant_egg", new BlockItem(RAW_GIANT_EGG_BLOCK, new Item.Settings().maxCount(16)));
     public static final Item ETCHER_ITEM = registerItem("etcher_block", new BlockItem(ETCHER_BLOCK, new Item.Settings()));
     public static final Item EXPERIENCE_CATCHER_ITEM = registerItem("experience_catcher", new BlockItem(EXPERIENCE_CATCHER_BLOCK, new Item.Settings()));
-    public static final Item MYSTERIOUS_EGG_ITEM = registerItem("mysterious_egg", new BlockItem(MYSTERIOUS_EGG_BLOCK, new Item.Settings()));
+    public static final Item MYSTERIOUS_EGG_ITEM = registerItem("mysterious_egg", new BlockItem(MYSTERIOUS_EGG_BLOCK, new Item.Settings().maxCount(16)));
 
     // BLOCK ENTITIES
     public static final BlockEntityType<EtcherBlockEntity> ETCHER_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of("eggmod", "etcher_block_entity"),
@@ -212,7 +213,7 @@ public class RegisterAll {
     public static final ItemGroup EGGMOD = Registry.register(Registries.ITEM_GROUP, Identifier.of("eggmod", "general"),
     FabricItemGroup.builder()
         .icon(() -> new ItemStack(BURNT_EGG_ITEM))
-        .displayName(Text.literal("Eggmod!"))
+        .displayName(Text.literal("EggCraft"))
         .entries((displayContext, entries) ->{
             entries.add(BURNT_EGG_ITEM);
             entries.add(FRIED_EGG_ITEM);
@@ -311,5 +312,6 @@ public class RegisterAll {
         DispenserBlock.registerBehavior(RegisterAll.TARGET_EGG_ITEM, new CustomEggDispenserBehavior(TARGET_EGG_ITEM));
         DispenserBlock.registerBehavior(RegisterAll.VORTEX_EGG_ITEM, new CustomEggDispenserBehavior(VORTEX_EGG_ITEM));
         DispenserBlock.registerBehavior(RegisterAll.EXPERIENCE_EGG_ITEM, new CustomEggDispenserBehavior(EXPERIENCE_EGG_ITEM));
+        DispenserBlock.registerBehavior(RegisterAll.CAPTURE_EGG_ITEM, new CustomEggDispenserBehavior(CAPTURE_EGG_ITEM));
     }
 }
