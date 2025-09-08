@@ -3,14 +3,14 @@
   "id": "eggmod",
   "version": "0.0.5",
 
-  "name": "Speggtacular",
-  "description": "Egg mod",
+  "name": "EggCraft",
+  "description": "I heard you like eggs, so do I!",
   "authors": [
     "OzBoz"
   ],
   "contact": {
-    "homepage": "https://github.com/OzBoz-Dev/eggstraneous-mod/",
-    "sources": "https://github.com/OzBoz-Dev/eggstraneous-mod/"
+    "homepage": "https://github.com/OzBoz-Dev/eggcraft",
+    "sources": "https://github.com/OzBoz-Dev/eggcraft"
   },
 
   "license": "CC0-1.0",
@@ -26,6 +26,9 @@
     ],
     "fabric-datagen": [
       "net.ozbozmodz.eggmod.util.EggDataGenerator"
+    ],
+    "rei_client" : [
+      "net.ozbozmodz.eggmod.compat.EggmodREIClient"
     ]
   },
   "mixins": [

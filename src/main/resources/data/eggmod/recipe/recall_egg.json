@@ -1,0 +1,9 @@
+{
+  "type": "eggmod:etcher_recipe",
+  "template": {
+    "item": "eggmod:recall_egg_template"
+  },
+  "result": {
+    "id": "eggmod:recall_egg"
+  }
+}

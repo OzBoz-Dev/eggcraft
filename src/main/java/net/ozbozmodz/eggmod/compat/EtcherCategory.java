@@ -20,12 +20,6 @@ public class EtcherCategory implements DisplayCategory<BasicDisplay> {
     public static final Identifier GUI_TEXTURE =
             Identifier.of("eggmod", "textures/gui/etcher_gui.png");
 
-    public static final Identifier ARROW_TEXTURE =
-            Identifier.of("eggmod", "textures/gui/etcher_arrow.png");
-
-    public static final Identifier ENERGY_TEXTURE =
-            Identifier.of("eggmod", "textures/gui/etcher_energy.png");
-
     public static final CategoryIdentifier<EtcherDisplay> ETCHER_DISPLAY_CATEGORY_IDENTIFIER =
             CategoryIdentifier.of("eggmod", "etcher_block");
 

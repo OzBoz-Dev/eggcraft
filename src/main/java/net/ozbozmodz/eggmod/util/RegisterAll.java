@@ -13,6 +13,8 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.*;
 import net.minecraft.loot.LootTable;
 import net.minecraft.particle.SimpleParticleType;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -37,6 +39,7 @@ import net.ozbozmodz.eggmod.items.EggsInABasketItem;
 import net.ozbozmodz.eggmod.items.EggshellItem;
 import net.ozbozmodz.eggmod.items.SpecialSyringeItem;
 import net.ozbozmodz.eggmod.items.TemplateItem;
+import net.ozbozmodz.eggmod.recipe.EtcherRecipe;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
 import net.ozbozmodz.eggmod.screen.ExperienceCatcherScreenHandler;
 import net.ozbozmodz.eggmod.statuseffects.LockOnEffect;
@@ -208,6 +211,18 @@ public class RegisterAll {
     // TAGS
     public static final TagKey<Item> CUSTOM_EGGS = TagKey.of(RegistryKeys.ITEM, Identifier.of("eggmod", "custom_eggs"));
     public static final TagKey<Item> EGG_TEMPLATES = TagKey.of(RegistryKeys.ITEM, Identifier.of("eggmod", "egg_templates"));
+
+    // RECIPES
+    public static final RecipeSerializer<EtcherRecipe> ETCHER_RECIPE_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER, Identifier.of("eggmod", "etcher_block"),
+                    new EtcherRecipe.Serializer());
+
+    public static final RecipeType<EtcherRecipe> ETCHER_RECIPE_TYPE = Registry.register(
+            Registries.RECIPE_TYPE, Identifier.of("eggmod", "etcher_block"),
+            new RecipeType<EtcherRecipe>() {
+                @Override
+                public String toString() {return "etcher_block";}
+            });
 
     // ITEM GROUP
     public static final ItemGroup EGGMOD = Registry.register(Registries.ITEM_GROUP, Identifier.of("eggmod", "general"),

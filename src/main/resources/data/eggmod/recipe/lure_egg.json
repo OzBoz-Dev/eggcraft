@@ -1,0 +1,9 @@
+{
+  "type": "eggmod:etcher_recipe",
+  "template": {
+    "item": "eggmod:lure_egg_template"
+  },
+  "result": {
+    "id": "eggmod:lure_egg"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "eggmod:etcher_recipe",
+  "template": {
+    "item": "eggmod:hermes_egg_template"
+  },
+  "result": {
+    "id": "eggmod:hermes_egg"
+  }
+}

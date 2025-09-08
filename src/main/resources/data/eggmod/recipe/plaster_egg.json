@@ -1,0 +1,9 @@
+{
+  "type": "eggmod:etcher_recipe",
+  "template": {
+    "item": "eggmod:plaster_egg_template"
+  },
+  "result": {
+    "id": "eggmod:plaster_egg"
+  }
+}

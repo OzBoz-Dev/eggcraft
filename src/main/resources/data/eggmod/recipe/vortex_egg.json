@@ -1,0 +1,9 @@
+{
+  "type": "eggmod:etcher_recipe",
+  "template": {
+    "item": "eggmod:vortex_egg_template"
+  },
+  "result": {
+    "id": "eggmod:vortex_egg"
+  }
+}
