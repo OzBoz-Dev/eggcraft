@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "eggmod:blast_egg",
+    "eggmod:iron_egg",
+    "eggmod:diamond_egg",
+    "eggmod:excavator_egg",
+    "eggmod:lure_egg",
+    "eggmod:overclock_egg",
+    "eggmod:sponge_egg",
+    "eggmod:plaster_egg",
+    "eggmod:target_egg",
+    "eggmod:hermes_egg",
+    "eggmod:recall_egg",
+    "eggmod:capture_egg",
+    "eggmod:experience_egg",
+    "eggmod:vortex_egg"
+  ]
+}

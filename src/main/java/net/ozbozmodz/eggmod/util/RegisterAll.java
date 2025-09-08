@@ -206,8 +206,8 @@ public class RegisterAll {
     public static final RegistryKey<LootTable> EGG_ALTAR_LOOT = RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.of("eggmod", "chests/egg_altar_loot"));
 
     // TAGS
-    public static final TagKey<Item> COMMON_EGGS = TagKey.of(RegistryKeys.ITEM, Identifier.of("eggmod", "common_eggs"));
-    public static final TagKey<Item> RARE_EGGS = TagKey.of(RegistryKeys.ITEM, Identifier.of("eggmod", "rare_eggs"));
+    public static final TagKey<Item> CUSTOM_EGGS = TagKey.of(RegistryKeys.ITEM, Identifier.of("eggmod", "custom_eggs"));
+    public static final TagKey<Item> EGG_TEMPLATES = TagKey.of(RegistryKeys.ITEM, Identifier.of("eggmod", "egg_templates"));
 
     // ITEM GROUP
     public static final ItemGroup EGGMOD = Registry.register(Registries.ITEM_GROUP, Identifier.of("eggmod", "general"),

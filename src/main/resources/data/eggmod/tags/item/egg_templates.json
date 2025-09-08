@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "eggmod:templates/blast_egg_template",
+    "eggmod:templates/iron_egg_template",
+    "eggmod:templates/diamond_egg_template",
+    "eggmod:templates/excavator_egg_template",
+    "eggmod:templates/lure_egg_template",
+    "eggmod:templates/overclock_egg_template",
+    "eggmod:templates/sponge_egg_template",
+    "eggmod:templates/plaster_egg_template",
+    "eggmod:templates/target_egg_template",
+    "eggmod:templates/hermes_egg_template",
+    "eggmod:templates/recall_egg_template",
+    "eggmod:templates/capture_egg_template",
+    "eggmod:templates/experience_egg_template",
+    "eggmod:templates/vortex_egg_template"
+  ]
+}
