@@ -58,12 +58,10 @@ public class RegisterAll {
     public static final RegistryEntry<StatusEffect> LOCK_ON_EFFECT = registerStatusEffect("locked_on", new LockOnEffect());
     public static final RegistryEntry<StatusEffect> REPEL_EFFECT = registerStatusEffect("repel", new RepelEffect());
     public static final RegistryEntry<StatusEffect> REACH_EFFECT = registerStatusEffect("reach", new ReachEffect());
-
-    // ENTITIES
     
     // FOOD ITEMS
     public static final Item BURNT_EGG_ITEM = registerItem("burnt_egg", new BurntEggItem(new Item.Settings().food(ModFoodComps.BURNTEGG).maxCount(16)));
-    public static final Item FRIED_EGG_ITEM = registerItem("fried_egg", new Item(new Item.Settings().food(ModFoodComps.FRIEDEGG)));
+    public static final Item FRIED_EGG_ITEM = registerItem("fried_egg", new Item(new Item.Settings().food(ModFoodComps.FRIEDEGG).maxCount(16)));
 
     // ARMOR ITEMS
     public static final Item EGGSHELL_HELMET = registerItem("eggshell_helmet",
@@ -98,20 +96,20 @@ public class RegisterAll {
     public static final Item CAPTURE_EGG_TEMPLATE = registerItem("templates/capture_egg_template", new TemplateItem(new Item.Settings().maxDamage(1)));
 
     // THROWABLE EGGS
-    public static final Item BLAST_EGG_ITEM = registerItem("blast_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item IRON_EGG_ITEM = registerItem("iron_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item DIAMOND_EGG_ITEM = registerItem("diamond_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item EXCAVATOR_EGG_ITEM = registerItem("excavator_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item SPONGE_EGG_ITEM = registerItem("sponge_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item OVERCLOCK_EGG_ITEM = registerItem("overclock_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item PLASTER_EGG_ITEM = registerItem("plaster_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item LURE_EGG_ITEM = registerItem("lure_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item TARGET_EGG_ITEM = registerItem("target_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item HERMES_EGG_ITEM = registerItem("hermes_egg", new HermesEggItem(new Item.Settings()));
-    public static final Item VORTEX_EGG_ITEM = registerItem("vortex_egg", new CustomEggItem(new Item.Settings()));
-    public static final Item EXPERIENCE_EGG_ITEM = registerItem("experience_egg", new ExperienceEggItem(new Item.Settings()));
-    public static final Item RECALL_EGG_ITEM = registerItem("recall_egg", new RecallEggItem(new Item.Settings()));
-    public static final Item CAPTURE_EGG_ITEM = registerItem("capture_egg", new CaptureEggItem(new Item.Settings()));
+    public static final Item BLAST_EGG_ITEM = registerItem("blast_egg", new CustomEggItem(new Item.Settings().maxCount(16)));
+    public static final Item IRON_EGG_ITEM = registerItem("iron_egg", new CustomEggItem(new Item.Settings().maxCount(16)));
+    public static final Item DIAMOND_EGG_ITEM = registerItem("diamond_egg", new CustomEggItem(new Item.Settings().maxCount(16)));
+    public static final Item EXCAVATOR_EGG_ITEM = registerItem("excavator_egg", new CustomEggItem(new Item.Settings().maxCount(16)));
+    public static final Item SPONGE_EGG_ITEM = registerItem("sponge_egg", new CustomEggItem(new Item.Settings().maxCount(16)));
+    public static final Item OVERCLOCK_EGG_ITEM = registerItem("overclock_egg", new CustomEggItem(new Item.Settings().maxCount(16)));
+    public static final Item PLASTER_EGG_ITEM = registerItem("plaster_egg", new CustomEggItem(new Item.Settings().maxCount(16)));
+    public static final Item LURE_EGG_ITEM = registerItem("lure_egg", new CustomEggItem(new Item.Settings().maxCount(16)));
+    public static final Item TARGET_EGG_ITEM = registerItem("target_egg", new CustomEggItem(new Item.Settings().maxCount(16)));
+    public static final Item HERMES_EGG_ITEM = registerItem("hermes_egg", new HermesEggItem(new Item.Settings().maxCount(16)));
+    public static final Item VORTEX_EGG_ITEM = registerItem("vortex_egg", new CustomEggItem(new Item.Settings().maxCount(16)));
+    public static final Item EXPERIENCE_EGG_ITEM = registerItem("experience_egg", new ExperienceEggItem(new Item.Settings().maxCount(1)));
+    public static final Item RECALL_EGG_ITEM = registerItem("recall_egg", new RecallEggItem(new Item.Settings().maxCount(1)));
+    public static final Item CAPTURE_EGG_ITEM = registerItem("capture_egg", new CaptureEggItem(new Item.Settings().maxCount(1)));
 
     // BLOCKS
     public static final Block EGGSHELL_BLOCK = registerBlock("eggshell", new EggshellBlock(Block.Settings.copy(Blocks.WHITE_CARPET).nonOpaque().sounds(BlockSoundGroup.TUFF).strength(0.2F)));
@@ -227,14 +225,15 @@ public class RegisterAll {
     // ITEM GROUP
     public static final ItemGroup EGGMOD = Registry.register(Registries.ITEM_GROUP, Identifier.of("eggmod", "general"),
     FabricItemGroup.builder()
-        .icon(() -> new ItemStack(BURNT_EGG_ITEM))
+        .icon(() -> new ItemStack(EXCAVATOR_EGG_ITEM))
         .displayName(Text.literal("EggCraft"))
         .entries((displayContext, entries) ->{
             entries.add(BURNT_EGG_ITEM);
             entries.add(FRIED_EGG_ITEM);
-            entries.add(ENDER_SERUM_ITEM);
-            entries.add(SPECIAL_SYRINGE_ITEM);
             entries.add(EGGSHELL_ITEM);
+            entries.add(SPECIAL_SYRINGE_ITEM);
+            entries.add(ENDER_SERUM_ITEM);
+            entries.add(MYSTERIOUS_EGG_ITEM);
             entries.add(GIANT_EGG_ITEM);
             entries.add(RAW_GIANT_EGG_ITEM);
             entries.add(EGGSHELL_BRICKS_ITEM);
@@ -243,41 +242,40 @@ public class RegisterAll {
             entries.add(EGGSHELL_BRICK_WALL_ITEM);
             entries.add(ETCHER_ITEM);
             entries.add(EXPERIENCE_CATCHER_ITEM);
+            entries.add(EGGSHELL_HELMET);
+            entries.add(EGGSHELL_CHESTPLATE);
+            entries.add(EGGSHELL_LEGGINGS);
+            entries.add(EGGSHELL_BOOTS);
+            entries.add(EGGS_IN_A_BASKET_ITEM);
             entries.add(BLAST_EGG_ITEM);
             entries.add(IRON_EGG_ITEM);
             entries.add(DIAMOND_EGG_ITEM);
             entries.add(EXCAVATOR_EGG_ITEM);
+            entries.add(SPONGE_EGG_ITEM);
+            entries.add(OVERCLOCK_EGG_ITEM);
+            entries.add(PLASTER_EGG_ITEM);
+            entries.add(LURE_EGG_ITEM);
+            entries.add(TARGET_EGG_ITEM);
+            entries.add(HERMES_EGG_ITEM);
+            entries.add(VORTEX_EGG_ITEM);
+            entries.add(EXPERIENCE_EGG_ITEM);
+            entries.add(RECALL_EGG_ITEM);
+            entries.add(CAPTURE_EGG_ITEM);
             entries.add(BLANK_TEMPLATE);
             entries.add(BLAST_EGG_TEMPLATE);
             entries.add(IRON_EGG_TEMPLATE);
             entries.add(DIAMOND_EGG_TEMPLATE);
             entries.add(EXCAVATOR_EGG_TEMPLATE);
-            entries.add(MYSTERIOUS_EGG_ITEM);
-            entries.add(SPONGE_EGG_ITEM);
             entries.add(SPONGE_EGG_TEMPLATE);
-            entries.add(OVERCLOCK_EGG_ITEM);
             entries.add(OVERCLOCK_EGG_TEMPLATE);
-            entries.add(PLASTER_EGG_ITEM);
             entries.add(PLASTER_EGG_TEMPLATE);
-            entries.add(LURE_EGG_ITEM);
             entries.add(LURE_EGG_TEMPLATE);
-            entries.add(TARGET_EGG_ITEM);
             entries.add(TARGET_EGG_TEMPLATE);
-            entries.add(HERMES_EGG_ITEM);
             entries.add(HERMES_EGG_TEMPLATE);
-            entries.add(VORTEX_EGG_ITEM);
             entries.add(VORTEX_EGG_TEMPLATE);
-            entries.add(EXPERIENCE_EGG_ITEM);
             entries.add(EXPERIENCE_EGG_TEMPLATE);
-            entries.add(RECALL_EGG_ITEM);
             entries.add(RECALL_EGG_TEMPLATE);
-            entries.add(CAPTURE_EGG_ITEM);
             entries.add(CAPTURE_EGG_TEMPLATE);
-            entries.add(EGGS_IN_A_BASKET_ITEM);
-            entries.add(EGGSHELL_HELMET);
-            entries.add(EGGSHELL_CHESTPLATE);
-            entries.add(EGGSHELL_LEGGINGS);
-            entries.add(EGGSHELL_BOOTS);
         }).build());
 
     private static Item registerItem(String name, Item item){
