@@ -3,7 +3,7 @@
 
 ## Overview
 
-Eggcraft is a mod that aims to give eggs some extra depth and new uses, adding items that are both fun and useful for all kinds of playthroughs. It adds several egg-themed items, blocks, advancements, structures, and throwable gadgets with a unique crafting system.
+Eggcraft is a mod that makes eggs exciting for once! Instead of being a throwaway item, eggs can now be cooked, crafted, or etched into fun and useful tools. EggCraft adds several egg-themed items, blocks, advancements, structures, and throwable gadgets with a unique crafting system.
 
 ## Features
 <details>
@@ -11,7 +11,7 @@ Eggcraft is a mod that aims to give eggs some extra depth and new uses, adding i
   
 ### Items
   
-- Fried Egg: A good food source, cook an egg on a campfire to craft.
+- Fried Egg: A good food source, cook an egg over a campfire to craft.
   
 - Burnt Egg: Cook an egg in a furnace (I mean, would you microwave an egg IRL?). Applies the Smelly effect.
   - Smelly: Causes all nearby entities to rapidly flee from the player.
@@ -35,7 +35,7 @@ Eggcraft is a mod that aims to give eggs some extra depth and new uses, adding i
 
 - Eggshell Bricks: A building block crafted with eggshells, comes in stair, slab, and wall variants.
 
-- Giant Egg: Cook a raw giant egg over a campfire to gain this food source. Place it on the ground and eat it like a cake.
+- Giant Egg: Cook a Raw Giant Egg over a campfire to gain this food source. Place it on the ground and eat it like a cake.
   
 - Mysterious Egg: Can be laid rarely by chickens, used to obtain Strange Serum.
   
@@ -96,7 +96,16 @@ All Egg Gadgets are crafted in the Etching Station.
 
 ## Installing
 ### Using Curseforge/Modrinth
-1. Download the correct version of the mod from curseforge/modrinth
+1. Download the correct version of the mod as a JAR from curseforge/modrinth.
+2. Download the correct version of Fabric API, and optionally REI (Roughly Enough Items).
+3. Place both Jars into the mods folder under .minecraft/mods.
+4. Run Fabric Loader from the Minecraft Launcher
+
+### Compile from Source
+1. This will require the right JRE version (Java 21).
+2. Use git clone https://github.com/OzBoz-Dev/eggcraft/ to clone the repository.
+3. Use ./gradlew build to compile the sources into a JAR file, which will be under build/libs/.
+4. Place into the mods directory and run from the launcher.
 
 ## Contributions
 
