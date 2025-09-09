@@ -9,12 +9,14 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
+import net.ozbozmodz.eggmod.util.EggHelper;
 
 public class EtcherBlockEntityRenderer implements BlockEntityRenderer<EtcherBlockEntity> {
 
@@ -25,6 +27,13 @@ public class EtcherBlockEntityRenderer implements BlockEntityRenderer<EtcherBloc
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         ItemStack templateStack = entity.getStack(0);
         ItemStack eggStack = entity.getStack(2);
+        Item outputItem = EggHelper.getCurrentOutputItem(templateStack.getItem());
+        if (outputItem != null) {
+            ItemStack outputStack = outputItem.getDefaultStack();
+            if (entity.propertyDelegate.get(0) > entity.propertyDelegate.get(1)/2) {
+                eggStack = outputStack;
+            }
+        }
         renderTemplate(entity, templateStack, matrices, vertexConsumers, itemRenderer);
         renderEgg(entity, eggStack, matrices, vertexConsumers, itemRenderer);
     }
@@ -51,6 +60,7 @@ public class EtcherBlockEntityRenderer implements BlockEntityRenderer<EtcherBloc
         matrices.scale(0.25f, 0.25f, 0.25f);
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.getTemplateDirection().asRotation()));
 
+        assert entity.getWorld() != null;
         itemRenderer.renderItem(templateStack, ModelTransformationMode.GUI, getLightLevel(entity.getWorld(), entity.getPos()),
                 OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 1);
         matrices.pop();
@@ -77,6 +87,7 @@ public class EtcherBlockEntityRenderer implements BlockEntityRenderer<EtcherBloc
         matrices.scale(0.3f, 0.3f, 0.3f);
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(deg));
 
+        assert entity.getWorld() != null;
         itemRenderer.renderItem(eggStack, ModelTransformationMode.GUI, getLightLevel(entity.getWorld(), entity.getPos()),
                 OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 2);
         matrices.pop();

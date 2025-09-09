@@ -1,14 +1,15 @@
 {
+  "parent": "eggmod:root",
   "display": {
     "icon": {
       "id": "eggmod:target_egg"
     },
     "title": "Successful Infiltration",
-    "description": "Successfully Enter the Giant Giant Egg and survive all the traps",
+    "description": "Successfully Infiltrate the Giant Giant Egg",
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": false
+    "hidden": true
   },
   "criteria": {
     "find_altar": {

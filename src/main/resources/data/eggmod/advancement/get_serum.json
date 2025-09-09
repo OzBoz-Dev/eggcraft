@@ -1,11 +1,11 @@
 {
-  "parent": "eggmod:root",
+  "parent": "eggmod:get_mystery",
   "criteria": {
-    "get_etcher": {
+    "get_serum": {
       "conditions": {
         "items": [
           {
-            "items": "eggmod:etcher_block"
+            "items": "eggmod:ender_serum"
           }
         ]
       },
@@ -13,18 +13,18 @@
     }
   },
   "display": {
-    "description": "Craft an Etching Station",
+    "description": "Extract Strange Serum from a Mysterious Egg",
     "frame": "goal",
     "icon": {
       "count": 1,
-      "id": "eggmod:etcher_block"
+      "id": "eggmod:ender_serum"
     },
-    "title": "Egg Technician",
+    "title": "Otherworldly Energy",
     "show_toast": true
   },
   "requirements": [
     [
-      "get_etcher"
+      "get_serum"
     ]
   ],
   "sends_telemetry_event": true

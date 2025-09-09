@@ -1,0 +1,12 @@
+{
+    "type": "eggmod:etcher_block",
+    "template": {
+        "item": "eggmod:templates/experience_egg_template"
+    },
+    "egg": {
+        "item": "minecraft:egg"
+    },
+    "result": {
+        "id": "eggmod:experience_egg"
+    }
+}

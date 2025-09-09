@@ -1,0 +1,12 @@
+{
+    "type": "eggmod:etcher_block",
+    "template": {
+        "item": "eggmod:templates/plaster_egg_template"
+    },
+    "egg": {
+        "item": "minecraft:egg"
+    },
+    "result": {
+        "id": "eggmod:plaster_egg"
+    }
+}

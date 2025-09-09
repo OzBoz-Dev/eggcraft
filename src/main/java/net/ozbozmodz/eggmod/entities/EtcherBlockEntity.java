@@ -7,17 +7,19 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Properties;
@@ -25,13 +27,17 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.ozbozmodz.eggmod.blocks.EtcherBlock;
 import net.ozbozmodz.eggmod.items.TemplateItem;
+import net.ozbozmodz.eggmod.recipe.EtcherRecipe;
+import net.ozbozmodz.eggmod.recipe.EtcherRecipeInput;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
-import net.ozbozmodz.eggmod.util.EggHelper;
 import net.ozbozmodz.eggmod.util.RegisterAll;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.World;
+
+import java.util.Optional;
 
 public class EtcherBlockEntity extends BlockEntity implements ImplementedInventory, SidedInventory, ExtendedScreenHandlerFactory<BlockPos> {
     // 4 Slots: Template, Serum, Egg, Output
@@ -88,6 +94,12 @@ public class EtcherBlockEntity extends BlockEntity implements ImplementedInvento
 
     // Calls on every tick and does our crafting block logic
     public void tick(World world, BlockPos pos, BlockState state){
+        if (progress == maxProgress/2 - 3 && !world.isClient()){
+            ((ServerWorld)world).spawnParticles(ParticleTypes.GLOW, pos.toCenterPos().getX(), pos.toCenterPos().getY(), pos.toCenterPos().z
+            ,9, Random.create().nextBetween(-1,1)*0.3f,Random.create().nextBetween(-1,1)*0.3f,Random.create().nextBetween(-1,1)*0.3f,0.1f);
+            world.playSound(null, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_STEP, SoundCategory.BLOCKS, 0.4f, 0.1f);
+        }
+
         // Set energy. If we have an ender serum in the slot, empty it and fill energy to max
         if (!getStack(SERUM_SLOT).isEmpty() && energy <= 12
                 && getStack(SERUM_SLOT).isOf(RegisterAll.ENDER_SERUM_ITEM)){
@@ -119,50 +131,50 @@ public class EtcherBlockEntity extends BlockEntity implements ImplementedInvento
                 this.progress = 0;
                 energy--;
             }
-            markDirty(world, pos, state);
-            world.updateListeners(pos, state, state, 0);
         }
         else {
             this.progress = 0;
-            markDirty(world, pos, state);
-            world.updateListeners(pos, state, state, 0);
         }
+        markDirty(world, pos, state);
+        world.updateListeners(pos, state, state, 0);
     }
 
     private void craftItem(){
-        Item output = EggHelper.getCurrentOutputItem(getStack(TEMPLATE_SLOT).getItem());
-        if (output == null) return;
+        Optional<RecipeEntry<EtcherRecipe>> recipe = getCurrentRecipe();
+        if (recipe.isEmpty()) return;
+        ItemStack output = recipe.get().value().output();
         // Decrease the eggs
-        this.getStack(EGG_SLOT).decrement(1);
+        this.removeStack(EGG_SLOT, 1);
         // Do durability damage to the template, and remove it if it falls to 0
         this.getStack(TEMPLATE_SLOT).setDamage(this.getStack(TEMPLATE_SLOT).getDamage()+1);
-        if (this.getStack(TEMPLATE_SLOT).getDamage() == this.getStack(TEMPLATE_SLOT).getMaxDamage()) this.getStack(TEMPLATE_SLOT).decrement(1);
+        if (this.getStack(TEMPLATE_SLOT).getDamage() == this.getStack(TEMPLATE_SLOT).getMaxDamage()) this.removeStack(TEMPLATE_SLOT,1);
+
         // Put the result in the output
-        this.setStack(OUTPUT_SLOT, new ItemStack(output, this.getStack(OUTPUT_SLOT).getCount() + 1));
+        this.setStack(OUTPUT_SLOT, new ItemStack(output.getItem(), this.getStack(OUTPUT_SLOT).getCount() + 1));
     }
 
     private boolean hasRecipe() {
-        // Check if we have an egg in slot and a valid template item
-        boolean validTemplate = getStack(TEMPLATE_SLOT).getItem() instanceof TemplateItem;
-        boolean validEgg = getStack(EGG_SLOT).isOf(Items.EGG);
-        boolean validRecipe = validTemplate && validEgg;
-        Item output = null;
-        // Make sure we can properly parse the template input to the corresponding egg output
-        if (validRecipe) {
-            output = EggHelper.getCurrentOutputItem(getStack(TEMPLATE_SLOT).getItem());
-        }
-        if (output == null) return false;
-
-        // Does the output slot have an invalid or different egg item in it already?
-        boolean validOutputItem = this.getStack(OUTPUT_SLOT).isEmpty()
-                || this.getStack(OUTPUT_SLOT).isOf(output);
-        int maxCount = this.getStack(OUTPUT_SLOT).isEmpty() ? 64 : this.getStack(OUTPUT_SLOT).getMaxCount();
-        int currentCount = this.getStack(OUTPUT_SLOT).getCount();
-        // If we can fit one more item in the output slot
-        boolean validOutputAmount = maxCount >= currentCount + 1;
-        return validRecipe && validOutputItem && validOutputAmount;
+        Optional<RecipeEntry<EtcherRecipe>> recipe = getCurrentRecipe();
+        if (recipe.isEmpty()) return false;
+        ItemStack output = recipe.get().value().output();
+        return canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
     }
 
+    public Optional<RecipeEntry<EtcherRecipe>> getCurrentRecipe() {
+        if (this.getWorld() == null || this.getWorld().isClient()) return Optional.empty();
+        return this.getWorld().getRecipeManager()
+                .getFirstMatch(RegisterAll.ETCHER_RECIPE_TYPE, new EtcherRecipeInput(inventory.get(TEMPLATE_SLOT), inventory.get(EGG_SLOT)), this.getWorld());
+    }
+
+    private boolean canInsertItemIntoOutputSlot(ItemStack output) {
+        return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getItem() == output.getItem();
+    }
+
+    private boolean canInsertAmountIntoOutputSlot(int count) {
+        int maxCount = this.getStack(OUTPUT_SLOT).isEmpty() ? 16 : this.getStack(OUTPUT_SLOT).getMaxCount();
+        int currentCount = this.getStack(OUTPUT_SLOT).getCount();
+        return maxCount >= currentCount + count;
+    }
 
     // Required Methods for functionality
 

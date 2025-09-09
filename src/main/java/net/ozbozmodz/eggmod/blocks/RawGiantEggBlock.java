@@ -7,10 +7,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.ozbozmodz.eggmod.util.EggHelper;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class RawGiantEggBlock extends Block {
 
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
-        tooltip.add(Text.translatable("item.eggmod.raw_giant_egg.tooltip").formatted(Formatting.ITALIC).formatted(Formatting.GRAY));
+        EggHelper.appendTooltip(stack, context, tooltip, options, "item.eggmod.raw_giant_egg.tooltip");
         super.appendTooltip(stack, context, tooltip, options);
     }
 }

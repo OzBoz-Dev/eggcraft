@@ -42,7 +42,7 @@ public class EtcherBlockScreen extends HandledScreen<EtcherBlockScreenHandler> {
     }
 
     // Renders our progress arrow, taking the arrow pos, size and progress
-    private void renderProgressArrow(DrawContext context, int x, int y){
+    public void renderProgressArrow(DrawContext context, int x, int y){
         if (handler.isCrafting()){
             context.drawTexture(ARROW_TEXTURE, x + 80, y + 40, 0, 0,
                     16, handler.getScaledArrowProgress(), 16, 24);

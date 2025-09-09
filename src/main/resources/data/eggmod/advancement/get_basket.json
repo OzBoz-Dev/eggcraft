@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:eggmod/get_etcher",
+  "parent": "eggmod:get_etcher",
   "criteria": {
     "get_basket": {
       "conditions": {
@@ -26,7 +26,8 @@
       "count": 1,
       "id": "eggmod:eggs_in_a_basket"
     },
-    "title": "Basketeer"
+    "title": "Basketeer",
+    "show_toast": true
   },
   "requirements": [
     [

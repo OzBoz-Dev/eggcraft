@@ -23,7 +23,7 @@ public class CustomEggItem extends EggItem {
     protected CustomEggEntity ourEgg;
 
     public CustomEggItem(Item.Settings settings) {
-        super(settings);
+        super(settings.maxCount(16));
         type = getTypeString();
     }
 

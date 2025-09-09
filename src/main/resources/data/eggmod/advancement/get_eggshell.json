@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:eggmod/root",
+  "parent": "eggmod:root",
   "criteria": {
     "get_eggshell": {
       "conditions": {
@@ -18,7 +18,8 @@
       "count": 1,
       "id": "eggmod:eggshell"
     },
-    "title": "An Empty Shell"
+    "title": "An Empty Shell",
+    "show_toast": true
   },
   "requirements": [
     [

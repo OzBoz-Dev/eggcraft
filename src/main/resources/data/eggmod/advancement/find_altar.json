@@ -1,4 +1,5 @@
 {
+  "parent": "eggmod:root",
   "display": {
     "icon": {
       "id": "eggmod:fried_egg"
@@ -8,7 +9,7 @@
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": false
+    "hidden": true
   },
   "criteria": {
     "find_altar": {

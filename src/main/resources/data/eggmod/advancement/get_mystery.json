@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:eggmod/root",
+  "parent": "eggmod:root",
   "criteria": {
     "get_mystery": {
       "conditions": {
@@ -19,7 +19,8 @@
       "count": 1,
       "id": "eggmod:mysterious_egg"
     },
-    "title": "Out of Thin Air"
+    "title": "A Chicken Laid This?",
+    "show_toast": true
   },
   "requirements": [
     [
