@@ -1,9 +1,12 @@
 {
-  "type": "eggmod:etcher_recipe",
-  "template": {
-    "item": "eggmod:vortex_egg_template"
-  },
-  "result": {
-    "id": "eggmod:vortex_egg"
-  }
+    "type": "eggmod:etcher_block",
+    "template": {
+        "item": "eggmod:templates/vortex_egg_template"
+    },
+    "egg": {
+        "item": "minecraft:egg"
+    },
+    "result": {
+        "id": "eggmod:vortex_egg"
+    }
 }

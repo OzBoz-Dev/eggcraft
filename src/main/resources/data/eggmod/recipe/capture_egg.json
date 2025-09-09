@@ -1,9 +1,12 @@
 {
-  "type": "eggmod:etcher_recipe",
-  "template": {
-    "item": "eggmod:capture_egg_template"
-  },
-  "result": {
-    "id": "eggmod:capture_egg"
-  }
+    "type": "eggmod:etcher_block",
+    "template": {
+        "item": "eggmod:templates/capture_egg_template"
+    },
+    "egg": {
+        "item": "minecraft:egg"
+    },
+    "result": {
+        "id": "eggmod:capture_egg"
+    }
 }

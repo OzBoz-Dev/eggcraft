@@ -21,6 +21,7 @@ public class EggHelper {
 
     // Convert our template item to the corresponding output item
     public static CustomEggItem getCurrentOutputItem(Item template){
+        if (!(template instanceof TemplateItem)) return null;
         Item output = Registries.ITEM.get(Identifier.of ("eggmod", ((TemplateItem)template).getType()));
         if (output instanceof CustomEggItem customEggItem){
             return customEggItem;

@@ -5,18 +5,14 @@ import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import net.minecraft.item.Item;
 import net.minecraft.recipe.RecipeEntry;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.tag.TagKey;
 import net.ozbozmodz.eggmod.recipe.EtcherRecipe;
-import net.ozbozmodz.eggmod.util.RegisterAll;
 
 import java.util.List;
 
 public class EtcherDisplay extends BasicDisplay {
     public EtcherDisplay(RecipeEntry<EtcherRecipe> recipe) {
-        super(List.of(EntryIngredients.ofIngredient(recipe.value().getIngredients().get(0))),
+        super(List.of(EntryIngredients.ofIngredient(recipe.value().getIngredients().get(0)),EntryIngredients.ofIngredient(recipe.value().getIngredients().get(1))),
                 List.of(EntryIngredient.of(EntryStacks.of(recipe.value().getResult(null)))));
     }
 

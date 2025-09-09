@@ -18,9 +18,9 @@ public record EtcherRecipe(Ingredient template, Ingredient egg, ItemStack output
 
     @Override
     public DefaultedList<Ingredient> getIngredients() {
-        System.out.println("Constructing!");
         DefaultedList<Ingredient> list = DefaultedList.of();
-        list.add(this.template);
+        list.add(0, this.template);
+        list.add(1, this.egg);
         return list;
     }
 
@@ -28,9 +28,8 @@ public record EtcherRecipe(Ingredient template, Ingredient egg, ItemStack output
 
     @Override
     public boolean matches(EtcherRecipeInput input, World world) {
-        System.out.println("TEST0");
         if (world.isClient()) return false;
-        System.out.println("TEST");
+
         return template.test(input.getStackInSlot(0)) && egg.test(input.getStackInSlot(1));
     }
 
@@ -50,12 +49,12 @@ public record EtcherRecipe(Ingredient template, Ingredient egg, ItemStack output
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<EtcherRecipe> getSerializer() {
         return RegisterAll.ETCHER_RECIPE_SERIALIZER;
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public RecipeType<EtcherRecipe> getType() {
         return RegisterAll.ETCHER_RECIPE_TYPE;
     }
 

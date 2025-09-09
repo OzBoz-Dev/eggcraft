@@ -1,9 +1,12 @@
 {
-  "type": "eggmod:etcher_recipe",
-  "template": {
-    "item": "eggmod:plaster_egg_template"
-  },
-  "result": {
-    "id": "eggmod:plaster_egg"
-  }
+    "type": "eggmod:etcher_block",
+    "template": {
+        "item": "eggmod:templates/plaster_egg_template"
+    },
+    "egg": {
+        "item": "minecraft:egg"
+    },
+    "result": {
+        "id": "eggmod:plaster_egg"
+    }
 }
