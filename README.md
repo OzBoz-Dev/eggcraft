@@ -94,6 +94,15 @@ All Egg Gadgets are crafted in the Etching Station.
 
 </details>
 
+<details>
+<summary>Misc</summary>
+
+### Misc:
+
+Includes a custom particle, a few custom sounds, a custom recipe type and custom loot tables for the structures.
+
+</details>
+
 ## Installing
 ### Using Curseforge/Modrinth
 1. Download the correct version of the mod as a JAR from curseforge/modrinth.
