@@ -104,11 +104,11 @@ Includes a custom particle, a few custom sounds, a custom recipe type and custom
 </details>
 
 ## Installing
-### Using Curseforge/Modrinth
-1. Download the correct version of the mod as a JAR from curseforge/modrinth.
-2. Download the correct version of Fabric API, and optionally REI (Roughly Enough Items).
-3. Place both Jars into the mods folder under .minecraft/mods.
-4. Run Fabric Loader from the Minecraft Launcher
+### Using a Jar
+1. Download the correct version of the mod as a JAR from [Curseforge](https://www.curseforge.com/minecraft/mc-mods/eggcraft-by-ozboz), [Modrinth](https://modrinth.com/mod/eggcraft-by-ozboz), or the [releases tab](https://github.com/OzBoz-Dev/eggcraft/releases/).
+3. Download the correct version of Fabric API, and optionally REI (Roughly Enough Items).
+4. Place both Jars into the mods folder under .minecraft/mods.
+5. Run Fabric Loader from the Minecraft Launcher
 
 ### Compile from Source
 1. This will require the right JRE version (Java 21).
