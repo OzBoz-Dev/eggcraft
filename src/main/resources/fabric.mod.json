@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "id": "eggmod",
-  "version": "0.0.5",
+  "version": "1.0.0",
 
   "name": "EggCraft",
-  "description": "I heard you like eggs, so do I!",
+  "description": "Eggs, eggs, and more eggs!",
   "authors": [
     "OzBoz"
   ],

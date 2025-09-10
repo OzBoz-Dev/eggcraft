@@ -50,7 +50,7 @@ public class RecallEggItem extends CustomEggItem{
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
-            if (Screen.hasShiftDown()){
+            if (Screen.hasShiftDown() || user.isSneaking()){
                 String extra = "";
                 ItemStack offStack = user.getOffHandStack();
                 // Check offhand for a compass or recovery compass, bind those instead
