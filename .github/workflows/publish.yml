@@ -5,10 +5,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      JAVA_VERSION: 21
+      VERSION: 1.0.1+1.21.1
+      RELEASE_NAME: Eggmod 1.0.1 for Fabric 1.21.1
+
     permissions:
       contents: write
 
     steps:
+      - name: Check Env Variables
+        run: env
 
       - name: Checkout Repository
         uses: actions/checkout@v3
