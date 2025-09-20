@@ -4,11 +4,13 @@ on: [workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: Publish
 
     env:
       JAVA_VERSION: 21
       VERSION: 1.0.1+1.21.1
       RELEASE_NAME: Eggmod 1.0.1 for Fabric 1.21.1
+      MINECRAFT_VERSION: 1.21.1
 
     permissions:
       contents: write
