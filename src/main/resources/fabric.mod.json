@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "eggmod",
-  "version": "1.0.0",
+  "version": "1.0.1+1.21.1",
 
   "name": "EggCraft",
   "description": "Eggs, eggs, and more eggs!",
