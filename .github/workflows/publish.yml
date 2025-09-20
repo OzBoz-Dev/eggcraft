@@ -26,7 +26,6 @@ jobs:
             name: "${{env.RELEASE_NAME}}"
             version: "${{env.VERSION}}"
             version-type: beta
-            changelog-file: CHANGELOG.md
 
             loaders: fabric
             game-versions: "${{env.MINECRAFT_VERSION}}"
