@@ -1,11 +1,11 @@
 package net.ozbozmodz.eggmod.util;
 
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;

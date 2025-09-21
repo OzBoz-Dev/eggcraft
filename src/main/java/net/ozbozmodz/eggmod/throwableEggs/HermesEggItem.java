@@ -29,6 +29,7 @@ public class HermesEggItem extends CustomEggItem{
     public void hermesLaunch(World world, LivingEntity user, ItemStack itemStack, int useTicks) {
         ourEgg.setItem(itemStack);
         ourEgg.setPos(user.getX(), user.getEyeY(), user.getZ());
+        ourEgg.velocityDirty = true;
         ourEgg.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, Math.min((float) useTicks/8, 3.0f), 1.0f);
         world.spawnEntity(ourEgg);
         if (ourEgg.getOwner() != null) user.startRiding(ourEgg);
@@ -42,14 +43,14 @@ public class HermesEggItem extends CustomEggItem{
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         if(remainingUseTicks%4==0) {
-            user.playSound(RegisterAll.VORTEX_AMBIENT, 2.0f, Math.min((float) (getMaxUseTime(stack, user) - remainingUseTicks) / 20, 1.0f));
+            user.playSound(RegisterAll.VORTEX_AMBIENT, 2.0f, Math.min((float) (getMaxUseTime(stack) - remainingUseTicks) / 20, 1.0f));
             if (!world.isClient()) ((ServerWorld)world).spawnParticles(ParticleTypes.CLOUD, user.getX(), user.getEyeY(), user.getZ(), 1, Math.cos(remainingUseTicks), 0 , Math.sin(remainingUseTicks) ,0);
         }
         super.usageTick(world, user, stack, remainingUseTicks);
     }
 
     @Override
-    public int getMaxUseTime(ItemStack stack, LivingEntity user) {
+    public int getMaxUseTime(ItemStack stack) {
         return 300;
     }
 
@@ -74,7 +75,7 @@ public class HermesEggItem extends CustomEggItem{
             world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
             if (!world.isClient) {
                 Random r = Random.create();
-                hermesLaunch(world, user, stack, getMaxUseTime(stack,user)-remainingUseTicks);
+                hermesLaunch(world, user, stack, getMaxUseTime(stack)-remainingUseTicks);
                 ((ServerWorld) world).spawnParticles(ParticleTypes.CLOUD, user.getX(), user.getEyeY(), user.getZ(), 100, r.nextBetween(-1,1), r.nextBetween(-1,0), r.nextBetween(-1,1), 0.5);
             }
 

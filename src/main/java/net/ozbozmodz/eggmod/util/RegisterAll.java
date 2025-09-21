@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.component.ComponentType;
+import net.minecraft.component.DataComponentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -51,8 +51,8 @@ import java.util.function.UnaryOperator;
 
 public class RegisterAll {
     // COMPONENTS
-    public static final ComponentType<GlobalPos> RECALL_POS = Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of("eggmod", "recall_pos"),
-            ComponentType.<GlobalPos>builder().codec(GlobalPos.CODEC).build());
+    public static final DataComponentType<GlobalPos> RECALL_POS = Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of("eggmod", "recall_pos"),
+            DataComponentType.<GlobalPos>builder().codec(GlobalPos.CODEC).build());
 
     // STATUS EFFECTS
     public static final RegistryEntry<StatusEffect> LOCK_ON_EFFECT = registerStatusEffect("locked_on", new LockOnEffect());
@@ -152,12 +152,12 @@ public class RegisterAll {
     public static final SimpleParticleType LOCK_ON_PARTICLE = registerParticle("lock_on_particle", FabricParticleTypes.simple());
 
     // SOUNDS
-    public static final SoundEvent OVERCLOCK_EGG_TICK = registerSoundEvent("eggmod:clock_tick", SoundEvent.of(Identifier.of("eggmod:clock_tick")));
-    public static final SoundEvent EGGSHELL_ARMOR_BREAK = registerSoundEvent("eggmod:eggshell_armor_break", SoundEvent.of(Identifier.of("eggmod:eggshell_armor_break")));
-    public static final SoundEvent HERMES_TAKEOFF = registerSoundEvent("eggmod:hermes_takeoff", SoundEvent.of(Identifier.of("eggmod:hermes_takeoff")));
-    public static final SoundEvent VORTEX_AMBIENT = registerSoundEvent("eggmod:vortex_ambient", SoundEvent.of(Identifier.of("eggmod:vortex_ambient")));
-    public static final SoundEvent VORTEX_LAUNCH = registerSoundEvent("eggmod:vortex_launch", SoundEvent.of(Identifier.of("eggmod:vortex_launch")));
-    public static final SoundEvent MYSTERIOUS_EGG_LAID = registerSoundEvent("eggmod:mysterious_egg_laid", SoundEvent.of(Identifier.of("eggmod:mysterious_egg_laid")));
+    public static final SoundEvent OVERCLOCK_EGG_TICK = registerSoundEvent("clock_tick", SoundEvent.of(Identifier.of("eggmod", "clock_tick")));
+    public static final SoundEvent EGGSHELL_ARMOR_BREAK = registerSoundEvent("eggshell_armor_break", SoundEvent.of(Identifier.of("eggmod", "eggshell_armor_break")));
+    public static final SoundEvent HERMES_TAKEOFF = registerSoundEvent("hermes_takeoff", SoundEvent.of(Identifier.of("eggmod", "hermes_takeoff")));
+    public static final SoundEvent VORTEX_AMBIENT = registerSoundEvent("vortex_ambient", SoundEvent.of(Identifier.of("eggmod", "vortex_ambient")));
+    public static final SoundEvent VORTEX_LAUNCH = registerSoundEvent("vortex_launch", SoundEvent.of(Identifier.of("eggmod", "vortex_launch")));
+    public static final SoundEvent MYSTERIOUS_EGG_LAID = registerSoundEvent("mysterious_egg_laid", SoundEvent.of(Identifier.of("eggmod", "mysterious_egg_laid")));
 
     // BEHAVIORS
     public static final EggshellDispenserBehavior EGGSHELL_DISPENSER_BEHAVIOR = new EggshellDispenserBehavior();
@@ -295,7 +295,7 @@ public class RegisterAll {
 
     private static SoundEvent registerSoundEvent(String name, SoundEvent soundEvent){
         // Register a sound event to the registry with the given name, and return it
-        return Registry.register(Registries.SOUND_EVENT, Identifier.of(name), soundEvent);
+        return Registry.register(Registries.SOUND_EVENT, Identifier.of("eggmod", name), soundEvent);
     }
 
     private static RegistryEntry<StatusEffect> registerStatusEffect(String name, StatusEffect statusEffect){
@@ -306,9 +306,9 @@ public class RegisterAll {
         return Registry.register(Registries.PARTICLE_TYPE, Identifier.of("eggmod", name), particleType);
     }
 
-    private static <T>ComponentType<T> registerComponentType(String name, UnaryOperator<ComponentType.Builder<T>> builderOperator){
+    private static <T> DataComponentType<T> registerComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> builderOperator){
         return Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of("eggmod", name),
-                builderOperator.apply(ComponentType.builder()).build());
+                builderOperator.apply(DataComponentType.builder()).build());
     }
 
     public static void registerBehaviors(){

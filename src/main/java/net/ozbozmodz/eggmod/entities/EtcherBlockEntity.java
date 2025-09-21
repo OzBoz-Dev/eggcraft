@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
@@ -31,7 +32,6 @@ import net.minecraft.util.math.random.Random;
 import net.ozbozmodz.eggmod.blocks.EtcherBlock;
 import net.ozbozmodz.eggmod.items.TemplateItem;
 import net.ozbozmodz.eggmod.recipe.EtcherRecipe;
-import net.ozbozmodz.eggmod.recipe.EtcherRecipeInput;
 import net.ozbozmodz.eggmod.screen.EtcherBlockScreenHandler;
 import net.ozbozmodz.eggmod.util.RegisterAll;
 import org.jetbrains.annotations.Nullable;
@@ -162,8 +162,12 @@ public class EtcherBlockEntity extends BlockEntity implements ImplementedInvento
 
     public Optional<RecipeEntry<EtcherRecipe>> getCurrentRecipe() {
         if (this.getWorld() == null || this.getWorld().isClient()) return Optional.empty();
+        SimpleInventory inv = new SimpleInventory(this.size());
+        for (int i = 0; i < this.size(); i++){
+            inv.setStack(i, this.getStack(i));
+        }
         return this.getWorld().getRecipeManager()
-                .getFirstMatch(RegisterAll.ETCHER_RECIPE_TYPE, new EtcherRecipeInput(inventory.get(TEMPLATE_SLOT), inventory.get(EGG_SLOT)), this.getWorld());
+                .getFirstMatch(RegisterAll.ETCHER_RECIPE_TYPE, inv, this.getWorld());
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "eggmod",
-  "version": "1.0.1+1.21.1",
+  "version": "1.0.1+1.20.5",
 
   "name": "EggCraft",
   "description": "Eggs, eggs, and more eggs!",
@@ -38,7 +38,7 @@
   "depends": {
     "fabricloader": ">=0.14.19",
     "fabric-api": "*",
-    "minecraft": ">=1.21.1",
+    "minecraft": ">=1.20.6",
     "java": ">=17"
   },
   "suggests": {

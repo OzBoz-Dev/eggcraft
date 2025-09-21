@@ -1,6 +1,7 @@
 package net.ozbozmodz.eggmod.throwableEggs;
 
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipType;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.LodestoneTrackerComponent;
 import net.minecraft.entity.LivingEntity;
@@ -11,7 +12,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.item.Items;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.network.packet.s2c.play.PositionFlag;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKey;
@@ -98,7 +98,7 @@ public class RecallEggItem extends CustomEggItem{
         if (!world.isClient()) {
             ServerWorld nextWorld = Objects.requireNonNull(world.getServer()).getWorld(getRecallPos(stack).dimension());
             BlockPos nextPos = getRecallPos(stack).pos();
-            if (user.canTeleportBetween(world, nextWorld)) {
+            if (nextWorld != null) {
                 user.teleport(nextWorld, nextPos.getX(), nextPos.getY(), nextPos.getZ(), EnumSet.noneOf(PositionFlag.class), 0.0f, 0.0f);
             }
         }
@@ -113,7 +113,7 @@ public class RecallEggItem extends CustomEggItem{
     }
 
     @Override
-    public int getMaxUseTime(ItemStack stack, LivingEntity user) {
+    public int getMaxUseTime(ItemStack stack) {
         return 80;
     }
 

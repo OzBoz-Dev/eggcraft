@@ -1,7 +1,7 @@
 package net.ozbozmodz.eggmod.items;
 
-import com.google.common.base.Predicates;
 import net.fabricmc.fabric.api.item.v1.EnchantingContext;
+import net.minecraft.client.item.TooltipType;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.enchantment.Enchantment;
@@ -15,7 +15,6 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvents;
@@ -89,9 +88,10 @@ public class EggsInABasketItem extends Item {
     }
 
     // Enchantable with Mending and Unbreaking
+
     @Override
-    public boolean canBeEnchantedWith(ItemStack stack, RegistryEntry<Enchantment> enchantment, EnchantingContext context) {
-        return enchantment.matches(Predicates.equalTo(Enchantments.UNBREAKING)) || enchantment.matches(Predicates.equalTo(Enchantments.MENDING));
+    public boolean canBeEnchantedWith(ItemStack stack, Enchantment enchantment, EnchantingContext context) {
+        return enchantment.equals(Enchantments.UNBREAKING) || enchantment.equals(Enchantments.MENDING);
     }
 
     @Override

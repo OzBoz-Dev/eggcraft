@@ -29,7 +29,7 @@ public class LockOnEffect extends StatusEffect {
         // Show a particle above the targeted entity's head
         World world = entity.getWorld();
         if(ticksElapsed % 40 == 0 && !world.isClient()) {
-            ((ServerWorld)world).spawnParticles(RegisterAll.LOCK_ON_PARTICLE, entity.getX(), entity.getY()+entity.getHeight()+0.5, entity.getZ(), 1, entity.getMovement().getX(),0,entity.getMovement().getZ(),0.5f);
+            ((ServerWorld)world).spawnParticles(RegisterAll.LOCK_ON_PARTICLE, entity.getX(), entity.getY()+entity.getHeight()+0.5, entity.getZ(), 1, entity.getMovementDirection().getOffsetX(),0,entity.getMovementDirection().getOffsetZ(),0.5f);
             ticksElapsed = 0;
         }
         // Box where we will capture all nearby arrows
@@ -47,6 +47,7 @@ public class LockOnEffect extends StatusEffect {
                     // Send it flying towards the target
                     Vec3d vecToTarget = new Vec3d(entity.getX() - p.getX(), entity.getY() + 1 - p.getY(), entity.getZ() - p.getZ());
                     ((ServerWorld) world).spawnParticles(ParticleTypes.CRIMSON_SPORE, p.getX(), p.getY(), p.getZ(), 1, 0, 0, 0, 0);
+                    p.velocityDirty = true;
                     p.setVelocity(p.getVelocity().multiply(0.5));
                     p.setBodyYaw(p.getMovementDirection().asRotation());
                     // Use lerp and other things to make the movement curve seem natural

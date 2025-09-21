@@ -47,7 +47,7 @@ public class CaptureEggEntity extends CustomEggEntity{
         }
         // Otherwise, if we have a captive entity, spawn it
         else if (captive != null){
-            captive.refreshPositionAndAngles(this.getPos(), 0, 0);
+            captive.refreshPositionAndAngles(this.getBlockPos(), 0, 0);
             world.spawnEntity(captive);
             world.playSound(null, this.getBlockPos(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0f, 1.0f);
             ((ServerWorld)world).spawnParticles(ParticleTypes.FLASH, this.getX(), this.getY(), this.getZ(), 0,0,0,0,0);

@@ -2,6 +2,7 @@ package net.ozbozmodz.eggmod.recipe;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
@@ -14,7 +15,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 import net.ozbozmodz.eggmod.util.RegisterAll;
 
-public record EtcherRecipe(Ingredient template, Ingredient egg, ItemStack output) implements Recipe<EtcherRecipeInput> {
+public record EtcherRecipe(Ingredient template, Ingredient egg, ItemStack output) implements Recipe<SimpleInventory> {
 
     @Override
     public DefaultedList<Ingredient> getIngredients() {
@@ -27,15 +28,14 @@ public record EtcherRecipe(Ingredient template, Ingredient egg, ItemStack output
     // Read Recipe JSON -> new EtcherRecipe
 
     @Override
-    public boolean matches(EtcherRecipeInput input, World world) {
+    public boolean matches(SimpleInventory inventory, World world) {
         if (world.isClient()) return false;
-
-        return template.test(input.getStackInSlot(0)) && egg.test(input.getStackInSlot(1));
+        return template.test(inventory.getStack(0)) && egg.test(inventory.getStack(2));
     }
 
     @Override
-    public ItemStack craft(EtcherRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
-        return output.copy();
+    public ItemStack craft(SimpleInventory inventory, RegistryWrapper.WrapperLookup lookup) {
+        return output;
     }
 
     @Override
@@ -45,7 +45,7 @@ public record EtcherRecipe(Ingredient template, Ingredient egg, ItemStack output
 
     @Override
     public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-        return output.copy();
+        return output;
     }
 
     @Override

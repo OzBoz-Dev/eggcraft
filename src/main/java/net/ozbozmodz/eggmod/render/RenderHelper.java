@@ -20,16 +20,16 @@ import net.ozbozmodz.eggmod.util.RegisterAll;
 
 public class RenderHelper {
     public static void registerModModels(){
-        ModelPredicateProviderRegistry.register(RegisterAll.SPECIAL_SYRINGE_ITEM, Identifier.of("pull"), (stack, world, entity, seed) -> {
+        ModelPredicateProviderRegistry.register(RegisterAll.SPECIAL_SYRINGE_ITEM, Identifier.of("eggmod","pull"), (stack, world, entity, seed) -> {
             if (entity == null) {
                 return 0.0f;
             }
             if (entity.getActiveItem() != stack) {
                 return 0.0f;
             }
-            return (float)(stack.getMaxUseTime(entity) - entity.getItemUseTimeLeft()) / 100.0f;
+            return (float)(stack.getMaxUseTime() - entity.getItemUseTimeLeft()) / 100.0f;
         });
-        ModelPredicateProviderRegistry.register(RegisterAll.SPECIAL_SYRINGE_ITEM, Identifier.of("pulling"), (stack, world, entity, seed) ->
+        ModelPredicateProviderRegistry.register(RegisterAll.SPECIAL_SYRINGE_ITEM, Identifier.of("eggmod","pulling"), (stack, world, entity, seed) ->
                 entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0f : 0.0f);
 
         ModelPredicateProviderRegistry.register(RegisterAll.EXPERIENCE_EGG_ITEM, Identifier.of("eggmod", "exp"), (stack, world, entity, seed) -> {

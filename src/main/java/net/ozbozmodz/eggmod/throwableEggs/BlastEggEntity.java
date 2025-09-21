@@ -24,9 +24,9 @@ public class BlastEggEntity extends CustomEggEntity {
     protected void onCollision(HitResult hitResult) {
         World world = this.getWorld();
         // Go boom, non destructive
-        world.createExplosion(null, this.getX(), this.getY(), this.getZ(), 3.5F, World.ExplosionSourceType.TRIGGER);
+        world.createExplosion(null, this.getX(), this.getY(), this.getZ(), 3.5F, World.ExplosionSourceType.BLOW);
         for (Entity e : world.getOtherEntities(this, Box.of(this.getPos(), 10, 10, 10), Predicates.instanceOf(LivingEntity.class))){
-            e.setOnFireFor(6.0f);
+            e.setOnFireFor(6);
         }
         world.sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
         Random r = new Random();
