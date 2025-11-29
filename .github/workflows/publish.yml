@@ -8,8 +8,8 @@ jobs:
 
     env:
       JAVA_VERSION: 21
-      VERSION: 1.0.1+1.21.1
-      RELEASE_NAME: Eggmod 1.0.1 for Fabric 1.21.1
+      VERSION: 1.0.2+1.21.1
+      RELEASE_NAME: Eggmod 1.0.2 for Minecraft 1.21.1
       MINECRAFT_VERSION: 1.21.1
 
     permissions:
@@ -53,6 +53,6 @@ jobs:
           version: "${{env.VERSION}}"
           version-type: release
 
-          loaders: fabric
+          loaders: fabric, neoforge
           game-versions: "${{env.MINECRAFT_VERSION}}"
           java: "${{env.JAVA_VERSION}}"
