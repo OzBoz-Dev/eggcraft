@@ -34,7 +34,7 @@ public class ExperienceCatcherScreen extends HandledScreen<ExperienceCatcherScre
         context.drawTexture(GUI_TEXTURE, x + 45, y + 76 - handler.getEnergyBar(), 179, 7, 34, handler.getEnergyBar(), 256, 256);
         context.drawTexture(GUI_TEXTURE, x + 45, y + 19, 180, 80, 34, 58, 256, 256);
         if (handler.getExp() > 0) context.drawTexture(GUI_TEXTURE, x + 97 - handler.getPipeWidth(), y + 77, 180 + 37 - handler.getPipeWidth(), 70, handler.getPipeWidth(), 8, 256,256);
-        if (mouseX >= 168 && mouseX <= 203 && mouseY >= 46 && mouseY <= 105){
+        if (mouseX >= x + 44 && mouseX <= x + 79 && mouseY >= y + 16 && mouseY <= y + 76){
             context.drawTooltip(textRenderer, Text.literal("Experience: " + handler.getExp() + "/2000").formatted(Formatting.GREEN), mouseX, mouseY);
         }
     }

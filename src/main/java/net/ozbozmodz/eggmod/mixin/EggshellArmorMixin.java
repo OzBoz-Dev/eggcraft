@@ -1,9 +1,7 @@
 package net.ozbozmodz.eggmod.mixin;
 
-import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.AdvancementProgress;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ArmorItem;
@@ -19,7 +17,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
@@ -55,14 +52,6 @@ public abstract class EggshellArmorMixin {
                     }
                 }
             }
-        }
-    }
-
-    @Inject(method = "damageEquipment", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;damage(ILnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/EquipmentSlot;)V"), cancellable = true)
-    protected void damageEquipment(DamageSource source, float amount, EquipmentSlot[] slots, CallbackInfo ci, @Local ItemStack itemStack){
-        // Eggshell armor can only be damaged by specifically tanking a hit, avoids double counting
-        if(itemStack.getItem() instanceof ArmorItem && ((ArmorItem) itemStack.getItem()).getMaterial().equals(EggshellArmorMaterial.EGGSHELL_ARMOR_MATERIAL)){
-            ci.cancel();
         }
     }
 }
