@@ -52,7 +52,9 @@ jobs:
           name: "${{env.RELEASE_NAME}}"
           version: "${{env.VERSION}}"
           version-type: release
-
-          loaders: fabric, neoforge
+          changelog-file: CHANGELOG.*
+          loaders: |
+            fabric
+            neoforge
           game-versions: "${{env.MINECRAFT_VERSION}}"
           java: "${{env.JAVA_VERSION}}"
